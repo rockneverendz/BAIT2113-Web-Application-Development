@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+ <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <!-- Diagram content (shape and connector positions) -->
+    <edmx:Diagrams>
+      <Diagram DiagramId="57d5bd1b60d44b04986a3e409adb07c3" Name="Diagram1">
+        <EntityTypeShape EntityType="ArtGalleryModel.Artist" Width="1.5" PointX="1.125" PointY="7.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="ArtGalleryModel.Artwork" Width="1.5" PointX="0.75" PointY="3.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="ArtGalleryModel.Customer" Width="1.5" PointX="6.75" PointY="0.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="ArtGalleryModel.Order" Width="1.5" PointX="6.75" PointY="3.625" IsExpanded="true" />
+        <EntityTypeShape EntityType="ArtGalleryModel.OrderItem" Width="1.5" PointX="3.75" PointY="3.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="ArtGalleryModel.Payment" Width="1.5" PointX="7" PointY="7.625" IsExpanded="true" />
+        <EntityTypeShape EntityType="ArtGalleryModel.WishList" Width="1.5" PointX="0.5" PointY="0.625" IsExpanded="true" />
+        <AssociationConnector Association="ArtGalleryModel.FK_Artwork_Artist" ManuallyRouted="false" />
+        <AssociationConnector Association="ArtGalleryModel.FK_OrderItem_Artwork" ManuallyRouted="false" />
+        <AssociationConnector Association="ArtGalleryModel.FK_WishList_Artwork" ManuallyRouted="false" />
+        <AssociationConnector Association="ArtGalleryModel.FK_Order_Customer" ManuallyRouted="false" />
+        <AssociationConnector Association="ArtGalleryModel.FK_WishList_Customer" ManuallyRouted="false" />
+        <AssociationConnector Association="ArtGalleryModel.FK_Order_Payment" ManuallyRouted="false" />
+        <AssociationConnector Association="ArtGalleryModel.FK_OrderItem_Order" ManuallyRouted="false" />
+      </Diagram>
+    </edmx:Diagrams>
+  </edmx:Designer>
+</edmx:Edmx>
