@@ -43,7 +43,15 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="EntityFramework, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
+      <HintPath>..\packages\EntityFramework.6.2.0\lib\net45\EntityFramework.dll</HintPath>
+    </Reference>
+    <Reference Include="EntityFramework.SqlServer, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
+      <HintPath>..\packages\EntityFramework.6.2.0\lib\net45\EntityFramework.SqlServer.dll</HintPath>
+    </Reference>
     <Reference Include="Microsoft.CSharp" />
+    <Reference Include="System.Runtime.Serialization" />
+    <Reference Include="System.Security" />
     <Reference Include="System.Web.DynamicData" />
     <Reference Include="System.Web.Entity" />
     <Reference Include="System.Web.ApplicationServices" />
@@ -67,12 +75,122 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <Content Include="App_Data\ArtGallery.mdf" />
+    <Content Include="App_Data\ArtGallery_log.ldf">
+      <DependentUpon>ArtGallery.mdf</DependentUpon>
+    </Content>
+    <Content Include="App_Data\CreateTable.sql" />
+    <Content Include="bootstrap\css\bootstrap-datepicker3.css" />
+    <Content Include="bootstrap\css\bootstrap-datepicker3.min.css" />
+    <Content Include="bootstrap\css\bootstrap-grid.css" />
+    <Content Include="bootstrap\css\bootstrap-grid.min.css" />
+    <Content Include="bootstrap\css\bootstrap-reboot.css" />
+    <Content Include="bootstrap\css\bootstrap-reboot.min.css" />
+    <Content Include="bootstrap\css\bootstrap-year-calendar.css" />
+    <Content Include="bootstrap\css\bootstrap.css" />
+    <Content Include="bootstrap\css\bootstrap.min.css" />
+    <Content Include="bootstrap\css\Chart.min.css" />
+    <Content Include="bootstrap\css\dataTables.bootstrap4.min.css" />
+    <Content Include="bootstrap\css\datatables.min.css" />
+    <Content Include="bootstrap\css\jquery.flexdatalist.css" />
+    <Content Include="bootstrap\js\bootstrap-datepicker.min.js" />
+    <Content Include="bootstrap\js\bootstrap-year-calendar.js" />
+    <Content Include="bootstrap\js\bootstrap.bundle.js" />
+    <Content Include="bootstrap\js\bootstrap.bundle.min.js" />
+    <Content Include="bootstrap\js\bootstrap.js" />
+    <Content Include="bootstrap\js\bootstrap.min.js" />
+    <Content Include="bootstrap\js\Chart.min.js" />
+    <Content Include="bootstrap\js\dataTables.bootstrap4.min.js" />
+    <Content Include="bootstrap\js\datatables.min.js" />
+    <Content Include="bootstrap\js\jquery.dataTables.min.js" />
+    <Content Include="bootstrap\js\jquery.flexdatalist.min.js" />
+    <Content Include="bootstrap\js\jquery.min.js" />
+    <Content Include="bootstrap\js\JsBarcode.all.js" />
+    <Content Include="bootstrap\js\JsBarcode.all.min.js" />
+    <Content Include="bootstrap\js\moment.js" />
+    <Content Include="bootstrap\js\popper.min.js" />
+    <Content Include="bootstrap\js\printThis.js" />
+    <Content Include="bootstrap\style.css" />
+    <Content Include="Models\ArtGalleryModel.Context.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <LastGenOutput>ArtGalleryModel.Context.cs</LastGenOutput>
+      <DependentUpon>ArtGalleryModel.edmx</DependentUpon>
+    </Content>
+    <Content Include="Models\ArtGalleryModel.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <DependentUpon>ArtGalleryModel.edmx</DependentUpon>
+      <LastGenOutput>ArtGalleryModel.cs</LastGenOutput>
+    </Content>
+    <Content Include="Testing.aspx" />
     <Content Include="Web.config" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Models\ArtGalleryModel.Context.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>ArtGalleryModel.Context.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\ArtGalleryModel.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>ArtGalleryModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\ArtGalleryModel.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>ArtGalleryModel.edmx</DependentUpon>
+    </Compile>
+    <Compile Include="Models\Artist.cs">
+      <DependentUpon>ArtGalleryModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\Artwork.cs">
+      <DependentUpon>ArtGalleryModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\Customer.cs">
+      <DependentUpon>ArtGalleryModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\Order.cs">
+      <DependentUpon>ArtGalleryModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\OrderItem.cs">
+      <DependentUpon>ArtGalleryModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\Payment.cs">
+      <DependentUpon>ArtGalleryModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\WishList.cs">
+      <DependentUpon>ArtGalleryModel.tt</DependentUpon>
+    </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Testing.aspx.cs">
+      <DependentUpon>Testing.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Testing.aspx.designer.cs">
+      <DependentUpon>Testing.aspx</DependentUpon>
+    </Compile>
   </ItemGroup>
   <ItemGroup>
+    <EntityDeploy Include="Models\ArtGalleryModel.edmx">
+      <Generator>EntityModelCodeGenerator</Generator>
+      <LastGenOutput>ArtGalleryModel.Designer.cs</LastGenOutput>
+    </EntityDeploy>
+    <Content Include="Models\ArtGalleryModel.edmx.diagram">
+      <DependentUpon>ArtGalleryModel.edmx</DependentUpon>
+    </Content>
+    <Content Include="bootstrap\css\bootstrap-datepicker3.css.map" />
+    <Content Include="bootstrap\css\bootstrap-datepicker3.min.css.map" />
+    <Content Include="bootstrap\css\bootstrap-grid.css.map" />
+    <Content Include="bootstrap\css\bootstrap-grid.min.css.map" />
+    <Content Include="bootstrap\css\bootstrap-reboot.css.map" />
+    <Content Include="bootstrap\css\bootstrap-reboot.min.css.map" />
+    <Content Include="bootstrap\css\bootstrap.css.map" />
+    <Content Include="bootstrap\css\bootstrap.min.css.map" />
+    <Content Include="bootstrap\js\bootstrap.bundle.js.map" />
+    <Content Include="bootstrap\js\bootstrap.bundle.min.js.map" />
+    <Content Include="bootstrap\js\bootstrap.js.map" />
+    <Content Include="bootstrap\js\bootstrap.min.js.map" />
+    <Content Include="bootstrap\js\popper.min.js.map" />
     <None Include="packages.config" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
@@ -80,6 +198,10 @@
     <None Include="Web.Release.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>
+  </ItemGroup>
+  <ItemGroup />
+  <ItemGroup>
+    <Service Include="{508349B6-6B84-4DF5-91F0-309BEEBAD82D}" />
   </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>
