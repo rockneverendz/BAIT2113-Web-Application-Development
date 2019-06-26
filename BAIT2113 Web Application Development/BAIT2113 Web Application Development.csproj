@@ -7,7 +7,7 @@
     <ProductVersion>
     </ProductVersion>
     <SchemaVersion>2.0</SchemaVersion>
-    <ProjectGuid>{D3BA5E0A-F8F8-4327-9E4C-D03895742A56}</ProjectGuid>
+    <ProjectGuid>{AD8274A2-DFD0-4C19-9850-839BD717E496}</ProjectGuid>
     <ProjectTypeGuids>{349c5851-65df-11da-9384-00065b846f21};{fae04ec0-301f-11d3-bf4b-00c04f79efbc}</ProjectTypeGuids>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
@@ -16,7 +16,7 @@
     <TargetFrameworkVersion>v4.6</TargetFrameworkVersion>
     <UseIISExpress>true</UseIISExpress>
     <Use64BitIISExpress />
-    <IISExpressSSLPort>44394</IISExpressSSLPort>
+    <IISExpressSSLPort>44381</IISExpressSSLPort>
     <IISExpressAnonymousAuthentication />
     <IISExpressWindowsAuthentication />
     <IISExpressUseClassicPipelineMode />
@@ -43,15 +43,7 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
-    <Reference Include="EntityFramework, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
-      <HintPath>..\packages\EntityFramework.6.2.0\lib\net45\EntityFramework.dll</HintPath>
-    </Reference>
-    <Reference Include="EntityFramework.SqlServer, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
-      <HintPath>..\packages\EntityFramework.6.2.0\lib\net45\EntityFramework.SqlServer.dll</HintPath>
-    </Reference>
     <Reference Include="Microsoft.CSharp" />
-    <Reference Include="System.Runtime.Serialization" />
-    <Reference Include="System.Security" />
     <Reference Include="System.Web.DynamicData" />
     <Reference Include="System.Web.Entity" />
     <Reference Include="System.Web.ApplicationServices" />
@@ -79,7 +71,6 @@
     <Content Include="App_Data\ArtGallery_log.ldf">
       <DependentUpon>ArtGallery.mdf</DependentUpon>
     </Content>
-    <Content Include="App_Data\CreateTable.sql" />
     <Content Include="ArtGallery.aspx" />
     <Content Include="bootstrap\css\bootstrap-datepicker3.css" />
     <Content Include="bootstrap\css\bootstrap-datepicker3.min.css" />
@@ -116,7 +107,6 @@
     <Content Include="customer\account\signin.aspx" />
     <Content Include="customer\account\signup.aspx" />
     <Content Include="customer\main.aspx" />
-    <Content Include="Testing.aspx" />
     <Content Include="Web.config" />
   </ItemGroup>
   <ItemGroup>
@@ -163,15 +153,9 @@
       <DependentUpon>main.aspx</DependentUpon>
     </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="Testing.aspx.cs">
-      <DependentUpon>Testing.aspx</DependentUpon>
-      <SubType>ASPXCodeBehind</SubType>
-    </Compile>
-    <Compile Include="Testing.aspx.designer.cs">
-      <DependentUpon>Testing.aspx</DependentUpon>
-    </Compile>
   </ItemGroup>
   <ItemGroup>
+    <Content Include="customer\customer.Master" />
     <Content Include="bootstrap\css\bootstrap-datepicker3.css.map" />
     <Content Include="bootstrap\css\bootstrap-datepicker3.min.css.map" />
     <Content Include="bootstrap\css\bootstrap-grid.css.map" />
@@ -185,7 +169,6 @@
     <Content Include="bootstrap\js\bootstrap.js.map" />
     <Content Include="bootstrap\js\bootstrap.min.js.map" />
     <Content Include="bootstrap\js\popper.min.js.map" />
-    <Content Include="customer\customer.Master" />
     <None Include="packages.config" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
@@ -196,9 +179,6 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="artist\" />
-  </ItemGroup>
-  <ItemGroup>
-    <Service Include="{508349B6-6B84-4DF5-91F0-309BEEBAD82D}" />
   </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>
@@ -213,9 +193,9 @@
         <WebProjectProperties>
           <UseIIS>True</UseIIS>
           <AutoAssignPort>True</AutoAssignPort>
-          <DevelopmentServerPort>53529</DevelopmentServerPort>
+          <DevelopmentServerPort>51117</DevelopmentServerPort>
           <DevelopmentServerVPath>/</DevelopmentServerVPath>
-          <IISUrl>https://localhost:44394/</IISUrl>
+          <IISUrl>https://localhost:44381/</IISUrl>
           <NTLMAuthentication>False</NTLMAuthentication>
           <UseCustomServer>False</UseCustomServer>
           <CustomServerUrl>
