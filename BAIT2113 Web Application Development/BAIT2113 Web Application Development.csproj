@@ -148,6 +148,13 @@
     <Compile Include="customer\account\signup.aspx.designer.cs">
       <DependentUpon>signup.aspx</DependentUpon>
     </Compile>
+    <Compile Include="customer\customer.Master.cs">
+      <DependentUpon>customer.Master</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="customer\customer.Master.designer.cs">
+      <DependentUpon>customer.Master</DependentUpon>
+    </Compile>
     <Compile Include="customer\main.aspx.cs">
       <DependentUpon>main.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
@@ -178,6 +185,7 @@
     <Content Include="bootstrap\js\bootstrap.js.map" />
     <Content Include="bootstrap\js\bootstrap.min.js.map" />
     <Content Include="bootstrap\js\popper.min.js.map" />
+    <Content Include="customer\customer.Master" />
     <None Include="packages.config" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
