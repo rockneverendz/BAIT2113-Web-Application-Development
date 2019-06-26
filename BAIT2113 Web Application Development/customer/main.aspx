@@ -4,7 +4,7 @@
     <title>Art Gallery - Main</title>
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder1" runat="server">
-    <%--<form id="form1" runat="server">--%>
+    <form id="form1" runat="server">
         <%--Jumbotron--%>
         <div class="jumbotron jumbotron-fluid" style="margin-top: 50px;">
             <div class="container">
@@ -37,5 +37,5 @@
             </div>
             <hr />
         </div>
-    <%--</form>--%>
+    </form>
 </asp:Content>

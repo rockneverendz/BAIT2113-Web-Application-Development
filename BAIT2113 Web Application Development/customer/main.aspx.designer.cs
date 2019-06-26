@@ -13,6 +13,15 @@ namespace BAIT2113_Web_Application_Development.customer {
     public partial class main {
         
         /// <summary>
+        /// form1 control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.HtmlControls.HtmlForm form1;
+        
+        /// <summary>
         /// Image3 control.
         /// </summary>
         /// <remarks>
