@@ -36,6 +36,7 @@
                 </div>
             </div>
             <hr />
+            <asp:GridView ID="GridView1" runat="server"></asp:GridView>
         </div>
     </form>
 </asp:Content>

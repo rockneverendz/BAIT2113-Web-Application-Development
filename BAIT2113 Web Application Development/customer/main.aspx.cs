@@ -11,7 +11,9 @@ namespace BAIT2113_Web_Application_Development.customer
     {
         protected void Page_Load(object sender, EventArgs e)
         {
-
+            ArtGalleryEntities context = new ArtGalleryEntities();
+            GridView1.DataSource = context.Artists.ToList();
+            GridView1.DataBind();
         }
     }
 }
