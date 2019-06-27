@@ -5,9 +5,8 @@
 <html xmlns="http://www.w3.org/1999/xhtml" class="h-100">
 <head runat="server">
 	<meta charset="utf-8" />
-	<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
+<%--	<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />--%>
 	<link rel="stylesheet" href="bootstrap/css/bootstrap.min.css" />
-	<%--	<link href="bootstrap/style.css" rel="stylesheet" />--%>
 	<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.0/css/all.css" integrity="sha384-Mmxa0mLqhmOeaE8vgOSbKacftZcsNYDjQzuCOm6D02luYSzBG8vpaOykv9lFQ51Y" crossorigin="anonymous" />
 
 	<title>Art Gallery</title>
@@ -84,13 +83,27 @@
 					</div>
 				</div>
 			</div>
+			
 			<hr />
+
+
+			<form id="form1" runat="server">
+				<asp:FileUpload ID="FileUpload1" runat="server" />
+				<asp:Button ID="BtnUpload" runat="server" Text="Upload" OnClick="BtnUpload_Click" />
+				<asp:Label ID="lblMessage" runat="server" Text="Label"></asp:Label>
+				<asp:HyperLink ID="hyperLink" runat="server" NavigateUrl="~/DisplayImage.aspx?ArtID=1001">View Uploaded Image</asp:HyperLink>
+
+				<asp:SqlDataSource ID="SqlDataSource1" runat="server" ConnectionString="<%$ ConnectionStrings:UploadImage %>" SelectCommand="SELECT * FROM [Artwork]"></asp:SqlDataSource>
+
+			</form>
+
+
 		</div>
 	</main>
 
 	<footer class="footer mt-auto py-3 bg-dark" >
 		<div class="container">
-			<span class="text-white"">CAONIMA 🤣</span>
+			<span class="text-white"">CAONIMA</span>
 		</div>
 	</footer>
 
