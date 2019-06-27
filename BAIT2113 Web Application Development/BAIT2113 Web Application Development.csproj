@@ -125,6 +125,7 @@
     <Content Include="customer\account\signin.aspx" />
     <Content Include="customer\account\signup.aspx" />
     <Content Include="customer\main.aspx" />
+    <Content Include="DisplayImage.aspx" />
     <Content Include="Web.config" />
   </ItemGroup>
   <ItemGroup>
@@ -179,6 +180,13 @@
     </Compile>
     <Compile Include="customer\account\signup.aspx.designer.cs">
       <DependentUpon>signup.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="DisplayImage.aspx.cs">
+      <DependentUpon>DisplayImage.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="DisplayImage.aspx.designer.cs">
+      <DependentUpon>DisplayImage.aspx</DependentUpon>
     </Compile>
     <Compile Include="customer\customer.Master.cs">
       <DependentUpon>customer.Master</DependentUpon>
@@ -237,9 +245,6 @@
     <None Include="Web.Release.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>
-  </ItemGroup>
-  <ItemGroup>
-    <Folder Include="artist\" />
   </ItemGroup>
   <ItemGroup>
     <Service Include="{508349B6-6B84-4DF5-91F0-309BEEBAD82D}" />
