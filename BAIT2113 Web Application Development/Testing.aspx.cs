@@ -30,7 +30,7 @@ namespace BAIT2113_Web_Application_Development
 				using (BinaryReader br = new BinaryReader(fs))
 				{
 					byte[] bytes = br.ReadBytes((Int32)fs.Length);
-					string constr = ConfigurationManager.ConnectionStrings["UploadImage"].ConnectionString;
+					string constr = ConfigurationManager.ConnectionStrings["ArtGalleryConnStr"].ConnectionString;
 					using (SqlConnection con = new SqlConnection(constr))
 					{
 						string query = "UPDATE Artwork SET Image = @Data WHERE Art_ID = 1001";

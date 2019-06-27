@@ -87,10 +87,10 @@
                 <asp:FileUpload ID="FileUpload1" runat="server" />
                 <asp:Button ID="BtnUpload" runat="server" Text="Upload" OnClick="BtnUpload_Click" />
                 <asp:Label ID="lblMessage" runat="server" Text="Label"></asp:Label>
-                <asp:HyperLink ID="hyperLink" runat="server" NavigateUrl="~/DisplayImage.aspx?ArtID=1001">View Uploaded Image
+                <asp:HyperLink ID="hyperLink" runat="server" NavigateUrl="~/DisplayImage.aspx?ArtID=1000">View Uploaded Image
                 </asp:HyperLink>
             
-                <asp:SqlDataSource ID="SqlDataSource1" runat="server" ConnectionString="<%$ ConnectionStrings:UploadImage %>"
+                <asp:SqlDataSource ID="SqlDataSource1" runat="server" ConnectionString="<%$ ConnectionStrings:ArtGalleryConnStr %>"
                     SelectCommand="SELECT * FROM [Artwork]"></asp:SqlDataSource>
             </form>
         </div>
@@ -101,8 +101,6 @@
             <span class="text-white">CAONIMA 🤣</span>
         </div>
     </footer>
-
-
 
     <script src="bootstrap/js/jquery.min.js"></script>
     <script src="bootstrap/js/popper.min.js"></script>

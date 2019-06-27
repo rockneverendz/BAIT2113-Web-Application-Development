@@ -1,5 +1,7 @@
 ﻿<%@ Page Title="" Language="C#" MasterPageFile="~/customer/customer.Master" AutoEventWireup="true" CodeBehind="main.aspx.cs" Inherits="BAIT2113_Web_Application_Development.customer.main" %>
 
+<%@ Register Assembly="Microsoft.AspNet.EntityDataSource" Namespace="Microsoft.AspNet.EntityDataSource" TagPrefix="ef" %>
+
 <asp:Content ID="Content1" ContentPlaceHolderID="head" runat="server">
     <title>Art Gallery - Main</title>
 </asp:Content>
@@ -37,6 +39,34 @@
             </div>
             <hr />
             <asp:GridView ID="GridView1" runat="server"></asp:GridView>
+            <asp:Repeater ID="Repeater1" runat="server">
+                <ItemTemplate>
+                    Art_ID:
+                    <asp:Label ID="Art_IDLabel" runat="server" Text='<%# Eval("Art_ID") %>' />
+                    <br />
+                    Name:
+                    <asp:Label ID="NameLabel" runat="server" Text='<%# Eval("Name") %>' />
+                    <br />
+                    Description:
+                    <asp:Label ID="DescriptionLabel" runat="server" Text='<%# Eval("Description") %>' />
+                    <br />
+                    Status:
+                    <asp:Label ID="StatusLabel" runat="server" Text='<%# Eval("Status") %>' />
+                    <br />
+                    Price:
+                    <asp:Label ID="PriceLabel" runat="server" Text='<%# Eval("Price") %>' />
+                    <br />
+                    Image:
+                    <%--<asp:Label ID="ImageLabel" runat="server" Text='<%# Eval("Image") %>' />--%>
+                    <asp:Image ID="ImageLabel" runat="server"
+                        src='<%#"data:Image/png;base64," + Convert.ToBase64String((byte[])Eval("Image"))%>' />
+                    <br />
+                    Artist_ID:
+                    <asp:Label ID="Artist_IDLabel" runat="server" Text='<%# Eval("Artist_ID") %>' />
+                    <br />
+                    <br />
+                </ItemTemplate>
+            </asp:Repeater>
         </div>
     </form>
 </asp:Content>
