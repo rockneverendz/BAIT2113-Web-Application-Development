@@ -16,7 +16,7 @@
     <TargetFrameworkVersion>v4.6</TargetFrameworkVersion>
     <UseIISExpress>true</UseIISExpress>
     <Use64BitIISExpress />
-    <IISExpressSSLPort>44381</IISExpressSSLPort>
+    <IISExpressSSLPort>44394</IISExpressSSLPort>
     <IISExpressAnonymousAuthentication />
     <IISExpressWindowsAuthentication />
     <IISExpressUseClassicPipelineMode />
@@ -90,6 +90,9 @@
       <DependentUpon>ArtGalleryEntities.edmx</DependentUpon>
       <LastGenOutput>ArtGalleryEntities.cs</LastGenOutput>
     </Content>
+    <Content Include="artist\account\Homepage.aspx" />
+    <Content Include="artist\account\loginArtist.aspx" />
+    <Content Include="artist\account\registerArtist.aspx" />
     <Content Include="bootstrap\css\bootstrap-datepicker3.css" />
     <Content Include="bootstrap\css\bootstrap-datepicker3.min.css" />
     <Content Include="bootstrap\css\bootstrap-grid.css" />
@@ -154,6 +157,27 @@
     </Compile>
     <Compile Include="Artist.cs">
       <DependentUpon>ArtGalleryEntities.tt</DependentUpon>
+    </Compile>
+    <Compile Include="artist\account\Homepage.aspx.cs">
+      <DependentUpon>Homepage.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="artist\account\Homepage.aspx.designer.cs">
+      <DependentUpon>Homepage.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="artist\account\loginArtist.aspx.cs">
+      <DependentUpon>loginArtist.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="artist\account\loginArtist.aspx.designer.cs">
+      <DependentUpon>loginArtist.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="artist\account\registerArtist.aspx.cs">
+      <DependentUpon>registerArtist.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="artist\account\registerArtist.aspx.designer.cs">
+      <DependentUpon>registerArtist.aspx</DependentUpon>
     </Compile>
     <Compile Include="Artwork.cs">
       <DependentUpon>ArtGalleryEntities.tt</DependentUpon>
@@ -257,6 +281,7 @@
   <ItemGroup>
     <Service Include="{508349B6-6B84-4DF5-91F0-309BEEBAD82D}" />
   </ItemGroup>
+  <ItemGroup />
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>
     <VSToolsPath Condition="'$(VSToolsPath)' == ''">$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v$(VisualStudioVersion)</VSToolsPath>
