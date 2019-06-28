@@ -11,6 +11,17 @@ namespace BAIT2113_Web_Application_Development.customer
     {
         protected void Page_Load(object sender, EventArgs e)
         {
+            Customer customer = (Customer)Session["customer"];
+            if (customer != null)
+            {
+                dropdownMenuLink.InnerHtml = customer.Username;
+            }
+            else
+            {
+                // TODO Redirect user
+                dropdownMenuLink.InnerHtml = "ERROR";
+            }
+
 
         }
     }

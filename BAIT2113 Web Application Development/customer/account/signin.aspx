@@ -104,33 +104,37 @@
                 }
         /* Fallback for Edge
             -------------------------------------------------- */
-		@supports (-ms-ime-align: auto) {
-			.form-label-group > label {
-				display: none;
-			}
+        @supports (-ms-ime-align: auto) {
+            .form-label-group > label {
+                display: none;
+            }
 
-			.form-label-group input::-ms-input-placeholder {
-				color: #777;
-			}
-		}
-		/* Fallback for IE
+            .form-label-group input::-ms-input-placeholder {
+                color: #777;
+            }
+        }
+        /* Fallback for IE
             -------------------------------------------------- */
-		@media all and (-ms-high-contrast: none), (-ms-high-contrast: active) {
-			.form-label-group > label {
-				display: none;
-			}
+        @media all and (-ms-high-contrast: none), (-ms-high-contrast: active) {
+            .form-label-group > label {
+                display: none;
+            }
 
-			.form-label-group input:-ms-input-placeholder {
-				color: #777;
-			}
-		}
-	</style>
+            .form-label-group input:-ms-input-placeholder {
+                color: #777;
+            }
+        }
+    </style>
 </head>
 <body>
     <form class="form-signin" id="form1" runat="server">
         <div class="text-center mb-4">
             <%--<img class="img-fluid" src="../../resource/Logo1.png" alt="logo" width="75%" />--%>
             <h1 class="display-3">Sign In</h1>
+        </div>
+        <%-- Error messages returned by servers --%>
+        <div id="sysResponseBox" class="alert alert-danger" role="alert" visible="false" runat="server">
+            <asp:Label ID="sysResponse" runat="server"></asp:Label>
         </div>
         <div class="form-label-group">
             <asp:TextBox ID="inputUsername" name="Username" type="text" class="form-control"
@@ -147,7 +151,7 @@
             </p>
             --%>
         </div>
-        <button class="btn btn-lg btn-primary btn-block" type="submit">Sign In</button>
+        <asp:Button ID="BtnSignIn" class="btn btn-lg btn-primary btn-block" runat="server" Text="Sign In" OnClick="BtnSignIn_Click" />
         <hr />
         <a class="btn btn-lg btn-secondary btn-block" style="color: white;" href="./signup.jsp">Create New Account</a>
         <p class="mt-5 mb-3 text-muted text-center">Bricks © 2019</p>
