@@ -4,7 +4,7 @@
 
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head>
-    <link rel="stylesheet" href="../../bootstrap/css/bootstrap.min.css">
+    <link rel="stylesheet" href="../../bootstrap/css/bootstrap.min.css" />
     <title>User Login</title>
     <style>
         .bd-placeholder-img {
@@ -134,16 +134,18 @@
         </div>
         <div class="form-label-group">
             <asp:TextBox ID="inputUsername" name="Username" type="text" class="form-control"
-                placeholder="Username" value="" runat="server" required autofocus></asp:TextBox>
+                placeholder="Username" value="" runat="server" required="true" autofocus="true"></asp:TextBox>
             <label for="inputUsername">Username</label>
         </div>
         <div class="form-label-group">
             <asp:TextBox ID="inputPassword" name="Password" type="password" class="form-control"
-                placeholder="Password" runat="server" required></asp:TextBox>
+                placeholder="Password" runat="server" required="true"></asp:TextBox>
             <label for="inputPassword">Password</label>
+            <%--
             <p>
                 <small><a href="./passrecovery.jsp">Forget Password?</a></small>
             </p>
+            --%>
         </div>
         <button class="btn btn-lg btn-primary btn-block" type="submit">Sign In</button>
         <hr />
