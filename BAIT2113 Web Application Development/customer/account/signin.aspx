@@ -104,27 +104,27 @@
                 }
         /* Fallback for Edge
             -------------------------------------------------- */
-        @supports (-ms-ime-align: auto) {
-            .form-label-group > label {
-                display: none;
-            }
+		@supports (-ms-ime-align: auto) {
+			.form-label-group > label {
+				display: none;
+			}
 
-            .form-label-group input::-ms-input-placeholder {
-                color: #777;
-            }
-        }
-        /* Fallback for IE
+			.form-label-group input::-ms-input-placeholder {
+				color: #777;
+			}
+		}
+		/* Fallback for IE
             -------------------------------------------------- */
-        @media all and (-ms-high-contrast: none), (-ms-high-contrast: active) {
-            .form-label-group > label {
-                display: none;
-            }
+		@media all and (-ms-high-contrast: none), (-ms-high-contrast: active) {
+			.form-label-group > label {
+				display: none;
+			}
 
-            .form-label-group input:-ms-input-placeholder {
-                color: #777;
-            }
-        }
-    </style>
+			.form-label-group input:-ms-input-placeholder {
+				color: #777;
+			}
+		}
+	</style>
 </head>
 <body>
     <form class="form-signin" id="form1" runat="server">
