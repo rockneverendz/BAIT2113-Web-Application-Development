@@ -20,7 +20,7 @@ CREATE TABLE [dbo].[Customer] (
     [Cust_ID]   INT          IDENTITY (1000, 1) NOT NULL,
     [Username]  VARCHAR (50) NOT NULL,
     [Email]     VARCHAR (50) NOT NULL,
-    [ContactNo] VARCHAR (50) NOT NULL,
+    [ContactNo] VARCHAR (50) NULL
     [Address]   VARCHAR (50) NULL,
     [Password]  VARCHAR (50) NOT NULL,
     PRIMARY KEY CLUSTERED ([Cust_ID] ASC)
