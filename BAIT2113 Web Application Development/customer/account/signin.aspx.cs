@@ -12,7 +12,7 @@ namespace BAIT2113_Web_Application_Development.customer.account
     public partial class signin : System.Web.UI.Page
     {
         SqlConnection con = new SqlConnection(
-            ConfigurationManager.ConnectionStrings["ArtGalleryDB"].ConnectionString
+            ConfigurationManager.ConnectionStrings["ArtGalleryConnStr"].ConnectionString
             );
         protected void Page_Load(object sender, EventArgs e)
         {

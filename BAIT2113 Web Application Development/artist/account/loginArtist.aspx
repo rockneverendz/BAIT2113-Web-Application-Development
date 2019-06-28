@@ -1,11 +1,11 @@
-﻿<%@ Page Language="C#" AutoEventWireup="true" CodeBehind="signin.aspx.cs" Inherits="BAIT2113_Web_Application_Development.customer.account.signin" %>
+﻿<%@ Page Language="C#" AutoEventWireup="true" CodeBehind="loginArtist.aspx.cs" Inherits="BAIT2113_Web_Application_Development.artist.account.loginArtist" %>
 
 <!DOCTYPE html>
 
 <html xmlns="http://www.w3.org/1999/xhtml">
-<head>
-	<link rel="stylesheet" href="../../bootstrap/css/bootstrap.min.css">
-	<title>User Login</title>
+<head runat="server">
+	<link rel="stylesheet" href="../../bootstrap/css/bootstrap.min.css" />
+	<title>Artist | Login</title>
 	<style>
 		.bd-placeholder-img {
 			font-size: 1.125rem;
@@ -125,30 +125,38 @@
 			}
 		}
 	</style>
+
 </head>
 <body>
-	<form class="form-signin" id="form1" runat="server">
-		<div class="text-center mb-4">
+	<form id="form1" class="form-signin" runat="server">
+		<div class="text-center mb-5">
 			<%--<img class="img-fluid" src="../../resource/Logo1.png" alt="logo" width="75%" />--%>
 			<h1 class="display-3">Sign In</h1>
 		</div>
-		<div class="form-label-group">
-			<asp:TextBox ID="inputUsername" name="Username" type="text" class="form-control"
-				placeholder="Username" value="" runat="server" required autofocus></asp:TextBox>
-			<label for="inputUsername">Username</label>
+		<div class="text-center mb-4">
+			<asp:Label ID="lblAns" runat="server"></asp:Label>
 		</div>
 		<div class="form-label-group">
-			<asp:TextBox ID="inputPassword" name="Password" type="password" class="form-control"
-				placeholder="Password" runat="server" required></asp:TextBox>
+			<asp:TextBox ID="txtUsername" name="Username" type="text" class="form-control"
+				placeholder="Username" value="" runat="server"></asp:TextBox>
+			<label for="inputUsername">Username</label>
+			<asp:RequiredFieldValidator ID="RequiredFieldValidator1" runat="server" ErrorMessage="Required" ControlToValidate="txtUsername" ForeColor="Red"></asp:RequiredFieldValidator>
+		</div>
+		<div class="form-label-group">
+			<asp:TextBox ID="txtPassword" name="Password" type="password" class="form-control"
+				placeholder="Password" runat="server"></asp:TextBox>
 			<label for="inputPassword">Password</label>
+			<asp:RequiredFieldValidator ID="RequiredFieldValidator2" runat="server" ErrorMessage="Required" ControlToValidate="txtPassword" ForeColor="Red"></asp:RequiredFieldValidator>
 			<p>
-				<small><a href="./passrecovery.jsp">Forget Password?</a></small>
+				<small><a href="#">Forget Password?</a></small>
 			</p>
 		</div>
-		<button class="btn btn-lg btn-primary btn-block" type="submit">Sign In</button>
+
+		<asp:Button ID="btnLogin" runat="server" Text="Login" OnClick="btnLogin_Click" CssClass="btn btn-lg btn-primary btn-block" />
 		<hr />
-		<a class="btn btn-lg btn-secondary btn-block" style="color: white;" href="./signup.jsp">Create New Account</a>
-		<p class="mt-5 mb-3 text-muted text-center">Bricks © 2019</p>
+		<asp:HyperLink ID="HyperLink2" runat="server" NavigateUrl="~/artist/account/registerArtist.aspx" CssClass="btn btn-lg btn-secondary btn-block">Register an account?</asp:HyperLink>
+
+		
 	</form>
 </body>
 </html>
