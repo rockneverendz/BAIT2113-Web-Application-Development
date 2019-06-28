@@ -129,7 +129,7 @@
 </head>
 <body>
 	<form id="form1" class="form-signin" runat="server">
-		<div class="text-center mb-4">
+		<div class="text-center mb-5">
 			<%--<img class="img-fluid" src="../../resource/Logo1.png" alt="logo" width="75%" />--%>
 			<h1 class="display-3">Sign In</h1>
 		</div>

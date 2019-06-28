@@ -179,6 +179,13 @@
     <Compile Include="artist\account\registerArtist.aspx.designer.cs">
       <DependentUpon>registerArtist.aspx</DependentUpon>
     </Compile>
+    <Compile Include="artist\artist.Master.cs">
+      <DependentUpon>artist.Master</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="artist\artist.Master.designer.cs">
+      <DependentUpon>artist.Master</DependentUpon>
+    </Compile>
     <Compile Include="Artwork.cs">
       <DependentUpon>ArtGalleryEntities.tt</DependentUpon>
     </Compile>
@@ -270,6 +277,7 @@
     <Content Include="ArtGalleryEntities.edmx.diagram">
       <DependentUpon>ArtGalleryEntities.edmx</DependentUpon>
     </Content>
+    <Content Include="artist\artist.Master" />
     <None Include="packages.config" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>

@@ -139,7 +139,7 @@
 
 		<%--Form Group--%>
 		<div class="form-label-group">
-			<asp:TextBox ID="txtUsername" runat="server" placeholder="User Name" CssClass="form-control"></asp:TextBox>
+			<asp:TextBox ID="txtUsername" runat="server" placeholder="User Name" CssClass="form-control" Required="true"></asp:TextBox>
 			<label for="lblUsername">User Name</label>
 			<asp:RequiredFieldValidator ID="RequiredFieldValidator1" runat="server" ErrorMessage="Required" ControlToValidate="txtUsername" ForeColor="Red" CssClass="small"></asp:RequiredFieldValidator>
 		</div>
