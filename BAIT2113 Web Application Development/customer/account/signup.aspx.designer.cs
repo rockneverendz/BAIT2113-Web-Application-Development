@@ -22,13 +22,22 @@ namespace BAIT2113_Web_Application_Development.customer.account {
         protected global::System.Web.UI.HtmlControls.HtmlForm form1;
         
         /// <summary>
-        /// inputUserID control.
+        /// sysResponseBox control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox inputUserID;
+        protected global::System.Web.UI.HtmlControls.HtmlGenericControl sysResponseBox;
+        
+        /// <summary>
+        /// sysResponse control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Label sysResponse;
         
         /// <summary>
         /// inputUsername control.
@@ -65,5 +74,14 @@ namespace BAIT2113_Web_Application_Development.customer.account {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.TextBox inputConfirmPass;
+        
+        /// <summary>
+        /// BtnSignIn control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Button BtnSignIn;
     }
 }

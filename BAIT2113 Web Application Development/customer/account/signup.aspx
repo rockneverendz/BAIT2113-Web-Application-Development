@@ -7,7 +7,7 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     <link rel="stylesheet" href="../../bootstrap/css/bootstrap.min.css" />
-    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.0/css/all.css" 
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.0/css/all.css"
         integrity="sha384-Mmxa0mLqhmOeaE8vgOSbKacftZcsNYDjQzuCOm6D02luYSzBG8vpaOykv9lFQ51Y" crossorigin="anonymous" />
     <title>Create Account</title>
     <style>
@@ -136,10 +136,9 @@
             <%--<img class="img-fluid" src="../../resource/Logo1.png" alt="logo" width="75%" />--%>
             <h1 class="display-3">Sign Up</h1>
         </div>
-        <div class="form-label-group">
-            <asp:TextBox ID="inputUserID" name="UserIDCard" type="text" class="form-control"
-                placeholder="User ID Card" value="" required="true" autofocus="true" runat="server"></asp:TextBox>
-            <label for="inputUserID">User ID Card</label>
+        <%-- Error messages returned by servers --%>
+        <div id="sysResponseBox" class="alert alert-danger" role="alert" visible="false" runat="server">
+            <asp:Label ID="sysResponse" runat="server"></asp:Label>
         </div>
         <div class="form-label-group">
             <asp:TextBox ID="inputUsername" name="Username" type="text" class="form-control"
@@ -151,6 +150,13 @@
                 placeholder="Email address" value="" required="true" runat="server"></asp:TextBox>
             <label for="inputEmail">Email address</label>
         </div>
+        <%--
+        <div class="form-label-group">
+            <asp:TextBox ID="inputContactNo" name="ContactNo" type="email" class="form-control"
+                placeholder="Contact Number" value="" required="true" runat="server"></asp:TextBox>
+            <label for="inputContactNo">Contact Number</label>
+        </div>
+        --%>
         <div class="form-label-group">
             <asp:TextBox ID="inputPassword" name="Password" type="password" class="form-control"
                 placeholder="Password" required="true" data-toggle="tooltip" data-placement="left"
@@ -163,7 +169,7 @@
                 placeholder=" Confirm Password" required="true" runat="server"></asp:TextBox>
             <label for="inputConfirmPass">Confirm Password</label>
         </div>
-        <button class="btn btn-lg btn-primary btn-block" type="submit">Create Account</button>
+        <asp:Button ID="BtnSignIn" class="btn btn-lg btn-primary btn-block" runat="server" Text="Create Account" OnClick="BtnSignUp_Click" />
         <hr />
         <a class="btn btn-lg btn-secondary btn-block" style="color: white;" href="./signin.jsp">Back to Sign-In</a>
         <p class="mt-5 mb-3 text-muted text-center">Bricks © 2019</p>
@@ -183,7 +189,7 @@
             }
         }
         inputPassword.onchange = validatePassword;
-        inputCPassword.onkeyup = validatePassword;
+        inputConfirmPass.onkeyup = validatePassword;
         $(function () {
             $('[data-toggle="tooltip"]').tooltip();
         });
