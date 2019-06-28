@@ -5,13 +5,13 @@
     <!-- Diagram content (shape and connector positions) -->
     <edmx:Diagrams>
       <Diagram DiagramId="302207e4da124d8eb40258bcba6f01e3" Name="Diagram1">
-        <EntityTypeShape EntityType="ArtGalleryModel.Artist" Width="1.5" PointX="1.5" PointY="11.875" IsExpanded="true" />
-        <EntityTypeShape EntityType="ArtGalleryModel.Artwork" Width="1.5" PointX="0.75" PointY="7.375" IsExpanded="true" />
-        <EntityTypeShape EntityType="ArtGalleryModel.Customer" Width="1.5" PointX="0.75" PointY="3.5" IsExpanded="true" />
-        <EntityTypeShape EntityType="ArtGalleryModel.Order" Width="1.5" PointX="3" PointY="3.5" IsExpanded="true" />
-        <EntityTypeShape EntityType="ArtGalleryModel.OrderItem" Width="1.5" PointX="5.25" PointY="3.625" IsExpanded="true" />
-        <EntityTypeShape EntityType="ArtGalleryModel.Payment" Width="1.5" PointX="0.75" PointY="0.875" IsExpanded="true" />
-        <EntityTypeShape EntityType="ArtGalleryModel.WishList" Width="1.5" PointX="3" PointY="0.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="ArtGalleryModel.Artist" Width="1.5" PointX="12.125" PointY="1.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="ArtGalleryModel.Artwork" Width="1.5" PointX="7.875" PointY="0.625" IsExpanded="true" />
+        <EntityTypeShape EntityType="ArtGalleryModel.Customer" Width="1.5" PointX="4.5" PointY="4.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="ArtGalleryModel.Order" Width="1.5" PointX="1.125" PointY="4.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="ArtGalleryModel.OrderItem" Width="1.5" PointX="7.875" PointY="4.625" IsExpanded="true" />
+        <EntityTypeShape EntityType="ArtGalleryModel.Payment" Width="1.5" PointX="1.125" PointY="1.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="ArtGalleryModel.WishList" Width="1.5" PointX="4.375" PointY="1.125" IsExpanded="true" />
         <AssociationConnector Association="ArtGalleryModel.FK_Artwork_Artist" ManuallyRouted="false" />
         <AssociationConnector Association="ArtGalleryModel.FK_OrderItem_Artwork" ManuallyRouted="false" />
         <AssociationConnector Association="ArtGalleryModel.FK_WishList_Artwork" ManuallyRouted="false" />
