@@ -16,7 +16,7 @@
     <TargetFrameworkVersion>v4.6</TargetFrameworkVersion>
     <UseIISExpress>true</UseIISExpress>
     <Use64BitIISExpress />
-    <IISExpressSSLPort>44394</IISExpressSSLPort>
+    <IISExpressSSLPort>44381</IISExpressSSLPort>
     <IISExpressAnonymousAuthentication />
     <IISExpressWindowsAuthentication />
     <IISExpressUseClassicPipelineMode />
@@ -93,6 +93,8 @@
     <Content Include="artist\account\Homepage.aspx" />
     <Content Include="artist\account\loginArtist.aspx" />
     <Content Include="artist\account\registerArtist.aspx" />
+    <Content Include="artist\artwork\create.aspx" />
+    <Content Include="artist\artwork\view.aspx" />
     <Content Include="bootstrap\css\bootstrap-datepicker3.css" />
     <Content Include="bootstrap\css\bootstrap-datepicker3.min.css" />
     <Content Include="bootstrap\css\bootstrap-grid.css" />
@@ -185,6 +187,20 @@
     </Compile>
     <Compile Include="artist\artist.Master.designer.cs">
       <DependentUpon>artist.Master</DependentUpon>
+    </Compile>
+    <Compile Include="artist\artwork\create.aspx.cs">
+      <DependentUpon>create.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="artist\artwork\create.aspx.designer.cs">
+      <DependentUpon>create.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="artist\artwork\view.aspx.cs">
+      <DependentUpon>view.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="artist\artwork\view.aspx.designer.cs">
+      <DependentUpon>view.aspx</DependentUpon>
     </Compile>
     <Compile Include="Artwork.cs">
       <DependentUpon>ArtGalleryEntities.tt</DependentUpon>
