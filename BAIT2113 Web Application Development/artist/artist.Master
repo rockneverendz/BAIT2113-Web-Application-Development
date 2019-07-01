@@ -97,53 +97,54 @@
 			padding-bottom: .75rem;
 		}
 	</style>
-	
+
 </head>
 <body>
-	<%--Fixed-top Navs--%>
-	<nav class="navbar navbar-dark fixed-top bg-dark flex-md-nowrap p-0 shadow navbar-expand-lg">
-		<a class="navbar-brand pl-3" href="#">
-			<%--<img src="" alt="logo" width="110px" />--%>
-		</a>
-		<div class="ml-auto pr-3">
-			<a class="btn btn-dark" href="#">
-				<i class="fas fa-sign-out-alt"></i>Logout
+		<%--Fixed-top Navs--%>
+		<nav class="navbar navbar-dark fixed-top bg-dark flex-md-nowrap p-0 shadow navbar-expand-lg">
+			<a class="navbar-brand pl-3" href="#">
+				<%--<img src="" alt="logo" width="110px" />--%>
 			</a>
-		</div>
-	</nav>
+			<div class="ml-auto pr-3">
+				<asp:HyperLink ID="HyperLink1" runat="server" NavigateUrl="~/artist/account/loginArtist.aspx?Status=Logout" CssClass="btn btn-dark">Logout</asp:HyperLink>
+			</div>
+		</nav>
 
-	<div class="container-fluid mt-5">
-		<div class="row">
-			<%-- Fixed-Sidebar Navs --%>
-			<nav class="col-md-2 d-none d-md-block bg-light sidebar">
-				<div class="sidebar-sticky">
-					<ul class="nav flex-column pt-2">
-						<li class="nav-item">
-							<a class="nav-link">
-								<h5><i class="fas fa-home"></i>Dashboard</h5>
-							</a>
-						</li>
-						<li class="nav-item">
-							<a class="nav-link" href="#">Home</a>
-						</li>
-						<li class="nav-item">
-							<a class="nav-link" href="#">Gallery</a>
-						</li>
-						<li class="nav-item">
-							<a class="nav-link" href="#">Orders
-							</a>
-						</li>
+		<div class="container-fluid mt-5">
+			<div class="row">
+				<%-- Fixed-Sidebar Navs --%>
+				<nav class="col-md-2 d-none d-md-block bg-light sidebar">
+					<div class="sidebar-sticky">
+						<ul class="nav flex-column pt-2">
+							<li class="nav-item">
+								<a class="nav-link">
+									<h5><i class="fas fa-home"></i>Dashboard</h5>
+								</a>
+							</li>
+							<li class="nav-item">
+								<asp:Label ID="txtGreetings" runat="server" Text="" CssClass="nav-link"></asp:Label>
+							</li>
+							<li class="nav-item">
+								<a class="nav-link" href="#">Home</a>
+							</li>
+							<li class="nav-item">
+								<a class="nav-link" href="#">Gallery</a>
+							</li>
+							<li class="nav-item">
+								<a class="nav-link" href="#">Orders
+								</a>
+							</li>
 
-					</ul>
-				</div>
-			</nav>
-			<%--Main Content--%>
-			<main class="col-md-9 ml-sm-auto col-lg-10 px-4">
-				<div class="container mt-4">
-					<asp:ContentPlaceHolder ID="ContentPlaceHolder1" runat="server"></asp:ContentPlaceHolder>
-				</div>
-			</main>
+						</ul>
+					</div>
+				</nav>
+				<%--Main Content--%>
+				<main class="col-md-9 ml-sm-auto col-lg-10 px-4">
+					<div class="container mt-4">
+						<asp:ContentPlaceHolder ID="ContentPlaceHolder1" runat="server"></asp:ContentPlaceHolder>
+					</div>
+				</main>
+			</div>
 		</div>
-	</div>
 </body>
 </html>
