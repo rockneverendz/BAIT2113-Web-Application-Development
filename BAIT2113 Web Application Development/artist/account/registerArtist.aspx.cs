@@ -64,7 +64,7 @@ namespace BAIT2113_Web_Application_Development.artist.account
 						con.Open();
 						com.ExecuteNonQuery();
 						con.Close();
-						Response.Redirect("loginArtist.aspx?RegisSucc=1");
+						Response.Redirect("loginArtist.aspx?Status=1");
 					}
 				}
 			}

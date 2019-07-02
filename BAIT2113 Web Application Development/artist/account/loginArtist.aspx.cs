@@ -16,13 +16,20 @@ namespace BAIT2113_Web_Application_Development.artist.account
 		SqlConnection con = new SqlConnection(ConfigurationManager.ConnectionStrings["ArtGalleryConnStr"].ConnectionString);
 		protected void Page_Load(object sender, EventArgs e)
 		{
+			string getStatus = Request.QueryString["Status"];
+
 			lblAns.Visible = false;
 
-			if (Request.QueryString["RegisSucc"] == "1")
+
+
+			if (getStatus == "1")
 			{
 				lblAns.CssClass = "alert alert-success small";
 				lblAns.Text = "Your account has successfully created, please login again.";
 				lblAns.Visible = true;
+			} else if(getStatus == "Logout"){
+				Session.RemoveAll();
+				Response.Redirect("loginArtist.aspx");
 			}
 
 			if (Session["Username"] != null)
