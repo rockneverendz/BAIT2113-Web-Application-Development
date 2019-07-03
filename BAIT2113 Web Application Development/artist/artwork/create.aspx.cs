@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.IO;
 using System.Linq;
 using System.Web;
 using System.Web.UI;
@@ -12,6 +13,30 @@ namespace BAIT2113_Web_Application_Development.artist.artwork
         protected void Page_Load(object sender, EventArgs e)
         {
 
+        }
+
+        protected void BtnPost_Click(object sender, EventArgs e)
+        {
+            ArtGalleryEntities context = new ArtGalleryEntities();
+            Artwork artwork = new Artwork();
+            artwork.Title = artworkTitle.Text;
+            artwork.Description = artworkDescription.Text;
+            artwork.Date = DateTime.Now;
+            artwork.Price = Convert.ToDecimal(artworkPrice.Text);
+            artwork.Stock = Convert.ToInt32(artworkStock.Text);
+            artwork.Status = artworkStatus.SelectedValue; // Remember to validate this shit.
+            artwork.Artist_ID = 1000; // Yeah I know.
+            using (Stream fs = artworkImage.PostedFile.InputStream)
+            {
+                using (BinaryReader br = new BinaryReader(fs))
+                {
+                    byte[] bytes = br.ReadBytes((Int32)fs.Length);
+                    artwork.Image = bytes;
+                }
+            }
+            
+            context.Artworks.Add(artwork);
+            context.SaveChanges();
         }
     }
 }
