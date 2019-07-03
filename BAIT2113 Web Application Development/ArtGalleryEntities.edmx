@@ -20,11 +20,13 @@
             <PropertyRef Name="Art_ID" />
           </Key>
           <Property Name="Art_ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
-          <Property Name="Name" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="Title" Type="varchar" MaxLength="50" Nullable="false" />
           <Property Name="Description" Type="varchar" MaxLength="100" Nullable="false" />
+          <Property Name="Date" Type="datetime2" Precision="7" Nullable="false" />
           <Property Name="Status" Type="varchar" MaxLength="50" Nullable="false" />
           <Property Name="Price" Type="smallmoney" Nullable="false" />
           <Property Name="Image" Type="image" />
+          <Property Name="Stock" Type="int" Nullable="false" />
           <Property Name="Artist_ID" Type="int" Nullable="false" />
         </EntityType>
         <EntityType Name="Customer">
@@ -216,7 +218,6 @@
             <PropertyRef Name="Art_ID" />
           </Key>
           <Property Name="Art_ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-          <Property Name="Name" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
           <Property Name="Description" Type="String" MaxLength="100" FixedLength="false" Unicode="false" Nullable="false" />
           <Property Name="Status" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
           <Property Name="Price" Type="Decimal" Precision="10" Scale="4" Nullable="false" />
@@ -225,6 +226,9 @@
           <NavigationProperty Name="Artist" Relationship="Self.FK_Artwork_Artist" FromRole="Artwork" ToRole="Artist" />
           <NavigationProperty Name="OrderItems" Relationship="Self.FK_OrderItem_Artwork" FromRole="Artwork" ToRole="OrderItem" />
           <NavigationProperty Name="WishLists" Relationship="Self.FK_WishList_Artwork" FromRole="Artwork" ToRole="WishList" />
+          <Property Name="Date" Type="DateTime" Nullable="false" Precision="7" />
+          <Property Name="Stock" Type="Int32" Nullable="false" />
+          <Property Name="Title" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
         </EntityType>
         <EntityType Name="Customer">
           <Key>
@@ -425,8 +429,10 @@
           <EntitySetMapping Name="Artworks">
             <EntityTypeMapping TypeName="ArtGalleryModel.Artwork">
               <MappingFragment StoreEntitySet="Artwork">
+                <ScalarProperty Name="Title" ColumnName="Title" />
+                <ScalarProperty Name="Stock" ColumnName="Stock" />
+                <ScalarProperty Name="Date" ColumnName="Date" />
                 <ScalarProperty Name="Art_ID" ColumnName="Art_ID" />
-                <ScalarProperty Name="Name" ColumnName="Name" />
                 <ScalarProperty Name="Description" ColumnName="Description" />
                 <ScalarProperty Name="Status" ColumnName="Status" />
                 <ScalarProperty Name="Price" ColumnName="Price" />

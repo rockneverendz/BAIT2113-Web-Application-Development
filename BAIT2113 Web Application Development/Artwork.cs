@@ -22,12 +22,14 @@ namespace BAIT2113_Web_Application_Development
         }
     
         public int Art_ID { get; set; }
-        public string Name { get; set; }
         public string Description { get; set; }
         public string Status { get; set; }
         public decimal Price { get; set; }
         public byte[] Image { get; set; }
         public int Artist_ID { get; set; }
+        public System.DateTime Date { get; set; }
+        public int Stock { get; set; }
+        public string Title { get; set; }
     
         public virtual Artist Artist { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]

@@ -20,7 +20,7 @@ CREATE TABLE [dbo].[Customer] (
     [Cust_ID]   INT          IDENTITY (1000, 1) NOT NULL,
     [Username]  VARCHAR (50) NOT NULL,
     [Email]     VARCHAR (50) NOT NULL,
-    [ContactNo] VARCHAR (50) NULL
+    [ContactNo] VARCHAR (50) NULL,
     [Address]   VARCHAR (50) NULL,
     [Password]  VARCHAR (50) NOT NULL,
     PRIMARY KEY CLUSTERED ([Cust_ID] ASC)
@@ -35,8 +35,9 @@ CREATE TABLE [dbo].[Payment] (
 
 CREATE TABLE [dbo].[Artwork] (
     [Art_ID]      INT           IDENTITY (1000, 1) NOT NULL,
-    [Name]        VARCHAR (50)  NOT NULL,
+    [Title]        VARCHAR (50)  NOT NULL,
     [Description] VARCHAR (100) NOT NULL,
+    [Date]        DATETIME2 (7) DEFAULT (getdate()) NOT NULL,
     [Status]      VARCHAR (50)  NOT NULL,
     [Price]       SMALLMONEY    NOT NULL,
     [Image]       IMAGE         NULL,
@@ -45,6 +46,12 @@ CREATE TABLE [dbo].[Artwork] (
     PRIMARY KEY CLUSTERED ([Art_ID] ASC),
     CONSTRAINT [FK_Artwork_Artist] FOREIGN KEY ([Artist_ID]) REFERENCES [dbo].[Artist] ([Artist_ID])
 );
+
+-- Status
+--  Available - Viewable and ready to order
+--  Unavailable - Viewable but unable to order
+--  Hidden - Unviewable and unable to order
+--  Deleted - Unviewable to artist and customer
 
 CREATE TABLE [dbo].[WishList] (
     [Art_ID]  INT  NOT NULL,
