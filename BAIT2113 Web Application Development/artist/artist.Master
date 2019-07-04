@@ -96,7 +96,6 @@
             padding-top: .75rem;
             padding-bottom: .75rem;
         }
-
     </style>
     <asp:ContentPlaceHolder ID="contentCSS" runat="server"></asp:ContentPlaceHolder>
 </head>
@@ -107,8 +106,12 @@
             <%--<img src="" alt="logo" width="110px" />--%>
         </a>
         <div class="ml-auto pr-3">
-        	<asp:HyperLink ID="HyperLink1" runat="server" NavigateUrl="~/artist/account/loginArtist.aspx?Status=Logout" CssClass="btn btn-dark">Logout</asp:HyperLink>
-		</div>
+            <asp:Label ID="lblAccount" runat="server" Text="Account" class="btn btn-dark"></asp:Label>
+        </div>
+        <div class="pr-3">
+            <asp:HyperLink ID="HyperLink1" runat="server" NavigateUrl="~/artist/account/loginArtist.aspx?Status=Logout" CssClass="btn btn-dark">Logout</asp:HyperLink>
+        </div>
+
     </nav>
 
     <div class="container-fluid mt-5">
@@ -123,9 +126,9 @@
                             </a>
                         </li>
                         <li class="nav-item">
-                        	<asp:Label ID="txtGreetings" runat="server" Text="" CssClass="nav-link"></asp:Label>
-						</li>
-						<li class="nav-item">
+                            <asp:Label ID="txtGreetings" runat="server" Text="" CssClass="nav-link"></asp:Label>
+                        </li>
+                        <li class="nav-item">
                             <a class="nav-link" href="#">Home</a>
                         </li>
                         <li class="nav-item">

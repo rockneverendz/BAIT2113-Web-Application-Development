@@ -24,9 +24,9 @@ namespace BAIT2113_Web_Application_Development.artist.artwork
             artwork.Date = DateTime.Now;
             artwork.Price = Convert.ToDecimal(artworkPrice.Text);
             artwork.Stock = Convert.ToInt32(artworkStock.Text);
-            artwork.Status = artworkStatus.SelectedValue; // Remember to validate this shit.
-            artwork.Artist_ID = 1000; // Yeah I know.
-            using (Stream fs = artworkImage.PostedFile.InputStream)
+            artwork.Status = artworkStatus.SelectedValue; //TODO validate this shit.
+            artwork.Artist_ID = ((Artist)Session["artist"]).Artist_ID;
+            using (Stream fs = artworkImage.PostedFile.InputStream) //TODO check if image is uploaded
             {
                 using (BinaryReader br = new BinaryReader(fs))
                 {

@@ -95,6 +95,7 @@
     <Content Include="artist\account\registerArtist.aspx" />
     <Content Include="artist\artwork\create.aspx" />
     <Content Include="artist\artwork\view.aspx" />
+    <Content Include="artist\main.aspx" />
     <Content Include="bootstrap\css\bootstrap-datepicker3.css" />
     <Content Include="bootstrap\css\bootstrap-datepicker3.min.css" />
     <Content Include="bootstrap\css\bootstrap-grid.css" />
@@ -201,6 +202,13 @@
     </Compile>
     <Compile Include="artist\artwork\view.aspx.designer.cs">
       <DependentUpon>view.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="artist\main.aspx.cs">
+      <DependentUpon>main.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="artist\main.aspx.designer.cs">
+      <DependentUpon>main.aspx</DependentUpon>
     </Compile>
     <Compile Include="Artwork.cs">
       <DependentUpon>ArtGalleryEntities.tt</DependentUpon>

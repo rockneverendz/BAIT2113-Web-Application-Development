@@ -11,54 +11,39 @@ using System.Data.SqlClient;
 
 namespace BAIT2113_Web_Application_Development.artist.account
 {
-	public partial class loginArtist : System.Web.UI.Page
-	{
-		SqlConnection con = new SqlConnection(ConfigurationManager.ConnectionStrings["ArtGalleryConnStr"].ConnectionString);
-		protected void Page_Load(object sender, EventArgs e)
-		{
-			string getStatus = Request.QueryString["Status"];
+    public partial class loginArtist : System.Web.UI.Page
+    {
+        protected void Page_Load(object sender, EventArgs e)
+        {
 
-			lblAns.Visible = false;
+        }
 
+        protected void BtnLogin_Click(object sender, EventArgs e)
+        {
+            using (ArtGalleryEntities context = new ArtGalleryEntities())
+            {
+                Artist artist = context.Artists.Where(
+                    a => a.Username == inputUsername.Text
+                    ).FirstOrDefault();
+                if (artist == null)
+                {
+                    sysResponse.Text = "User not found.";
+                    sysResponseBox.Visible = true;
+                    return;
+                }
+                if (artist.Password != inputPassword.Text)
+                {
+                    sysResponse.Text = "Incorrect password.";
+                    sysResponseBox.Visible = true;
+                    return;
+                }
 
+                // Validated, bind customer into session.
+                Session["artist"] = artist;
 
-			if (getStatus == "1")
-			{
-				lblAns.CssClass = "alert alert-success small";
-				lblAns.Text = "Your account has successfully created, please login again.";
-				lblAns.Visible = true;
-			} else if(getStatus == "Logout"){
-				Session.RemoveAll();
-				Response.Redirect("loginArtist.aspx");
-			}
-
-			if (Session["Username"] != null)
-			{
-				Response.Redirect("Homepage.aspx");
-			}
-
-			
-
-		}
-
-		protected void btnLogin_Click(object sender, EventArgs e)
-		{
-			string check = "select count(*) from [Artist] where Username = '" + txtUsername.Text + "' and password = '" + txtPassword.Text + "' ";
-			SqlCommand com = new SqlCommand(check, con);
-			con.Open();
-			int temp = Convert.ToInt32(com.ExecuteScalar().ToString());
-			con.Close();
-			if (temp == 1)
-			{
-				Session["Username"] = txtUsername.Text;
-				Response.Redirect("Homepage.aspx");
-			}
-			else
-			{
-				lblAns.CssClass = "alert alert-danger";
-				lblAns.Text = "Your username or password is invalid.";
-				lblAns.Visible = true;
-			}
-		}
-	}
+                // Redirect customer to main page.
+                Response.RedirectPermanent("../main.aspx");
+            }
+        }
+    }
 }

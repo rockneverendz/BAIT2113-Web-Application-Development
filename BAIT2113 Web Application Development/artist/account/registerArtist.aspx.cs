@@ -12,62 +12,73 @@ namespace BAIT2113_Web_Application_Development.artist.account
 {
 	public partial class registerArtist : System.Web.UI.Page
 	{
-		SqlConnection con = new SqlConnection(ConfigurationManager.ConnectionStrings["ArtGalleryConnStr"].ConnectionString);
 		protected void Page_Load(object sender, EventArgs e)
 		{
-
-			lblAns.Visible = false;
-			if (Session["Username"] != null)
+			if (Session["artist"] != null)
 			{
-				Response.Redirect("Homepage.aspx");
+				Response.RedirectPermanent("../main.aspx");
 			}
 		}
 
-		protected void btnRegister_Click(object sender, EventArgs e)
+		protected void BtnRegister_Click(object sender, EventArgs e)
 		{
-			string check = "select count(*) from [Artist] where Username = '" + txtUsername.Text + "' ";
-			SqlCommand com = new SqlCommand(check, con);
-			con.Open();
-			int temp = Convert.ToInt32(com.ExecuteScalar().ToString());
-			con.Close();
-			if (temp == 1)
-			{
-				lblAns.Visible = true;
-				lblAns.Text = "Account with certain details already exists!";
-			}
-			else
-			{
-				check = "select count(*) from [Artist] where  email = '" + txtEmail.Text + "' and contactNo = '" + txtContactNo.Text + "' ";
-				com = new SqlCommand(check, con);
-				con.Open();
-				temp = Convert.ToInt32(com.ExecuteScalar().ToString());
-				con.Close();
-				if (temp == 1)
-				{
-					lblAns.Text = "Account with certain details already exists!";
-				}
-				else
-				{
-					check = "select count(*) from [Artist] where contactNo = '" + txtContactNo.Text + "' ";
-					com = new SqlCommand(check, con);
-					con.Open();
-					temp = Convert.ToInt32(com.ExecuteScalar().ToString());
-					con.Close();
-					if (temp == 1)
-					{
-						lblAns.Text = "Account with certain details already exists!";
-					}
-					else
-					{
-						string ins = "Insert into [Artist](Username, Email, ContactNo, Password) values('" + txtUsername.Text + "', '" + txtEmail.Text + "', '" + txtContactNo.Text + "', '" + txtPassword.Text + "')";
-						com = new SqlCommand(ins, con);
-						con.Open();
-						com.ExecuteNonQuery();
-						con.Close();
-						Response.Redirect("loginArtist.aspx?Status=1");
-					}
-				}
-			}
+            using (ArtGalleryEntities context = new ArtGalleryEntities())
+            {
+                // Check if the username is available
+                if (context.Artists.Where(a =>
+                a.Username == inputUsername.Text).Any())
+                {
+                    sysResponse.Text = "Username already exists.";
+                    sysResponseBox.Visible = true;
+                    return;
+                }
+
+                // Check if the email is available
+                if (context.Artists.Where(a =>
+                a.Email == inputEmail.Text).Any())
+                {
+                    sysResponse.Text = "Email is already registered.";
+                    sysResponseBox.Visible = true;
+                    return;
+                }
+
+                // Check if the contact no is available
+                if (context.Artists.Where(a =>
+                a.ContactNo == inputContactNo.Text).Any())
+                {
+                    sysResponse.Text = "Email is already registered.";
+                    sysResponseBox.Visible = true;
+                    return;
+                }
+
+                // Check if the password is the same
+                if (inputPassword.Text != inputConfirmPass.Text)
+                {
+                    sysResponse.Text = "Password does not match.";
+                    sysResponseBox.Visible = true;
+                    return;
+                }
+
+                Artist artist = new Artist
+                {
+                    Username = inputUsername.Text,
+                    Email = inputEmail.Text,
+                    Password = inputPassword.Text
+                };
+
+                context.Artists.Add(artist);
+                context.SaveChanges();
+
+                // Retrive from database to get genuine object
+                artist = context.Artists.Where(a =>
+                a.Username == artist.Username).FirstOrDefault();
+
+                // Validated, bind customer into session.
+                Session["artist"] = artist;
+
+                // Redirect customer to main page.
+                Response.RedirectPermanent("../main.aspx");
+            }
 		}
 	}
 }
