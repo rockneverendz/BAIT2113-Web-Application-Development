@@ -14,7 +14,7 @@ namespace BAIT2113_Web_Application_Development.artist.account
 	{
 		protected void Page_Load(object sender, EventArgs e)
 		{
-			if (Session["artist"] != null)
+            if (Session["artist"] != null)
 			{
 				Response.RedirectPermanent("../main.aspx");
 			}
@@ -22,6 +22,7 @@ namespace BAIT2113_Web_Application_Development.artist.account
 
 		protected void BtnRegister_Click(object sender, EventArgs e)
 		{
+
             using (ArtGalleryEntities context = new ArtGalleryEntities())
             {
                 // Check if the username is available

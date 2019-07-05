@@ -11,11 +11,6 @@ namespace BAIT2113_Web_Application_Development.artist
     {
         protected void Page_Load(object sender, EventArgs e)
         {
-            if (Session["Username"] != null)
-            {
-                txtGreetings.Text = "Welcome ! " + Session["Username"].ToString();
-
-            }
             Artist artist = (Artist)Session["artist"];
             if (artist != null)
             {

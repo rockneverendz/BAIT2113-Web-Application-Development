@@ -46,7 +46,7 @@
 
         .form-label-group {
             position: relative;
-            margin-bottom: 0.25rem;
+            margin-bottom: 1rem;
         }
 
             .form-label-group > input,
@@ -127,11 +127,11 @@
     </style>
 </head>
 <body>
-    <form id="form1" runat="server" class="form-signup">
-        
-        <%-- Header --%>        
+    <form class="form-signup" id="form1" runat="server">
+
+        <%-- Header --%>
         <div class="text-center mb-4">
-            <h1 class="text-center">Register Account</h1>
+            <h1 class="display-4">Register Account</h1>
         </div>
 
         <%-- Error Messages --%>

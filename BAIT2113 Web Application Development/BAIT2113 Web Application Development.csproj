@@ -92,6 +92,7 @@
     </Content>
     <Content Include="artist\account\Homepage.aspx" />
     <Content Include="artist\account\loginArtist.aspx" />
+    <Content Include="artist\account\logoutArtist.aspx" />
     <Content Include="artist\account\registerArtist.aspx" />
     <Content Include="artist\artwork\create.aspx" />
     <Content Include="artist\artwork\view.aspx" />
@@ -174,6 +175,13 @@
     </Compile>
     <Compile Include="artist\account\loginArtist.aspx.designer.cs">
       <DependentUpon>loginArtist.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="artist\account\logoutArtist.aspx.cs">
+      <DependentUpon>logoutArtist.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="artist\account\logoutArtist.aspx.designer.cs">
+      <DependentUpon>logoutArtist.aspx</DependentUpon>
     </Compile>
     <Compile Include="artist\account\registerArtist.aspx.cs">
       <DependentUpon>registerArtist.aspx</DependentUpon>
