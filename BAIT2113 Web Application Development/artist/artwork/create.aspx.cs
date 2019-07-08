@@ -18,14 +18,20 @@ namespace BAIT2113_Web_Application_Development.artist.artwork
         protected void BtnPost_Click(object sender, EventArgs e)
         {
             ArtGalleryEntities context = new ArtGalleryEntities();
-            Artwork artwork = new Artwork();
-            artwork.Title = artworkTitle.Text;
-            artwork.Description = artworkDescription.Text;
-            artwork.Date = DateTime.Now;
-            artwork.Price = Convert.ToDecimal(artworkPrice.Text);
-            artwork.Stock = Convert.ToInt32(artworkStock.Text);
-            artwork.Status = artworkStatus.SelectedValue; //TODO validate this shit.
-            artwork.Artist_ID = ((Artist)Session["artist"]).Artist_ID;
+
+            
+
+            Artwork artwork = new Artwork
+            {
+                Title = artworkTitle.Text,
+                Description = artworkDescription.Text,
+                Date = DateTime.Now,
+                Price = Convert.ToDecimal(artworkPrice.Text),
+                Stock = Convert.ToInt32(artworkStock.Text),
+                Status = artworkStatus.SelectedValue, //TODO validate this shit.
+                Artist_ID = ((Artist)Session["artist"]).Artist_ID
+            };
+
             using (Stream fs = artworkImage.PostedFile.InputStream) //TODO check if image is uploaded
             {
                 using (BinaryReader br = new BinaryReader(fs))
