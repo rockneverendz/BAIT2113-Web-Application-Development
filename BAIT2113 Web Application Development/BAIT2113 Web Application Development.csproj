@@ -130,6 +130,7 @@
     <Content Include="bootstrap\style.css" />
     <Content Include="customer\account\settings.aspx" />
     <Content Include="customer\account\signin.aspx" />
+    <Content Include="customer\account\signout.aspx" />
     <Content Include="customer\account\signup.aspx" />
     <Content Include="customer\main.aspx" />
     <Content Include="DisplayImage.aspx" />
@@ -237,6 +238,13 @@
     </Compile>
     <Compile Include="customer\account\signin.aspx.designer.cs">
       <DependentUpon>signin.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="customer\account\signout.aspx.cs">
+      <DependentUpon>signout.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="customer\account\signout.aspx.designer.cs">
+      <DependentUpon>signout.aspx</DependentUpon>
     </Compile>
     <Compile Include="customer\account\signup.aspx.cs">
       <DependentUpon>signup.aspx</DependentUpon>

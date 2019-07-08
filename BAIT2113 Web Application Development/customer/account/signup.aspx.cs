@@ -11,7 +11,10 @@ namespace BAIT2113_Web_Application_Development.customer.account
     {
         protected void Page_Load(object sender, EventArgs e)
         {
-
+            if (Session["customer"] != null)
+            {
+                Response.RedirectPermanent("../main.aspx");
+            }
         }
 
         protected void BtnSignUp_Click(object sender, EventArgs e)
@@ -44,10 +47,12 @@ namespace BAIT2113_Web_Application_Development.customer.account
                     return;
                 }
 
-                Customer customer = new Customer();
-                customer.Username = inputUsername.Text;
-                customer.Email = inputEmail.Text;
-                customer.Password = inputPassword.Text;
+                Customer customer = new Customer
+                {
+                    Username = inputUsername.Text,
+                    Email = inputEmail.Text,
+                    Password = inputPassword.Text
+                };
 
                 context.Customers.Add(customer);
                 context.SaveChanges();

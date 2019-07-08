@@ -21,8 +21,6 @@ namespace BAIT2113_Web_Application_Development.customer
                 // TODO Redirect user
                 dropdownMenuLink.InnerHtml = "ERROR";
             }
-
-
         }
     }
 }

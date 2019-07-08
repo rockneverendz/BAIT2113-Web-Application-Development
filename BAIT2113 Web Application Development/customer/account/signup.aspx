@@ -132,14 +132,18 @@
 </head>
 <body>
     <form class="form-signup" id="form1" runat="server">
+
+        <%-- Header --%>
         <div class="text-center mb-4">
-            <%--<img class="img-fluid" src="../../resource/Logo1.png" alt="logo" width="75%" />--%>
             <h1 class="display-3">Sign Up</h1>
         </div>
-        <%-- Error messages returned by servers --%>
+
+        <%-- Error Messages --%>
         <div id="sysResponseBox" class="alert alert-danger" role="alert" visible="false" runat="server">
             <asp:Label ID="sysResponse" runat="server"></asp:Label>
         </div>
+
+        <%-- Form --%>
         <div class="form-label-group">
             <asp:TextBox ID="inputUsername" name="Username" type="text" class="form-control"
                 placeholder="Username" value="" required="true" runat="server"></asp:TextBox>
@@ -150,13 +154,6 @@
                 placeholder="Email address" value="" required="true" runat="server"></asp:TextBox>
             <label for="inputEmail">Email address</label>
         </div>
-        <%--
-        <div class="form-label-group">
-            <asp:TextBox ID="inputContactNo" name="ContactNo" type="email" class="form-control"
-                placeholder="Contact Number" value="" required="true" runat="server"></asp:TextBox>
-            <label for="inputContactNo">Contact Number</label>
-        </div>
-        --%>
         <div class="form-label-group">
             <asp:TextBox ID="inputPassword" name="Password" type="password" class="form-control"
                 placeholder="Password" required="true" data-toggle="tooltip" data-placement="left"
@@ -169,9 +166,11 @@
                 placeholder=" Confirm Password" required="true" runat="server"></asp:TextBox>
             <label for="inputConfirmPass">Confirm Password</label>
         </div>
+
+        <%--Submit Button--%>
         <asp:Button ID="BtnSignIn" class="btn btn-lg btn-primary btn-block" runat="server" Text="Create Account" OnClick="BtnSignUp_Click" />
         <hr />
-        <a class="btn btn-lg btn-secondary btn-block" style="color: white;" href="./signin.jsp">Back to Sign-In</a>
+        <a class="btn btn-lg btn-secondary btn-block" href="signin.aspx">Back to Sign-In</a>
         <p class="mt-5 mb-3 text-muted text-center">Bricks © 2019</p>
     </form>
 

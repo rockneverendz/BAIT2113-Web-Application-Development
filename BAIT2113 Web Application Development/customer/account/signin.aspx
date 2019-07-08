@@ -128,14 +128,18 @@
 </head>
 <body>
     <form class="form-signin" id="form1" runat="server">
+
+        <%-- Header --%>
         <div class="text-center mb-4">
-            <%--<img class="img-fluid" src="../../resource/Logo1.png" alt="logo" width="75%" />--%>
             <h1 class="display-3">Sign In</h1>
         </div>
-        <%-- Error messages returned by servers --%>
+
+        <%-- Error Messages --%>
         <div id="sysResponseBox" class="alert alert-danger" role="alert" visible="false" runat="server">
             <asp:Label ID="sysResponse" runat="server"></asp:Label>
         </div>
+
+        <%-- Form --%>
         <div class="form-label-group">
             <asp:TextBox ID="inputUsername" name="Username" type="text" class="form-control"
                 placeholder="Username" value="" runat="server" required="true" autofocus="true"></asp:TextBox>
@@ -145,15 +149,12 @@
             <asp:TextBox ID="inputPassword" name="Password" type="password" class="form-control"
                 placeholder="Password" runat="server" required="true"></asp:TextBox>
             <label for="inputPassword">Password</label>
-            <%--
-            <p>
-                <small><a href="./passrecovery.jsp">Forget Password?</a></small>
-            </p>
-            --%>
         </div>
+
+        <%--Submit Button--%>        
         <asp:Button ID="BtnSignIn" class="btn btn-lg btn-primary btn-block" runat="server" Text="Sign In" OnClick="BtnSignIn_Click" />
         <hr />
-        <a class="btn btn-lg btn-secondary btn-block" style="color: white;" href="./signup.jsp">Create New Account</a>
+        <a class="btn btn-lg btn-secondary btn-block" style="color: white;" href="signup.aspx">Create New Account</a>
         <p class="mt-5 mb-3 text-muted text-center">Bricks © 2019</p>
     </form>
 </body>
