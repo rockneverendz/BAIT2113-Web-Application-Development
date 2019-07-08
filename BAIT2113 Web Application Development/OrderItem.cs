@@ -16,8 +16,8 @@ namespace BAIT2113_Web_Application_Development
     {
         public int Order_ID { get; set; }
         public int Art_ID { get; set; }
-        public string Quantity { get; set; }
-        public string PriceEach { get; set; }
+        public Nullable<int> Quantity { get; set; }
+        public Nullable<decimal> PriceEach { get; set; }
     
         public virtual Artwork Artwork { get; set; }
         public virtual Order Order { get; set; }

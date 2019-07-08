@@ -9,16 +9,16 @@
         <EntityTypeShape EntityType="ArtGalleryModel.Artwork" Width="1.5" PointX="7.625" PointY="0.75" IsExpanded="true" />
         <EntityTypeShape EntityType="ArtGalleryModel.Customer" Width="1.5" PointX="0.875" PointY="0.75" IsExpanded="true" />
         <EntityTypeShape EntityType="ArtGalleryModel.Order" Width="1.5" PointX="0.875" PointY="4.75" IsExpanded="true" />
-        <EntityTypeShape EntityType="ArtGalleryModel.OrderItem" Width="1.5" PointX="7.625" PointY="4.75" IsExpanded="true" />
         <EntityTypeShape EntityType="ArtGalleryModel.Payment" Width="1.5" PointX="4.375" PointY="4.75" IsExpanded="true" />
         <EntityTypeShape EntityType="ArtGalleryModel.WishList" Width="1.5" PointX="4.375" PointY="0.75" IsExpanded="true" />
         <AssociationConnector Association="ArtGalleryModel.FK_Artwork_Artist" ManuallyRouted="false" />
-        <AssociationConnector Association="ArtGalleryModel.FK_OrderItem_Artwork" ManuallyRouted="false" />
         <AssociationConnector Association="ArtGalleryModel.FK_WishList_Artwork" ManuallyRouted="false" />
         <AssociationConnector Association="ArtGalleryModel.FK_Order_Customer" ManuallyRouted="false" />
         <AssociationConnector Association="ArtGalleryModel.FK_WishList_Customer" ManuallyRouted="false" />
         <AssociationConnector Association="ArtGalleryModel.FK_Order_Payment" ManuallyRouted="false" />
-        <AssociationConnector Association="ArtGalleryModel.FK_OrderItem_Order" ManuallyRouted="false" />
+        <EntityTypeShape EntityType="ArtGalleryModel.OrderItem" Width="1.5" PointX="7.625" PointY="4.75" />
+        <AssociationConnector Association="ArtGalleryModel.FK_OrderItem_Artwork" />
+        <AssociationConnector Association="ArtGalleryModel.FK_OrderItem_Order" />
       </Diagram>
     </edmx:Diagrams>
   </edmx:Designer>

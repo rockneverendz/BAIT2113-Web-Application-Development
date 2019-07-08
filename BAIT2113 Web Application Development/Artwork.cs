@@ -17,8 +17,8 @@ namespace BAIT2113_Web_Application_Development
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
         public Artwork()
         {
-            this.OrderItems = new HashSet<OrderItem>();
             this.WishLists = new HashSet<WishList>();
+            this.OrderItems = new HashSet<OrderItem>();
         }
     
         public int Art_ID { get; set; }
@@ -33,8 +33,8 @@ namespace BAIT2113_Web_Application_Development
     
         public virtual Artist Artist { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<OrderItem> OrderItems { get; set; }
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<WishList> WishLists { get; set; }
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<OrderItem> OrderItems { get; set; }
     }
 }

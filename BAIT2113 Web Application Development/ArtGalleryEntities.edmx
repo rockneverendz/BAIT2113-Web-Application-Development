@@ -57,8 +57,8 @@
           </Key>
           <Property Name="Order_ID" Type="int" Nullable="false" />
           <Property Name="Art_ID" Type="int" Nullable="false" />
-          <Property Name="Quantity" Type="nchar" MaxLength="10" />
-          <Property Name="PriceEach" Type="nchar" MaxLength="10" />
+          <Property Name="Quantity" Type="int" />
+          <Property Name="PriceEach" Type="smallmoney" />
         </EntityType>
         <EntityType Name="Payment">
           <Key>
@@ -224,11 +224,11 @@
           <Property Name="Image" Type="Binary" MaxLength="Max" FixedLength="false" />
           <Property Name="Artist_ID" Type="Int32" Nullable="false" />
           <NavigationProperty Name="Artist" Relationship="Self.FK_Artwork_Artist" FromRole="Artwork" ToRole="Artist" />
-          <NavigationProperty Name="OrderItems" Relationship="Self.FK_OrderItem_Artwork" FromRole="Artwork" ToRole="OrderItem" />
           <NavigationProperty Name="WishLists" Relationship="Self.FK_WishList_Artwork" FromRole="Artwork" ToRole="WishList" />
           <Property Name="Date" Type="DateTime" Nullable="false" Precision="7" />
           <Property Name="Stock" Type="Int32" Nullable="false" />
           <Property Name="Title" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
+          <NavigationProperty Name="OrderItems" Relationship="ArtGalleryModel.FK_OrderItem_Artwork" FromRole="Artwork" ToRole="OrderItem" />
         </EntityType>
         <EntityType Name="Customer">
           <Key>
@@ -254,19 +254,7 @@
           <Property Name="Pay_ID" Type="Int32" />
           <NavigationProperty Name="Customer" Relationship="Self.FK_Order_Customer" FromRole="Order" ToRole="Customer" />
           <NavigationProperty Name="Payment" Relationship="Self.FK_Order_Payment" FromRole="Order" ToRole="Payment" />
-          <NavigationProperty Name="OrderItems" Relationship="Self.FK_OrderItem_Order" FromRole="Order" ToRole="OrderItem" />
-        </EntityType>
-        <EntityType Name="OrderItem">
-          <Key>
-            <PropertyRef Name="Order_ID" />
-            <PropertyRef Name="Art_ID" />
-          </Key>
-          <Property Name="Order_ID" Type="Int32" Nullable="false" />
-          <Property Name="Art_ID" Type="Int32" Nullable="false" />
-          <Property Name="Quantity" Type="String" MaxLength="10" FixedLength="true" Unicode="true" />
-          <Property Name="PriceEach" Type="String" MaxLength="10" FixedLength="true" Unicode="true" />
-          <NavigationProperty Name="Artwork" Relationship="Self.FK_OrderItem_Artwork" FromRole="OrderItem" ToRole="Artwork" />
-          <NavigationProperty Name="Order" Relationship="Self.FK_OrderItem_Order" FromRole="OrderItem" ToRole="Order" />
+          <NavigationProperty Name="OrderItems" Relationship="ArtGalleryModel.FK_OrderItem_Order" FromRole="Order" ToRole="OrderItem" />
         </EntityType>
         <EntityType Name="Payment">
           <Key>
@@ -297,18 +285,6 @@
             </Principal>
             <Dependent Role="Artwork">
               <PropertyRef Name="Artist_ID" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
-        <Association Name="FK_OrderItem_Artwork">
-          <End Role="Artwork" Type="Self.Artwork" Multiplicity="1" />
-          <End Role="OrderItem" Type="Self.OrderItem" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="Artwork">
-              <PropertyRef Name="Art_ID" />
-            </Principal>
-            <Dependent Role="OrderItem">
-              <PropertyRef Name="Art_ID" />
             </Dependent>
           </ReferentialConstraint>
         </Association>
@@ -360,33 +336,16 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK_OrderItem_Order">
-          <End Role="Order" Type="Self.Order" Multiplicity="1" />
-          <End Role="OrderItem" Type="Self.OrderItem" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="Order">
-              <PropertyRef Name="Order_ID" />
-            </Principal>
-            <Dependent Role="OrderItem">
-              <PropertyRef Name="Order_ID" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
         <EntityContainer Name="ArtGalleryEntities" annotation:LazyLoadingEnabled="true">
           <EntitySet Name="Artists" EntityType="Self.Artist" />
           <EntitySet Name="Artworks" EntityType="Self.Artwork" />
           <EntitySet Name="Customers" EntityType="Self.Customer" />
           <EntitySet Name="Orders" EntityType="Self.Order" />
-          <EntitySet Name="OrderItems" EntityType="Self.OrderItem" />
           <EntitySet Name="Payments" EntityType="Self.Payment" />
           <EntitySet Name="WishLists" EntityType="Self.WishList" />
           <AssociationSet Name="FK_Artwork_Artist" Association="Self.FK_Artwork_Artist">
             <End Role="Artist" EntitySet="Artists" />
             <End Role="Artwork" EntitySet="Artworks" />
-          </AssociationSet>
-          <AssociationSet Name="FK_OrderItem_Artwork" Association="Self.FK_OrderItem_Artwork">
-            <End Role="Artwork" EntitySet="Artworks" />
-            <End Role="OrderItem" EntitySet="OrderItems" />
           </AssociationSet>
           <AssociationSet Name="FK_WishList_Artwork" Association="Self.FK_WishList_Artwork">
             <End Role="Artwork" EntitySet="Artworks" />
@@ -404,11 +363,52 @@
             <End Role="Payment" EntitySet="Payments" />
             <End Role="Order" EntitySet="Orders" />
           </AssociationSet>
-          <AssociationSet Name="FK_OrderItem_Order" Association="Self.FK_OrderItem_Order">
+          <EntitySet Name="OrderItems" EntityType="ArtGalleryModel.OrderItem" />
+          <AssociationSet Name="FK_OrderItem_Artwork" Association="ArtGalleryModel.FK_OrderItem_Artwork">
+            <End Role="Artwork" EntitySet="Artworks" />
+            <End Role="OrderItem" EntitySet="OrderItems" />
+          </AssociationSet>
+          <AssociationSet Name="FK_OrderItem_Order" Association="ArtGalleryModel.FK_OrderItem_Order">
             <End Role="Order" EntitySet="Orders" />
             <End Role="OrderItem" EntitySet="OrderItems" />
           </AssociationSet>
         </EntityContainer>
+        <EntityType Name="OrderItem">
+          <Key>
+            <PropertyRef Name="Order_ID" />
+            <PropertyRef Name="Art_ID" />
+          </Key>
+          <Property Name="Order_ID" Type="Int32" Nullable="false" />
+          <Property Name="Art_ID" Type="Int32" Nullable="false" />
+          <Property Name="Quantity" Type="Int32" />
+          <Property Name="PriceEach" Type="Decimal" Precision="10" Scale="4" />
+          <NavigationProperty Name="Artwork" Relationship="ArtGalleryModel.FK_OrderItem_Artwork" FromRole="OrderItem" ToRole="Artwork" />
+          <NavigationProperty Name="Order" Relationship="ArtGalleryModel.FK_OrderItem_Order" FromRole="OrderItem" ToRole="Order" />
+        </EntityType>
+        <Association Name="FK_OrderItem_Artwork">
+          <End Type="ArtGalleryModel.Artwork" Role="Artwork" Multiplicity="1" />
+          <End Type="ArtGalleryModel.OrderItem" Role="OrderItem" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Artwork">
+              <PropertyRef Name="Art_ID" />
+            </Principal>
+            <Dependent Role="OrderItem">
+              <PropertyRef Name="Art_ID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_OrderItem_Order">
+          <End Type="ArtGalleryModel.Order" Role="Order" Multiplicity="1" />
+          <End Type="ArtGalleryModel.OrderItem" Role="OrderItem" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Order">
+              <PropertyRef Name="Order_ID" />
+            </Principal>
+            <Dependent Role="OrderItem">
+              <PropertyRef Name="Order_ID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
       </Schema>
     </edmx:ConceptualModels>
     <!-- C-S mapping content -->
@@ -464,16 +464,6 @@
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
-          <EntitySetMapping Name="OrderItems">
-            <EntityTypeMapping TypeName="ArtGalleryModel.OrderItem">
-              <MappingFragment StoreEntitySet="OrderItem">
-                <ScalarProperty Name="Order_ID" ColumnName="Order_ID" />
-                <ScalarProperty Name="Art_ID" ColumnName="Art_ID" />
-                <ScalarProperty Name="Quantity" ColumnName="Quantity" />
-                <ScalarProperty Name="PriceEach" ColumnName="PriceEach" />
-              </MappingFragment>
-            </EntityTypeMapping>
-          </EntitySetMapping>
           <EntitySetMapping Name="Payments">
             <EntityTypeMapping TypeName="ArtGalleryModel.Payment">
               <MappingFragment StoreEntitySet="Payment">
@@ -489,6 +479,16 @@
                 <ScalarProperty Name="Art_ID" ColumnName="Art_ID" />
                 <ScalarProperty Name="Cust_ID" ColumnName="Cust_ID" />
                 <ScalarProperty Name="W_Date" ColumnName="W_Date" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="OrderItems">
+            <EntityTypeMapping TypeName="ArtGalleryModel.OrderItem">
+              <MappingFragment StoreEntitySet="OrderItem">
+                <ScalarProperty Name="PriceEach" ColumnName="PriceEach" />
+                <ScalarProperty Name="Quantity" ColumnName="Quantity" />
+                <ScalarProperty Name="Art_ID" ColumnName="Art_ID" />
+                <ScalarProperty Name="Order_ID" ColumnName="Order_ID" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
