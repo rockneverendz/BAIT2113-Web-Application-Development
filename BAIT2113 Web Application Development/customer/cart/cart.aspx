@@ -19,8 +19,9 @@
                 </HeaderTemplate>
                 <ItemTemplate>
                     <asp:Button type='button' ID="btnRemove" runat="server" Text="remove" CommandArgument='<%# Eval("Index") %>' OnClick="removeItem" />
-                    <p><%# Eval("Order_ID") %></p>
                     <p><%# Eval("Art_ID") %></p>
+                    <p><%# Eval("Title") %></p>
+                    <img class="w-100 h-100" src='<%#"data:Image/png;base64," + Eval("Image")%>' />
                     <asp:TextBox ID="orderQuantity" type="number" value='<%# Eval("Quantity") %>' runat="server" OnTextChanged="orderQuantity_TextChanged"></asp:TextBox>
                     <p><%# Eval("PriceEach") %></p>
                     <br />

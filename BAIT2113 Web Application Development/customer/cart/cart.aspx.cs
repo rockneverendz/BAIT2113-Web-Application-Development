@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Data;
 using System.Linq;
 using System.Web;
 using System.Web.UI;
@@ -14,7 +15,35 @@ namespace BAIT2113_Web_Application_Development.customer.cart
             if (!IsPostBack)
             {
                 List<OrderItem> cart = (List<OrderItem>)Session["cart"];
-                DataList1.DataSource = cart;
+                ArtGalleryEntities context = new ArtGalleryEntities();
+                DataTable dt = new DataTable();
+                Artwork artwork;
+
+                dt.Columns.AddRange(new DataColumn[6] {
+                    new DataColumn("Index"),
+                    new DataColumn("Art_ID"),
+                    new DataColumn("Title"),
+                    new DataColumn("Image"),
+                    new DataColumn("Quantity"),
+                    new DataColumn("PriceEach")
+                });
+
+                for (int index = 0; index < cart.Count; index++)
+                {
+                    OrderItem orderItem = cart[index];
+                    artwork = context.Artworks.Find(orderItem.Art_ID);
+
+                    dt.Rows.Add(
+                        index + 1,
+                        artwork.Art_ID,
+                        artwork.Title,
+                        Convert.ToBase64String(artwork.Image),
+                        orderItem.Quantity,
+                        orderItem.PriceEach
+                        );
+                }
+
+                DataList1.DataSource = dt;
                 DataList1.DataBind();
             }
         }
