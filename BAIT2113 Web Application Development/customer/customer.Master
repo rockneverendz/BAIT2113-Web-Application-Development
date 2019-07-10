@@ -16,12 +16,8 @@
     <header>
         <nav class="navbar navbar-expand-md navbar-light bg-light fixed-top shadow" style="background-color: transparent;">
             <div class="container">
-                <a class="navbar-brand" href="#">Navbar</a>
-                <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarTogglerDemo02" aria-controls="navbarTogglerDemo02" aria-expanded="false" aria-label="Toggle navigation">
-                    <span class="navbar-toggler-icon"></span>
-                </button>
-
-                <div class="collapse navbar-collapse" id="navbarTogglerDemo02">
+                <a class="navbar-brand" href="<%= ResolveUrl("~/customer/main.aspx") %>">ArtGallery</a>
+                <div class="collapse navbar-collapse">
                     <%-- Left --%>
                     <ul class="navbar-nav mr-auto mt-2 mt-lg-0">
                         <li class="nav-item active">
@@ -36,13 +32,16 @@
                     </ul>
 
                     <%-- Right --%>
-                    <div class="dropdown ml-auto">
+                    <div class="nav-item ml-auto">
+                        <a class="nav-link" href="<%= ResolveUrl("~/customer/cart/cart.aspx") %>">Cart</a>
+                    </div>
+                    <div class="dropdown">
                         <a class="btn btn-light dropdown-toggle" href="#" role="button" id="dropdownMenuLink"
                             data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" runat="server">Account
                         </a>
                         <div class="dropdown-menu dropdown-menu-right" aria-labelledby="dropdownMenuLink">
-                            <a href="<%= ResolveUrl("~/customer/account/settings.aspx") %>" class="dropdown-item" >Settings</a>
-                            <a href="<%= ResolveUrl("~/customer/account/signout.aspx") %>" class="dropdown-item" >Sign Out</a>
+                            <a href="<%= ResolveUrl("~/customer/account/settings.aspx") %>" class="dropdown-item">Settings</a>
+                            <a href="<%= ResolveUrl("~/customer/account/signout.aspx") %>" class="dropdown-item">Sign Out</a>
                         </div>
                     </div>
                 </div>

@@ -20,7 +20,6 @@
                 <ItemTemplate>
                     <div class="row no-gutters border rounded overflow-hidden flex-md-row mb-5 shadow-sm h-md-250 position-relative">
                         <div class="col-4 p-4 d-flex flex-column position-static">
-                            <strong class="d-inline-block mb-2 text-primary">World</strong>
                             <h3 class="mb-0"><%# Eval("Title") %></h3>
                             <a href="#" class="mb-1 text-muted"><%# Eval("Username") %></a>
                             <p class="card-text mb-auto"><%# Eval("Description") %></p>

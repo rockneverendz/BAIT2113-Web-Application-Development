@@ -29,8 +29,8 @@ namespace BAIT2113_Web_Application_Development
         public virtual DbSet<Artwork> Artworks { get; set; }
         public virtual DbSet<Customer> Customers { get; set; }
         public virtual DbSet<Order> Orders { get; set; }
-        public virtual DbSet<OrderItem> OrderItems { get; set; }
         public virtual DbSet<Payment> Payments { get; set; }
         public virtual DbSet<WishList> WishLists { get; set; }
+        public virtual DbSet<OrderItem> OrderItems { get; set; }
     }
 }

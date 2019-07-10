@@ -11,9 +11,6 @@ namespace BAIT2113_Web_Application_Development.customer
     {
         protected void Page_Load(object sender, EventArgs e)
         {
-            ArtGalleryEntities context = new ArtGalleryEntities();
-            //DataList1.DataSource = context.Artworks.ToList();
-            //DataList1.DataBind();
         }
 
         protected void addToWishlist(object sender, EventArgs e)
@@ -41,13 +38,54 @@ namespace BAIT2113_Web_Application_Development.customer
             }
             else
             {
-                //TODO return error message here.
+                //TODO return error "Item laready wishlisted!"
             }
         }
 
         protected void addToCart(object sender, EventArgs e)
         {
+            ArtGalleryEntities context = new ArtGalleryEntities();
+            List<OrderItem> cart = (List<OrderItem>)Session["cart"];
+            Customer customer = (Customer)Session["customer"];
+            int Art_ID = Convert.ToInt32(((Button)sender).CommandArgument);
+            bool exists = false;
+            Artwork artwork = context.Artworks.Find(Art_ID);
 
+            if (cart == null)
+            {
+                cart = new List<OrderItem>();
+                OrderItem orderItem = new OrderItem
+                {
+                    Art_ID = artwork.Art_ID,
+                    Quantity = 1,
+                    PriceEach = artwork.Price
+                };
+                cart.Add(orderItem);
+                Session["cart"] = cart;
+            }
+            else
+            {
+                // Check if the item already exists.
+                foreach (OrderItem orderItem in cart)
+                    if (orderItem.Art_ID == Art_ID)
+                        exists = true;
+
+                if (!exists)
+                {
+                    OrderItem orderItem = new OrderItem
+                    {
+                        Art_ID = artwork.Art_ID,
+                        Quantity = 1,
+                        PriceEach = artwork.Price
+                    };
+                    cart.Add(orderItem);
+                    Session["cart"] = cart;
+                }
+                else
+                {
+                    //TODO return error "Item laready existed in cart!"
+                }
+            }
         }
     }
 }
