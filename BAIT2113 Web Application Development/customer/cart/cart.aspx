@@ -18,15 +18,12 @@
                     Index Image Quantity PriceEach
                 </HeaderTemplate>
                 <ItemTemplate>
-                    <asp:Label ID="orderIndex" runat="server" Text='<%# Eval("Index") %>'></asp:Label>
-                    <img class="w-100 h-100" src='<%#"data:Image/png;base64," + Convert.ToBase64String((byte[])Eval("Image"))%>' />
-                    <asp:TextBox ID="orderQuantity" type="number" value='<%# Eval("Quantity") %>' CommandArgument='<%# Eval("Index") %>'
-                        step="1" min="0" max="10" runat="server" required OnTextChanged="orderQuantity_TextChanged" AutoPostBack="True"></asp:TextBox>
-                    <p><%# Eval("PriceEach") %></p>
                     <asp:Button type='button' ID="btnRemove" runat="server" Text="remove" CommandArgument='<%# Eval("Index") %>' OnClick="removeItem" />
-                    <p><%# Eval("Quantity") %></p>
-                                        <p><%# Eval("Subtotal") %></p>
-
+                    <p><%# Eval("Order_ID") %></p>
+                    <p><%# Eval("Art_ID") %></p>
+                    <asp:TextBox ID="orderQuantity" type="number" value='<%# Eval("Quantity") %>' runat="server" OnTextChanged="orderQuantity_TextChanged"></asp:TextBox>
+                    <p><%# Eval("PriceEach") %></p>
+                    <br />
                 </ItemTemplate>
             </asp:DataList>
         </div>
