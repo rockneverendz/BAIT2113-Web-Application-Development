@@ -17,10 +17,7 @@ namespace BAIT2113_Web_Application_Development.customer.cart
                 List<OrderItem> cart = (List<OrderItem>)Session["cart"];
 
                 if (cart == null || cart.Count == 0)
-                {
-                    //TODO return error "your cart is empty!"
-                    return;
-                }
+                    Response.Redirect("~/customer/cart/cartEmpty.aspx");
 
                 ArtGalleryEntities context = new ArtGalleryEntities();
                 DataTable dt = new DataTable();
@@ -51,14 +48,15 @@ namespace BAIT2113_Web_Application_Development.customer.cart
                         artwork.Title,
                         Convert.ToBase64String(artwork.Image),
                         orderItem.Quantity,
-                        orderItem.PriceEach,
-                        subtotal
+                        String.Format("{0:0.00}", orderItem.PriceEach),
+                        String.Format("{0:0.00}", subtotal)
                         );
                 }
 
-                DataList1.DataSource = dt;
-                DataList1.DataBind();
-                orderTotal.Text = String.Format("{0:0.00}", total);
+                GridView1.DataSource = dt;
+                GridView1.DataBind();
+
+                orderTotal.Text = String.Format("RM {0:0.00}", total);
 
             }
         }
@@ -67,19 +65,20 @@ namespace BAIT2113_Web_Application_Development.customer.cart
         {
             List<OrderItem> cart = (List<OrderItem>)Session["cart"];
             cart.RemoveAt(Convert.ToInt32(((Button)sender).CommandArgument) - 1);
-            DataList1.DataBind();
+            Response.Redirect(Request.RawUrl);
         }
 
         protected void orderQuantity_TextChanged(object sender, EventArgs e)
         {
             TextBox orderQuantity = (TextBox)sender;
-            int orderIndex = Convert.ToInt32(((HiddenField)orderQuantity.Parent.FindControl("orderIndex")).Value);
+            GridViewRow row = (GridViewRow)orderQuantity.NamingContainer;
+            int orderIndex = Convert.ToInt32(row.Cells[0].Text) - 1;
             List<OrderItem> cart = (List<OrderItem>)Session["cart"];
-            OrderItem orderItem = cart.ElementAt(orderIndex - 1);
+            OrderItem orderItem = cart.ElementAt(orderIndex);
             orderItem.Quantity = Convert.ToInt32(orderQuantity.Text);
 
             //Update Subtotal
-            ((Label)orderQuantity.Parent.FindControl("orderSubtotal")).Text = String.Format("{0:0.00}", orderItem.Quantity * orderItem.PriceEach);
+            row.Cells[6].Text = String.Format("{0:0.00}", orderItem.Quantity * orderItem.PriceEach);
 
             //Update Total
             decimal? total = 0;
@@ -87,7 +86,7 @@ namespace BAIT2113_Web_Application_Development.customer.cart
             {
                 total += oi.Quantity * oi.PriceEach;
             }
-            orderTotal.Text = String.Format("{0:0.00}", total);
+            orderTotal.Text = String.Format("RM {0:0.00}", total);
         }
     }
 }

@@ -13,25 +13,37 @@
 
         <%-- Content --%>
         <div class="container">
-            <asp:DataList ID="DataList1" runat="server">
-                <HeaderTemplate>
-                    Sample Header Here
-                </HeaderTemplate>
-                <ItemTemplate>
-                    <asp:HiddenField ID="orderIndex" Value='<%# Eval("Index") %>' runat="server" />
-                    <asp:Button type='button' ID="btnRemove" runat="server" Text="remove" CommandArgument='<%# Eval("Index") %>' OnClick="removeItem" />
-                    <p><%# Eval("Art_ID") %></p>
-                    <p><%# Eval("Title") %></p>
-                    <img class="w-100 h-100" src='<%#"data:Image/png;base64," + Eval("Image")%>' />
-                    <asp:TextBox ID="orderQuantity" type="number" value='<%# Eval("Quantity") %>' runat="server" OnTextChanged="orderQuantity_TextChanged" AutoPostBack="True"></asp:TextBox>
-                    <p><%# String.Format("{0:0.00}",Eval("PriceEach")) %></p>
-                    <asp:Label ID="orderSubtotal" runat="server" Text='<%# String.Format("{0:0.00}",Eval("Subtotal")) %>'></asp:Label>
-
-                    <br />
-                </ItemTemplate>
-            </asp:DataList>
-            <asp:Label ID="orderTotal" runat="server" Text="Total"></asp:Label>
-            <a href="checkout.aspx">Proceed to checkout</a>
+            <asp:GridView ID="GridView1" CssClass="table" runat="server" AutoGenerateColumns="False" DataKeyNames="Art_ID">
+                <Columns>
+                    <asp:BoundField DataField="Index" HeaderText="Index" SortExpression="Index"></asp:BoundField>
+                    <asp:BoundField DataField="Art_ID" HeaderText="Art_ID" SortExpression="Art_ID" Visible="False"></asp:BoundField>
+                    <asp:BoundField DataField="Title" HeaderText="Title" SortExpression="Title"></asp:BoundField>
+                    <asp:TemplateField HeaderText="Image">
+                        <ItemTemplate>
+                            <img style="max-height:150px; max-width:150px" src='<%#"data:Image/png;base64," + Eval("Image")%>' />
+                        </ItemTemplate>
+                    </asp:TemplateField>
+                    <asp:TemplateField HeaderText="Quantity">
+                        <ItemTemplate>
+                            <asp:TextBox ID="orderQuantity" type="number" value='<%# Eval("Quantity") %>' runat="server" OnTextChanged="orderQuantity_TextChanged" AutoPostBack="True"></asp:TextBox>
+                        </ItemTemplate>
+                    </asp:TemplateField>
+                    <asp:BoundField DataField="PriceEach" HeaderText="PriceEach" SortExpression="PriceEach"></asp:BoundField>
+                    <asp:BoundField DataField="Subtotal" HeaderText="Subtotal" SortExpression="Subtotal"></asp:BoundField>
+                    <asp:TemplateField HeaderText="Remove">
+                        <ItemTemplate>
+                            <asp:Button type='button' ID="btnRemove" runat="server" Text="Remove" CommandArgument='<%# Eval("Index") %>' OnClick="removeItem" />
+                        </ItemTemplate>
+                    </asp:TemplateField>
+                </Columns>
+            </asp:GridView>
+            <div class="float-right">
+                <div class="btn-group" role="group" aria-label="Basic example">
+                    <button type="button" class="btn btn-info btn-lg">Grand Total</button>
+                    <asp:Label class="btn btn-light btn-lg" ID="orderTotal" runat="server" Text="RM 0.00"></asp:Label>
+                    <a href="checkout.aspx" role="button" class="btn btn-primary btn-lg">Proceed to checkout ≫</a>
+                </div>
+            </div>
         </div>
     </form>
 </asp:Content>

@@ -33,7 +33,7 @@
 
                     <%-- Right --%>
                     <div class="nav-item ml-auto">
-                        <a class="nav-link" href="<%= ResolveUrl("~/customer/cart/cart.aspx") %>">Cart</a>
+                        <a class="nav-link" href="<%= ResolveUrl("~/customer/cart/cart.aspx") %>">Cart<asp:Label ID="cartCount" CssClass="badge badge-success" runat="server"></asp:Label></a>
                     </div>
                     <div class="dropdown">
                         <a class="btn btn-light dropdown-toggle" href="#" role="button" id="dropdownMenuLink"

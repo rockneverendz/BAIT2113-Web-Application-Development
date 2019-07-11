@@ -21,6 +21,17 @@ namespace BAIT2113_Web_Application_Development.customer
                 // TODO Redirect user
                 dropdownMenuLink.InnerHtml = "ERROR";
             }
+
+            List<OrderItem> cart = (List<OrderItem>)Session["cart"];
+            if (cart == null || cart.Count == 0)
+            {
+                // remove badge
+            }
+            else
+            {
+                cartCount.Text = cart.Count.ToString();
+            }
+                
         }
     }
 }
