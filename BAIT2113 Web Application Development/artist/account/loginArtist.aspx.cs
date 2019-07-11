@@ -40,6 +40,7 @@ namespace BAIT2113_Web_Application_Development.artist.account
 
                 // Validated, bind customer into session.
                 Session["artist"] = artist;
+                Session["Artist_ID"] = artist.Artist_ID;
 
                 // Redirect customer to main page.
                 Response.RedirectPermanent("../main.aspx");
