@@ -133,6 +133,7 @@
     <Content Include="customer\account\signout.aspx" />
     <Content Include="customer\account\signup.aspx" />
     <Content Include="customer\cart\cart.aspx" />
+    <Content Include="customer\cart\cartEmpty.aspx" />
     <Content Include="customer\cart\checkout.aspx" />
     <Content Include="customer\main.aspx" />
     <Content Include="DisplayImage.aspx" />
@@ -261,6 +262,13 @@
     </Compile>
     <Compile Include="customer\cart\cart.aspx.designer.cs">
       <DependentUpon>cart.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="customer\cart\cartEmpty.aspx.cs">
+      <DependentUpon>cartEmpty.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="customer\cart\cartEmpty.aspx.designer.cs">
+      <DependentUpon>cartEmpty.aspx</DependentUpon>
     </Compile>
     <Compile Include="customer\cart\checkout.aspx.cs">
       <DependentUpon>checkout.aspx</DependentUpon>
