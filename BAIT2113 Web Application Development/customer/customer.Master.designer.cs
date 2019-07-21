@@ -13,13 +13,13 @@ namespace BAIT2113_Web_Application_Development.customer {
     public partial class customer {
         
         /// <summary>
-        /// head control.
+        /// contentHead control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.ContentPlaceHolder head;
+        protected global::System.Web.UI.WebControls.ContentPlaceHolder contentHead;
         
         /// <summary>
         /// cartCount control.
@@ -40,13 +40,13 @@ namespace BAIT2113_Web_Application_Development.customer {
         protected global::System.Web.UI.HtmlControls.HtmlAnchor dropdownMenuLink;
         
         /// <summary>
-        /// ContentPlaceHolder1 control.
+        /// contentMain control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.ContentPlaceHolder ContentPlaceHolder1;
+        protected global::System.Web.UI.WebControls.ContentPlaceHolder contentMain;
         
         /// <summary>
         /// contentScript control.

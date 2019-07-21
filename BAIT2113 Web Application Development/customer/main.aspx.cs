@@ -18,7 +18,7 @@ namespace BAIT2113_Web_Application_Development.customer
             ArtGalleryEntities context = new ArtGalleryEntities();
             Customer customer = (Customer)Session["customer"];
             int Cust_ID = customer.Cust_ID;
-            int Art_ID = Convert.ToInt32(((Button)sender).CommandArgument);
+            int Art_ID = Convert.ToInt32(((ImageButton)sender).CommandArgument);
 
             bool exists = context.WishLists.Where(
                 wl => wl.Cust_ID == Cust_ID
@@ -47,7 +47,7 @@ namespace BAIT2113_Web_Application_Development.customer
             ArtGalleryEntities context = new ArtGalleryEntities();
             List<OrderItem> cart = (List<OrderItem>)Session["cart"];
             Customer customer = (Customer)Session["customer"];
-            int Art_ID = Convert.ToInt32(((Button)sender).CommandArgument);
+            int Art_ID = Convert.ToInt32(((ImageButton)sender).CommandArgument);
             bool exists = false;
             Artwork artwork = context.Artworks.Find(Art_ID);
 

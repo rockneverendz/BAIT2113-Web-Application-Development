@@ -1,7 +1,7 @@
 ﻿<%@ Page Title="" Language="C#" MasterPageFile="~/customer/customer.Master" AutoEventWireup="true" CodeBehind="cartEmpty.aspx.cs" Inherits="BAIT2113_Web_Application_Development.customer.cart.cartEmpty" %>
-<asp:Content ID="Content1" ContentPlaceHolderID="head" runat="server">
+<asp:Content ID="Content1" ContentPlaceHolderID="contentHead" runat="server">
 </asp:Content>
-<asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder1" runat="server">
+<asp:Content ID="Content2" ContentPlaceHolderID="contentMain" runat="server">
     <form id="form1" runat="server">
         <%-- Jumbotron --%>
         <div class="jumbotron jumbotron-fluid" style="margin-top: 50px;">
