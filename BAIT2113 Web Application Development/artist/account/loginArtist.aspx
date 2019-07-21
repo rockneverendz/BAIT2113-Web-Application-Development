@@ -130,7 +130,8 @@
     <form id="form1" class="form-signin" runat="server">
 
         <%-- Header --%>
-        <div class="text-center mb-5">
+        <div class="mx-auto mb-4 w-100">
+            <div class="display-4 text-muted">Artist</div>
             <h1 class="display-3">Sign In</h1>
         </div>
 
@@ -155,7 +156,15 @@
         <asp:Button ID="BtnLogin" runat="server" Text="Log In" OnClick="BtnLogin_Click" CssClass="btn btn-lg btn-primary btn-block" />
         <hr />
         <a class="btn btn-lg btn-secondary btn-block" href="registerArtist.aspx">Register an account</a>
-        <p class="mt-5 mb-3 text-muted text-center">Bricks © 2019</p>
+
+        <div class="mt-5 mb-3 d-flex text-muted">
+            <div>
+                <a href="../../customer/account/signin.aspx">Member Portal</a>
+                <br />
+                <a href="../../ArtGallery.aspx">Home</a>
+            </div>
+            <div class="ml-auto">Bricks © 2019</div>
+        </div>
     </form>
 </body>
 </html>

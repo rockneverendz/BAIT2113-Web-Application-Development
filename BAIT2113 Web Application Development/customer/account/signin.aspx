@@ -130,7 +130,8 @@
     <form class="form-signin" id="form1" runat="server">
 
         <%-- Header --%>
-        <div class="text-center mb-4">
+        <div class="mx-auto mb-4 w-100">
+            <div class="display-4 text-muted">Member</div>
             <h1 class="display-3">Sign In</h1>
         </div>
 
@@ -151,11 +152,19 @@
             <label for="inputPassword">Password</label>
         </div>
 
-        <%--Submit Button--%>        
+        <%--Submit Button--%>
         <asp:Button ID="BtnSignIn" class="btn btn-lg btn-primary btn-block" runat="server" Text="Sign In" OnClick="BtnSignIn_Click" />
         <hr />
         <a class="btn btn-lg btn-secondary btn-block" style="color: white;" href="signup.aspx">Create New Account</a>
-        <p class="mt-5 mb-3 text-muted text-center">Bricks © 2019</p>
+
+        <div class="mt-5 mb-3 d-flex text-muted">
+            <div>
+                <a href="../../customer/account/signin.aspx">Artist Portal</a>
+                <br />
+                <a href="../../ArtGallery.aspx">Home</a>
+            </div>
+            <div class="ml-auto">Bricks © 2019</div>
+        </div>
     </form>
 </body>
 </html>
