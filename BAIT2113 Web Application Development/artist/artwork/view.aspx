@@ -16,7 +16,7 @@
                     <EditItemTemplate>
                         <asp:Image ID="Image" runat="server" Height="100px" Width="100px"
                             ImageUrl='<%#"data:Image/png;base64," + Convert.ToBase64String((byte[])Eval("Image"))%>' /><br />
-                        <asp:FileUpload ID="artworkImage" name="image" type="file" accept="image/png" runat="server" />
+                        <%--<asp:FileUpload ID="artworkImage" name="image" type="file" accept="image/png" runat="server" />--%>
                         <%--https://forums.asp.net/t/2068827.aspx?GridView+Uploade+an+image+in+edit+--%>
                     </EditItemTemplate>
                 </asp:TemplateField>
@@ -27,20 +27,9 @@
                 <asp:BoundField DataField="Artist_ID" HeaderText="Artist_ID" SortExpression="Artist_ID" ReadOnly="True" />
             </Columns>
         </asp:GridView>
-        <asp:SqlDataSource ID="SqlDataSource1" runat="server" ConnectionString="<%$ ConnectionStrings:ArtGalleryConnStr %>" SelectCommand="SELECT * FROM [Artwork] WHERE ([Artist_ID] = @Artist_ID) ORDER BY [Art_ID] DESC" DeleteCommand="DELETE FROM [Artwork] WHERE [Art_ID] = @Art_ID" InsertCommand="INSERT INTO [Artwork] ([Title], [Description], [Date], [Status], [Price], [Image], [Stock], [Artist_ID]) VALUES (@Title, @Description, @Date, @Status, @Price, @Image, @Stock, @Artist_ID)" UpdateCommand="UPDATE [Artwork] SET [Title] = @Title, [Description] = @Description, [Date] = @Date, [Status] = @Status, [Price] = @Price, [Image] = @Image, [Stock] = @Stock, [Artist_ID] = @Artist_ID WHERE [Art_ID] = @Art_ID">
-            <DeleteParameters>
-                <asp:Parameter Name="Art_ID" Type="Int32"></asp:Parameter>
-            </DeleteParameters>
-            <InsertParameters>
-                <asp:Parameter Name="Title" Type="String"></asp:Parameter>
-                <asp:Parameter Name="Description" Type="String"></asp:Parameter>
-                <asp:Parameter DbType="DateTime2" Name="Date"></asp:Parameter>
-                <asp:Parameter Name="Status" Type="String"></asp:Parameter>
-                <asp:Parameter Name="Price" Type="Decimal"></asp:Parameter>
-                <asp:Parameter Name="Image" Type="Object"></asp:Parameter>
-                <asp:Parameter Name="Stock" Type="Int32"></asp:Parameter>
-                <asp:Parameter Name="Artist_ID" Type="Int32"></asp:Parameter>
-            </InsertParameters>
+        <asp:SqlDataSource ID="SqlDataSource1" runat="server" ConnectionString="<%$ ConnectionStrings:ArtGalleryConnStr %>" 
+            SelectCommand="SELECT * FROM [Artwork] WHERE ([Artist_ID] = @Artist_ID) ORDER BY [Art_ID] DESC" 
+            UpdateCommand="UPDATE [Artwork] SET [Title] = @Title, [Description] = @Description, [Status] = @Status, [Price] = @Price, [Stock] = @Stock WHERE [Art_ID] = @Art_ID">
             <SelectParameters>
                 <asp:SessionParameter SessionField="Artist_ID" Name="Artist_ID" Type="Int32"></asp:SessionParameter>
             </SelectParameters>
@@ -50,7 +39,7 @@
                 <asp:Parameter DbType="DateTime2" Name="Date"></asp:Parameter>
                 <asp:Parameter Name="Status" Type="String"></asp:Parameter>
                 <asp:Parameter Name="Price" Type="Decimal"></asp:Parameter>
-                <asp:Parameter Name="Image" Type="Object"></asp:Parameter>
+                <%--<asp:Parameter Name="Image" Type="Object"></asp:Parameter>--%>
                 <asp:Parameter Name="Stock" Type="Int32"></asp:Parameter>
                 <asp:Parameter Name="Artist_ID" Type="Int32"></asp:Parameter>
                 <asp:Parameter Name="Art_ID" Type="Int32"></asp:Parameter>
