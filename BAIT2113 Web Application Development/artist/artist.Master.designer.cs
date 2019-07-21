@@ -13,13 +13,13 @@ namespace BAIT2113_Web_Application_Development.artist {
     public partial class artist {
         
         /// <summary>
-        /// contentCSS control.
+        /// contentHead control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.ContentPlaceHolder contentCSS;
+        protected global::System.Web.UI.WebControls.ContentPlaceHolder contentHead;
         
         /// <summary>
         /// lblAccount control.
