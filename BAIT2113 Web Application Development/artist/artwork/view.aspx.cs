@@ -11,7 +11,21 @@ namespace BAIT2113_Web_Application_Development.artist.artwork
     {
         protected void Page_Load(object sender, EventArgs e)
         {
+            if (!IsPostBack)
+            {
+                ArtGalleryEntities context = new ArtGalleryEntities();
+                Artist artist = (Artist)Session["artist"];
 
+                List<Artwork> artwork = context.Artworks.Where(a =>
+                a.Artist_ID == artist.Artist_ID
+                ).OrderByDescending(a => a.Art_ID).ToList();
+
+                Repeater1.DataSource = artwork;
+                Repeater1.DataBind();
+
+                GridView1.DataSource = artwork;
+                GridView1.DataBind();
+            }
         }
     }
 }

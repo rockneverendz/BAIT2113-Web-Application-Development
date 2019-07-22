@@ -22,16 +22,16 @@
                         <!-- Artwork information on the right, covers 33% of the card --->
                         <div class="col-4 p-4 d-flex flex-column position-static h-auto">
                             <h3 class="mb-0"><%# Eval("Title") %></h3>
-                            <div class="mb-1 d-flex">
+                            <div class="mb-1 d-flex justify-content-between">
                                 <a href="#" class="text-muted">by <%# Eval("Username") %> on <%# ((DateTime)Eval("Date")).ToShortDateString() %></a>
-                                <div class="ml-auto text-muted"><%# Eval("Status") %></div>
+                                <div class="text-muted"><%# Eval("Status") %></div>
                             </div>
                             <div class="overflow-auto card-text" style="height: 13vw">
                                     <%# Eval("Description") %>
                             </div>
-                            <div class="mt-auto d-flex">
+                            <div class="mt-auto d-flex justify-content-between">
                                 <div class="display-4" style="font-size: 1.5rem;"><%# String.Format("RM {0:0.00}", Eval("Price")) %></div>
-                                <div class="ml-auto">
+                                <div>
                                     <asp:ImageButton ID="btnWishlist" class="far btn btn-info" Style="width: 3rem; height: 2rem" ImageUrl="../resource/bookmark-regular.svg"
                                         data-toggle="tooltip" data-placement="bottom" title="Add to Wishlist"
                                         AlternateText="Add to Wishlist" CommandArgument='<%# Eval("Art_ID") %>' OnClick="addToWishlist" runat="server" />
@@ -48,7 +48,6 @@
                     </div>
                 </ItemTemplate>
             </asp:DataList>
-
             <asp:SqlDataSource runat="server" ID="SqlDataSource1" ConnectionString='<%$ ConnectionStrings:ArtGalleryConnStr %>' SelectCommand="SELECT Artwork.Art_ID, Artwork.Title, Artwork.Description, Artist.Username, Artwork.Date, Artwork.Status, Artwork.Price, Artwork.Image, Artwork.Stock, Artwork.Artist_ID FROM Artwork INNER JOIN Artist ON Artwork.Artist_ID = Artist.Artist_ID ORDER BY Artwork.Art_ID DESC"></asp:SqlDataSource>
         </div>
     </form>

@@ -1,8 +1,87 @@
 ﻿<%@ Page Title="" Language="C#" MasterPageFile="~/artist/artist.Master" AutoEventWireup="true" CodeBehind="view.aspx.cs" Inherits="BAIT2113_Web_Application_Development.artist.artwork.view" %>
 
-<asp:Content ID="Content1" ContentPlaceHolderID="contentMain" runat="server">
+<asp:Content ID="Content1" ContentPlaceHolderID="contentHead" runat="server">
+    <style>
+        .jumbotron {
+            padding-top: 3rem;
+            padding-bottom: 3rem;
+            margin-bottom: 0;
+            background-color: #fff;
+        }
+
+        @media (min-width: 768px) {
+            .jumbotron {
+                padding-top: 6rem;
+                padding-bottom: 6rem;
+            }
+        }
+
+        .jumbotron p:last-child {
+            margin-bottom: 0;
+        }
+
+        .jumbotron-heading {
+            font-weight: 300;
+        }
+
+        .jumbotron .container {
+            max-width: 40rem;
+        }
+
+        footer {
+            padding-top: 3rem;
+            padding-bottom: 3rem;
+        }
+
+            footer p {
+                margin-bottom: .25rem;
+            }
+
+        .bd-placeholder-img {
+            font-size: 1.125rem;
+            text-anchor: middle;
+            -webkit-user-select: none;
+            -moz-user-select: none;
+            -ms-user-select: none;
+            user-select: none;
+        }
+
+        @media (min-width: 768px) {
+            .bd-placeholder-img-lg {
+                font-size: 3.5rem;
+            }
+        }
+    </style>
+</asp:Content>
+
+<asp:Content ID="Content2" ContentPlaceHolderID="contentMain" runat="server">
     <form runat="server">
-        <asp:GridView DataSourceID="SqlDataSource1" AllowPaging="True" AllowSorting="True" AutoGenerateColumns="False" DataKeyNames="Art_ID" runat="server">
+        <div class="row">
+            <asp:Repeater ID="Repeater1" runat="server">
+                <ItemTemplate>
+                    <div class="col-md-4">
+                        <div class="card mb-4 shadow-sm">
+                            <asp:Image ID="Image" runat="server" CssClass="card-img-top"
+                                ImageUrl='<%#"data:Image/png;base64," + Convert.ToBase64String((byte[])Eval("Image"))%>' />
+                            <div class="card-body">
+                                <p class="card-text">This is a wider card with supporting text below as a natural lead-in to additional content. This content is a little bit longer.</p>
+                                <div class="d-flex justify-content-between align-items-center">
+                                    <div class="display-4" style="font-size: 1.5rem;"><%# String.Format("RM {0:0.00}", Eval("Price")) %></div>
+                                    <div class="btn-group" role="group" aria-label="Basic example">
+                                        <button type="button" class="artwork-status btn"
+                                            data-toggle="tooltip" data-placement="bottom" title="Status"><%# Eval("Status") %></button>
+                                        <button type="button" class="btn btn-outline-dark"
+                                            data-toggle="tooltip" data-placement="bottom" title="Stock"><%# Eval("Stock") %></button>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </ItemTemplate>
+            </asp:Repeater>
+        </div>
+
+        <asp:GridView ID="GridView1" AllowPaging="True" AllowSorting="True" AutoGenerateColumns="False" DataKeyNames="Art_ID" runat="server">
             <Columns>
                 <asp:CommandField ShowSelectButton="True" ShowEditButton="True"></asp:CommandField>
                 <asp:BoundField DataField="Art_ID" HeaderText="Art_ID" InsertVisible="False" ReadOnly="True" SortExpression="Art_ID" />
@@ -27,23 +106,30 @@
                 <asp:BoundField DataField="Artist_ID" HeaderText="Artist_ID" SortExpression="Artist_ID" ReadOnly="True" />
             </Columns>
         </asp:GridView>
-        <asp:SqlDataSource ID="SqlDataSource1" runat="server" ConnectionString="<%$ ConnectionStrings:ArtGalleryConnStr %>" 
-            SelectCommand="SELECT * FROM [Artwork] WHERE ([Artist_ID] = @Artist_ID) ORDER BY [Art_ID] DESC" 
-            UpdateCommand="UPDATE [Artwork] SET [Title] = @Title, [Description] = @Description, [Status] = @Status, [Price] = @Price, [Stock] = @Stock WHERE [Art_ID] = @Art_ID">
-            <SelectParameters>
-                <asp:SessionParameter SessionField="Artist_ID" Name="Artist_ID" Type="Int32"></asp:SessionParameter>
-            </SelectParameters>
-            <UpdateParameters>
-                <asp:Parameter Name="Title" Type="String"></asp:Parameter>
-                <asp:Parameter Name="Description" Type="String"></asp:Parameter>
-                <asp:Parameter DbType="DateTime2" Name="Date"></asp:Parameter>
-                <asp:Parameter Name="Status" Type="String"></asp:Parameter>
-                <asp:Parameter Name="Price" Type="Decimal"></asp:Parameter>
-                <%--<asp:Parameter Name="Image" Type="Object"></asp:Parameter>--%>
-                <asp:Parameter Name="Stock" Type="Int32"></asp:Parameter>
-                <asp:Parameter Name="Artist_ID" Type="Int32"></asp:Parameter>
-                <asp:Parameter Name="Art_ID" Type="Int32"></asp:Parameter>
-            </UpdateParameters>
-        </asp:SqlDataSource>
     </form>
+</asp:Content>
+<asp:Content ID="Content3" ContentPlaceHolderID="contentScript" runat="server">
+    <script>
+        $(function () {
+            $('[data-toggle="tooltip"]').tooltip()
+        })
+
+        Array.from(document.querySelectorAll('.artwork-status')).forEach(function (element) {
+            switch (element.innerHTML) {
+                case "Available":
+                    element.classList.add("btn-outline-success");
+                    break;
+                case "Unavailable":
+                    element.classList.add("btn-outline-danger");
+                    break;
+                case "Hidden":
+                    element.classList.add("btn-outline-warning");
+                    break;
+                default:
+                    element.classList.add("btn-outline-secondary");
+                    console.log("Unknown status");
+            }
+        });
+
+    </script>
 </asp:Content>
