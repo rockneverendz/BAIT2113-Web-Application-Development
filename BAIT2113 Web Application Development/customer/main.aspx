@@ -5,7 +5,7 @@
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="contentMain" runat="server">
     <form id="form1" runat="server">
-        <%-- Jumbotron --%>
+        <!-- Jumbotron --->
         <div class="jumbotron jumbotron-fluid" style="margin-top: 50px;">
             <div class="container">
                 <h1 class="display-4">Welcome to Art Gallery</h1>
@@ -13,20 +13,23 @@
             </div>
         </div>
 
-        <%-- Content --%>
+        <!-- Content --->
         <div class="container">
 
             <asp:DataList ID="DataList1" runat="server" DataKeyField="Art_ID" DataSourceID="SqlDataSource1">
                 <ItemTemplate>
-                    <div class="row no-gutters border rounded overflow-hidden flex-md-row mb-5 shadow-sm h-md-250 position-relative">
-                        <div class="col-4 p-4 d-flex flex-column position-static">
+                    <div class="row no-gutters border rounded overflow-hidden flex-md-row mb-5 shadow-sm h-md-250 position-relative h-100 w-100">
+                        <!-- Artwork information on the right, covers 33% of the card --->
+                        <div class="col-4 p-4 d-flex flex-column position-static h-auto">
                             <h3 class="mb-0"><%# Eval("Title") %></h3>
-                            <div class="d-flex">
-                                <a href="#" class="mb-1 text-muted">by <%# Eval("Username") %> on <%# ((DateTime)Eval("Date")).ToShortDateString() %></a>
-                                <div class="ml-auto"><%# Eval("Status") %></div>
+                            <div class="mb-1 d-flex">
+                                <a href="#" class="text-muted">by <%# Eval("Username") %> on <%# ((DateTime)Eval("Date")).ToShortDateString() %></a>
+                                <div class="ml-auto text-muted"><%# Eval("Status") %></div>
                             </div>
-                            <p class="card-text mb-auto"><%# Eval("Description") %></p>
-                            <div class="d-flex">
+                            <div class="overflow-auto card-text" style="height: 13vw">
+                                    <%# Eval("Description") %>
+                            </div>
+                            <div class="mt-auto d-flex">
                                 <div class="display-4" style="font-size: 1.5rem;"><%# String.Format("RM {0:0.00}", Eval("Price")) %></div>
                                 <div class="ml-auto">
                                     <asp:ImageButton ID="btnWishlist" class="far btn btn-info" Style="width: 3rem; height: 2rem" ImageUrl="../resource/bookmark-regular.svg"
@@ -38,8 +41,9 @@
                                 </div>
                             </div>
                         </div>
-                        <a href="#" class="col-8 d-none d-lg-block">
-                            <img class="w-100 h-100" src='<%#"data:Image/png;base64," + Convert.ToBase64String((byte[])Eval("Image"))%>' />
+                        <!-- Artwork image on the left, covers 66% of the card --->
+                        <a href="#" class="col-8 d-none d-lg-block card-img">
+                            <img class="w-100 h-100" style="object-fit: cover;" src='<%#"data:Image/png;base64," + Convert.ToBase64String((byte[])Eval("Image"))%>' />
                         </a>
                     </div>
                 </ItemTemplate>
