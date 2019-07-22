@@ -151,6 +151,11 @@
                 placeholder="Password" runat="server" required="true"></asp:TextBox>
             <label for="inputPassword">Password</label>
         </div>
+        <div class="checkbox mb-3">
+            <label>
+                <asp:CheckBox ID="inputRemember" type="checkbox" runat="server" Text="&nbspRemember me for 30 days"/>
+            </label>
+        </div>
 
         <%--Submit Button--%>
         <asp:Button ID="BtnLogin" runat="server" Text="Log In" OnClick="BtnLogin_Click" CssClass="btn btn-lg btn-primary btn-block" />

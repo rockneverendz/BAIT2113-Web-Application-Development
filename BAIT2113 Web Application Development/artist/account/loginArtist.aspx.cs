@@ -15,7 +15,38 @@ namespace BAIT2113_Web_Application_Development.artist.account
     {
         protected void Page_Load(object sender, EventArgs e)
         {
+            if (!IsPostBack)
+            {
+                Artist artist = (Artist)Session["artist"];
+                HttpCookie cookie = Request.Cookies.Get("artist");
+                // Check session if the user is logged in.
+                if (artist != null)
+                {
+                    // User found! Redirecting to main page
+                    Response.Redirect("../main.aspx");
+                }
+                // Session not found, checking cookie
+                else if (cookie != null)
+                {
+                    using (ArtGalleryEntities context = new ArtGalleryEntities())
+                    {
+                        artist = context.Artists.Find(Convert.ToInt32(cookie.Value));
 
+                        if (artist != null)
+                        {
+                            // Artist found! Binding user into session. Then redirect to main page
+                            Session["artist"] = artist;
+                            Response.Redirect("../main.aspx");
+                        }
+                        else
+                        {
+                            // Unknown credentials, destroying cookie.
+                            cookie.Expires = DateTime.Now.AddDays(-1d);
+                            Response.Cookies.Add(cookie);
+                        }
+                    }
+                }
+            }
         }
 
         protected void BtnLogin_Click(object sender, EventArgs e)
@@ -38,12 +69,25 @@ namespace BAIT2113_Web_Application_Development.artist.account
                     return;
                 }
 
-                // Validated, bind customer into session.
+                /*-- Validated --*/
+                // Add cookie if requested.
+                // https://stackoverflow.com/questions/244882/what-is-the-best-way-to-implement-remember-me-for-a-website
+                // Follow above if security is a requirement. Below is a zero security makeshift "Remember Me"
+                if (inputRemember.Checked)
+                {
+                    HttpCookie cookie = new HttpCookie("artist")
+                    {
+                        Value = artist.Artist_ID.ToString(),
+                        Expires = DateTime.Now.AddDays(30d)
+                    };
+                    Response.Cookies.Add(cookie);
+                }
+
+                // Bind customer into session.
                 Session["artist"] = artist;
-                Session["Artist_ID"] = artist.Artist_ID;
 
                 // Redirect customer to main page.
-                Response.RedirectPermanent("../main.aspx");
+                Response.Redirect("../main.aspx");
             }
         }
     }
