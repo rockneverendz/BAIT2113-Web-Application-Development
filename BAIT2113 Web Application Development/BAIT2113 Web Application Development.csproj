@@ -95,6 +95,7 @@
     <Content Include="artist\account\logoutArtist.aspx" />
     <Content Include="artist\account\registerArtist.aspx" />
     <Content Include="artist\artwork\create.aspx" />
+    <Content Include="artist\artwork\edit.aspx" />
     <Content Include="artist\artwork\view.aspx" />
     <Content Include="artist\main.aspx" />
     <Content Include="bootstrap\css\bootstrap-datepicker3.css" />
@@ -207,6 +208,13 @@
     </Compile>
     <Compile Include="artist\artwork\create.aspx.designer.cs">
       <DependentUpon>create.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="artist\artwork\edit.aspx.cs">
+      <DependentUpon>edit.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="artist\artwork\edit.aspx.designer.cs">
+      <DependentUpon>edit.aspx</DependentUpon>
     </Compile>
     <Compile Include="artist\artwork\view.aspx.cs">
       <DependentUpon>view.aspx</DependentUpon>
