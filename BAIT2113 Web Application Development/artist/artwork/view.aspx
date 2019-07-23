@@ -64,48 +64,25 @@
                             <asp:Image ID="Image" runat="server" CssClass="card-img-top"
                                 ImageUrl='<%#"data:Image/png;base64," + Convert.ToBase64String((byte[])Eval("Image"))%>' />
                             <div class="card-body">
-                                <p class="card-text">This is a wider card with supporting text below as a natural lead-in to additional content. This content is a little bit longer.</p>
+                                <h5 class="card-title"><%# Eval("Title") %></h5>
+                                <p class="card-text"><%# Eval("Description") %></p>
                                 <div class="d-flex justify-content-between align-items-center">
                                     <div class="display-4" style="font-size: 1.5rem;"><%# String.Format("RM {0:0.00}", Eval("Price")) %></div>
                                     <div class="btn-group" role="group" aria-label="Basic example">
-                                        <button type="button" class="artwork-status btn"
-                                            data-toggle="tooltip" data-placement="bottom" title="Status"><%# Eval("Status") %></button>
-                                        <button type="button" class="btn btn-outline-dark"
-                                            data-toggle="tooltip" data-placement="bottom" title="Stock"><%# Eval("Stock") %></button>
+                                        <button type="button" class="artwork-status btn" data-toggle="tooltip" data-placement="bottom" title="Status"><%# Eval("Status") %></button>
+                                        <button type="button" class="btn btn-outline-dark" data-toggle="tooltip" data-placement="bottom" title="Stock"><%# Eval("Stock") %></button>
                                     </div>
                                 </div>
                             </div>
+                            <div class="card-footer">
+                                <div class="text-muted">Posted on <%# Eval("Date") %></div>
+                            </div>
+                            <a class="stretched-link" style="cursor: pointer" href="edit.aspx?id=<%# Eval("Art_ID") %>"></a>
                         </div>
                     </div>
                 </ItemTemplate>
             </asp:Repeater>
         </div>
-
-        <asp:GridView ID="GridView1" AllowPaging="True" AllowSorting="True" AutoGenerateColumns="False" DataKeyNames="Art_ID" runat="server">
-            <Columns>
-                <asp:CommandField ShowSelectButton="True" ShowEditButton="True"></asp:CommandField>
-                <asp:BoundField DataField="Art_ID" HeaderText="Art_ID" InsertVisible="False" ReadOnly="True" SortExpression="Art_ID" />
-                <asp:BoundField DataField="Title" HeaderText="Title" SortExpression="Title" />
-                <asp:BoundField DataField="Description" HeaderText="Description" SortExpression="Description" />
-                <asp:TemplateField HeaderText="Image">
-                    <ItemTemplate>
-                        <asp:Image ID="Image" runat="server" Height="100px" Width="100px"
-                            ImageUrl='<%#"data:Image/png;base64," + Convert.ToBase64String((byte[])Eval("Image"))%>' />
-                    </ItemTemplate>
-                    <EditItemTemplate>
-                        <asp:Image ID="Image" runat="server" Height="100px" Width="100px"
-                            ImageUrl='<%#"data:Image/png;base64," + Convert.ToBase64String((byte[])Eval("Image"))%>' /><br />
-                        <%--<asp:FileUpload ID="artworkImage" name="image" type="file" accept="image/png" runat="server" />--%>
-                        <%--https://forums.asp.net/t/2068827.aspx?GridView+Uploade+an+image+in+edit+--%>
-                    </EditItemTemplate>
-                </asp:TemplateField>
-                <asp:BoundField DataField="Date" HeaderText="Date" SortExpression="Date" ReadOnly="True" />
-                <asp:BoundField DataField="Status" HeaderText="Status" SortExpression="Status" />
-                <asp:BoundField DataField="Price" HeaderText="Price" SortExpression="Price" />
-                <asp:BoundField DataField="Stock" HeaderText="Stock" SortExpression="Stock" />
-                <asp:BoundField DataField="Artist_ID" HeaderText="Artist_ID" SortExpression="Artist_ID" ReadOnly="True" />
-            </Columns>
-        </asp:GridView>
     </form>
 </asp:Content>
 <asp:Content ID="Content3" ContentPlaceHolderID="contentScript" runat="server">
@@ -130,6 +107,5 @@
                     console.log("Unknown status");
             }
         });
-
     </script>
 </asp:Content>

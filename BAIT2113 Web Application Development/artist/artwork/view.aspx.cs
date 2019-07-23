@@ -22,9 +22,6 @@ namespace BAIT2113_Web_Application_Development.artist.artwork
 
                 Repeater1.DataSource = artwork;
                 Repeater1.DataBind();
-
-                GridView1.DataSource = artwork;
-                GridView1.DataBind();
             }
         }
     }
