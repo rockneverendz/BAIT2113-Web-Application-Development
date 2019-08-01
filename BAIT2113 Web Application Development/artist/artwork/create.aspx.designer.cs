@@ -13,6 +13,15 @@ namespace BAIT2113_Web_Application_Development.artist.artwork {
     public partial class create {
         
         /// <summary>
+        /// lblServerResponse control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Label lblServerResponse;
+        
+        /// <summary>
         /// artworkTitle control.
         /// </summary>
         /// <remarks>
@@ -20,6 +29,15 @@ namespace BAIT2113_Web_Application_Development.artist.artwork {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.TextBox artworkTitle;
+        
+        /// <summary>
+        /// lblArtworkTitle control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Label lblArtworkTitle;
         
         /// <summary>
         /// artworkDescription control.
@@ -31,6 +49,15 @@ namespace BAIT2113_Web_Application_Development.artist.artwork {
         protected global::System.Web.UI.WebControls.TextBox artworkDescription;
         
         /// <summary>
+        /// lblArtworkDescription control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Label lblArtworkDescription;
+        
+        /// <summary>
         /// artworkPrice control.
         /// </summary>
         /// <remarks>
@@ -38,6 +65,15 @@ namespace BAIT2113_Web_Application_Development.artist.artwork {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.TextBox artworkPrice;
+        
+        /// <summary>
+        /// lblArtworkPrice control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Label lblArtworkPrice;
         
         /// <summary>
         /// artworkStock control.
@@ -49,6 +85,24 @@ namespace BAIT2113_Web_Application_Development.artist.artwork {
         protected global::System.Web.UI.WebControls.TextBox artworkStock;
         
         /// <summary>
+        /// lblArtworkStock control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Label lblArtworkStock;
+        
+        /// <summary>
+        /// lblArtworkImageFileName control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Label lblArtworkImageFileName;
+        
+        /// <summary>
         /// artworkImage control.
         /// </summary>
         /// <remarks>
@@ -56,6 +110,15 @@ namespace BAIT2113_Web_Application_Development.artist.artwork {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.FileUpload artworkImage;
+        
+        /// <summary>
+        /// lblArtworkImage control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Label lblArtworkImage;
         
         /// <summary>
         /// artworkStatus control.
