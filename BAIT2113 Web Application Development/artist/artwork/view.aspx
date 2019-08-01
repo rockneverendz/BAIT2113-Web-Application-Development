@@ -56,6 +56,7 @@
 
 <asp:Content ID="Content2" ContentPlaceHolderID="contentMain" runat="server">
     <form runat="server">
+        <asp:Label ID="lblServerResponse" CssClass="d-block alert" role="alert" Visible="false" runat="server"></asp:Label>
         <div class="row">
             <asp:Repeater ID="Repeater1" runat="server">
                 <ItemTemplate>
