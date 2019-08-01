@@ -159,7 +159,7 @@
 
         <div class="mt-5 mb-3 d-flex text-muted">
             <div>
-                <a href="../../customer/account/signin.aspx">Artist Portal</a>
+                <a href="../../artist/account/loginArtist.aspx">Artist Portal</a>
                 <br />
                 <a href="../../ArtGallery.aspx">Home</a>
             </div>

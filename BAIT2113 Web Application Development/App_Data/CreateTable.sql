@@ -35,7 +35,7 @@ CREATE TABLE [dbo].[Payment] (
 
 CREATE TABLE [dbo].[Artwork] (
     [Art_ID]      INT           IDENTITY (1000, 1) NOT NULL,
-    [Title]        VARCHAR (50)  NOT NULL,
+    [Title]       VARCHAR (50)  NOT NULL,
     [Description] VARCHAR (100) NOT NULL,
     [Date]        DATETIME2 (7) DEFAULT (getdate()) NOT NULL,
     [Status]      VARCHAR (50)  NOT NULL,
@@ -82,4 +82,3 @@ CREATE TABLE [dbo].[OrderItem] (
     CONSTRAINT [FK_OrderItem_Order] FOREIGN KEY ([Order_ID]) REFERENCES [dbo].[Order] ([Order_ID]),
     CONSTRAINT [FK_OrderItem_Artwork] FOREIGN KEY ([Art_ID]) REFERENCES [dbo].[Artwork] ([Art_ID])
 );
-
