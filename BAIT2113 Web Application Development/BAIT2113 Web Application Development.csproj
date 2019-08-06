@@ -135,7 +135,8 @@
     <Content Include="customer\account\signup.aspx" />
     <Content Include="customer\account\wishlist.aspx" />
     <Content Include="customer\cart\cart.aspx" />
-    <Content Include="customer\cart\cartEmpty.aspx" />
+    <Content Include="customer\cart\cartEmpty.ascx" />
+    <Content Include="customer\cart\cartList.ascx" />
     <Content Include="customer\cart\checkout.aspx" />
     <Content Include="customer\main.aspx" />
     <Content Include="customer\order\orderDetails.aspx" />
@@ -281,12 +282,19 @@
     <Compile Include="customer\cart\cart.aspx.designer.cs">
       <DependentUpon>cart.aspx</DependentUpon>
     </Compile>
-    <Compile Include="customer\cart\cartEmpty.aspx.cs">
-      <DependentUpon>cartEmpty.aspx</DependentUpon>
+    <Compile Include="customer\cart\cartEmpty.ascx.cs">
+      <DependentUpon>cartEmpty.ascx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
     </Compile>
-    <Compile Include="customer\cart\cartEmpty.aspx.designer.cs">
-      <DependentUpon>cartEmpty.aspx</DependentUpon>
+    <Compile Include="customer\cart\cartEmpty.ascx.designer.cs">
+      <DependentUpon>cartEmpty.ascx</DependentUpon>
+    </Compile>
+    <Compile Include="customer\cart\cartList.ascx.cs">
+      <DependentUpon>cartList.ascx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="customer\cart\cartList.ascx.designer.cs">
+      <DependentUpon>cartList.ascx</DependentUpon>
     </Compile>
     <Compile Include="customer\cart\checkout.aspx.cs">
       <DependentUpon>checkout.aspx</DependentUpon>

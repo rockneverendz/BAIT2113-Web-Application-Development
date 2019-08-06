@@ -7,7 +7,7 @@ using System.Web.UI.WebControls;
 
 namespace BAIT2113_Web_Application_Development.customer.cart
 {
-    public partial class cartEmpty : System.Web.UI.Page
+    public partial class cartEmpty1 : System.Web.UI.UserControl
     {
         protected void Page_Load(object sender, EventArgs e)
         {

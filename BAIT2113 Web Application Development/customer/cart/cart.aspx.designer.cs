@@ -22,21 +22,21 @@ namespace BAIT2113_Web_Application_Development.customer.cart {
         protected global::System.Web.UI.HtmlControls.HtmlForm form1;
         
         /// <summary>
-        /// GridView1 control.
+        /// cartList control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.GridView GridView1;
+        protected global::BAIT2113_Web_Application_Development.customer.cart.cartList cartList;
         
         /// <summary>
-        /// orderTotal control.
+        /// cartEmpty control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Label orderTotal;
+        protected global::BAIT2113_Web_Application_Development.customer.cart.cartEmpty1 cartEmpty;
     }
 }
