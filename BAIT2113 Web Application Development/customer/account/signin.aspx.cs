@@ -16,7 +16,7 @@ namespace BAIT2113_Web_Application_Development.customer.account
             if (!IsPostBack)
             {
                 Customer customer = (Customer)Session["customer"];
-                HttpCookie cookie = Request.Cookies.Get("artist");
+                HttpCookie cookie = Request.Cookies.Get("customer");
                 // Check session if the user is logged in.
                 if (customer != null)
                 {
