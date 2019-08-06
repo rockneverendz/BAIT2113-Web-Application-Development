@@ -51,7 +51,7 @@ namespace BAIT2113_Web_Application_Development.customer
             }
 
         }
-        protected void Page_Load(object sender, EventArgs e)
+        protected override void OnPreRender(EventArgs e)
         {
             List<OrderItem> cart = (List<OrderItem>)Session["cart"];
             if (cart == null || cart.Count == 0)

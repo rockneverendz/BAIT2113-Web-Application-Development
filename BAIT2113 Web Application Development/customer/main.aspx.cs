@@ -86,9 +86,6 @@ namespace BAIT2113_Web_Application_Development.customer
                     };
                     cart.Add(orderItem);
                     Session["cart"] = cart;
-
-                    Label cartCount = Master.FindControl("cartCount") as Label;
-                    cartCount.Text = cart.Count.ToString();
                 }
                 else
                 {
