@@ -73,7 +73,7 @@ namespace BAIT2113_Web_Application_Development.customer.account
                 // Follow above if security is a requirement. Below is a zero security makeshift "Remember Me"
                 if (inputRemember.Checked)
                 {
-                    HttpCookie cookie = new HttpCookie("artist")
+                    HttpCookie cookie = new HttpCookie("customer")
                     {
                         Value = customer.Cust_ID.ToString(),
                         Expires = DateTime.Now.AddDays(30d)
