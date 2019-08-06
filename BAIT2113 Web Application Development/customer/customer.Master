@@ -21,13 +21,16 @@
 
                     <%-- Right --%>
                     <div class="nav-item ml-auto">
-                        <a class="nav-link" href="<%= ResolveUrl("~/customer/cart/cart.aspx") %>">Cart<asp:Label ID="cartCount" CssClass="badge badge-success" runat="server"></asp:Label></a>
+                        <a class="btn btn-light" role="button" href="<%= ResolveUrl("~/customer/cart/cart.aspx") %>">Cart <asp:Label ID="cartCount" CssClass="badge badge-success" runat="server"></asp:Label></a>
                     </div>
                     <div class="dropdown">
                         <a class="btn btn-light dropdown-toggle" href="#" role="button" id="dropdownMenuLink"
                             data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" runat="server">Account
                         </a>
                         <div class="dropdown-menu dropdown-menu-right" aria-labelledby="dropdownMenuLink">
+                            <a href="<%= ResolveUrl("~/customer/account/wishlist.aspx") %>" class="dropdown-item">Wishlist</a>
+                            <a href="<%= ResolveUrl("~/customer/order/orderHistory.aspx") %>" class="dropdown-item">Order History</a>
+                            <div class="dropdown-divider"></div>
                             <a href="<%= ResolveUrl("~/customer/account/settings.aspx") %>" class="dropdown-item">Settings</a>
                             <a href="<%= ResolveUrl("~/customer/account/signout.aspx") %>" class="dropdown-item">Sign Out</a>
                         </div>

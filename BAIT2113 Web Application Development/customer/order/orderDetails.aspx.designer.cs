@@ -7,11 +7,11 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-namespace BAIT2113_Web_Application_Development.customer.account
+namespace BAIT2113_Web_Application_Development.customer.order
 {
 
 
-    public partial class settings
+    public partial class orderDetails
     {
     }
 }

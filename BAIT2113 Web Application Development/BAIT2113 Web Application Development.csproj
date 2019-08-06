@@ -133,10 +133,13 @@
     <Content Include="customer\account\signin.aspx" />
     <Content Include="customer\account\signout.aspx" />
     <Content Include="customer\account\signup.aspx" />
+    <Content Include="customer\account\wishlist.aspx" />
     <Content Include="customer\cart\cart.aspx" />
     <Content Include="customer\cart\cartEmpty.aspx" />
     <Content Include="customer\cart\checkout.aspx" />
     <Content Include="customer\main.aspx" />
+    <Content Include="customer\order\orderDetails.aspx" />
+    <Content Include="customer\order\orderHistory.aspx" />
     <Content Include="DisplayImage.aspx" />
     <Content Include="Testing.aspx" />
     <Content Include="Web.config" />
@@ -264,6 +267,13 @@
     <Compile Include="customer\account\signup.aspx.designer.cs">
       <DependentUpon>signup.aspx</DependentUpon>
     </Compile>
+    <Compile Include="customer\account\wishlist.aspx.cs">
+      <DependentUpon>wishlist.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="customer\account\wishlist.aspx.designer.cs">
+      <DependentUpon>wishlist.aspx</DependentUpon>
+    </Compile>
     <Compile Include="customer\cart\cart.aspx.cs">
       <DependentUpon>cart.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
@@ -284,6 +294,20 @@
     </Compile>
     <Compile Include="customer\cart\checkout.aspx.designer.cs">
       <DependentUpon>checkout.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="customer\order\orderDetails.aspx.cs">
+      <DependentUpon>orderDetails.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="customer\order\orderDetails.aspx.designer.cs">
+      <DependentUpon>orderDetails.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="customer\order\orderHistory.aspx.cs">
+      <DependentUpon>orderHistory.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="customer\order\orderHistory.aspx.designer.cs">
+      <DependentUpon>orderHistory.aspx</DependentUpon>
     </Compile>
     <Compile Include="DisplayImage.aspx.cs">
       <DependentUpon>DisplayImage.aspx</DependentUpon>
