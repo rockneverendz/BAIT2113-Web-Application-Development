@@ -11,6 +11,12 @@ namespace BAIT2113_Web_Application_Development.customer.account
     {
         protected void Page_Load(object sender, EventArgs e)
         {
+            HttpCookie cookie = Request.Cookies.Get("customer");
+            if (cookie != null)
+            {
+                cookie.Expires = DateTime.Now.AddDays(-1d);
+                Response.Cookies.Add(cookie);
+            }
             Session.Clear();
             Response.Redirect("~/customer/account/signin.aspx");
         }

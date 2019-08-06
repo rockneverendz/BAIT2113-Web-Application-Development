@@ -8,8 +8,7 @@
         <!-- Jumbotron --->
         <div class="jumbotron jumbotron-fluid" style="margin-top: 50px;">
             <div class="container">
-                <h1 class="display-4">Welcome to Art Gallery</h1>
-                <p class="lead">This is a modified jumbotron that occupies the entire horizontal space of its parent.</p>
+                <asp:Label ID="jumbotronHeader" CssClass="display-4 d-block" style="margin-bottom: .5rem;" runat="server" Text="Hello world!"></asp:Label>
             </div>
         </div>
 
@@ -27,7 +26,7 @@
                                 <div class="text-muted"><%# Eval("Status") %></div>
                             </div>
                             <div class="overflow-auto card-text" style="height: 13vw">
-                                    <%# Eval("Description") %>
+                                <%# Eval("Description") %>
                             </div>
                             <div class="mt-auto d-flex justify-content-between">
                                 <div class="display-4" style="font-size: 1.5rem;"><%# String.Format("RM {0:0.00}", Eval("Price")) %></div>
@@ -48,7 +47,7 @@
                     </div>
                 </ItemTemplate>
             </asp:DataList>
-            <asp:SqlDataSource runat="server" ID="SqlDataSource1" ConnectionString='<%$ ConnectionStrings:ArtGalleryConnStr %>' SelectCommand="SELECT Artwork.Art_ID, Artwork.Title, Artwork.Description, Artist.Username, Artwork.Date, Artwork.Status, Artwork.Price, Artwork.Image, Artwork.Stock, Artwork.Artist_ID FROM Artwork INNER JOIN Artist ON Artwork.Artist_ID = Artist.Artist_ID WHERE (Artwork.Status <> 'Hidden') AND (Artwork.Status <> 'Deleted') ORDER BY Artwork.Art_ID DESC"></asp:SqlDataSource>
+            <asp:SqlDataSource runat="server" ID="SqlDataSource1" ConnectionString='<%$ ConnectionStrings:ArtGalleryConnStr %>' SelectCommand="SELECT Artwork.Art_ID, Artwork.Title, Artwork.Description, Artist.Username, Artwork.Date, Artwork.Status, Artwork.Price, Artwork.Image, Artwork.Stock, Artwork.Artist_ID FROM Artwork INNER JOIN Artist ON Artwork.Artist_ID = Artist.Artist_ID WHERE (Artwork.Status <> 'Hidden') AND (Artwork.Status <> 'Deleted') ORDER BY Artwork.Art_ID DESC" EnableCaching="True" CacheDuration="60"></asp:SqlDataSource>
         </div>
     </form>
 </asp:Content>

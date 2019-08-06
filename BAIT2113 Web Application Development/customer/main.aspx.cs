@@ -11,6 +11,13 @@ namespace BAIT2113_Web_Application_Development.customer
     {
         protected void Page_Load(object sender, EventArgs e)
         {
+            if (!IsPostBack)
+            {
+                if (DateTime.Now.Hour < 12)
+                    jumbotronHeader.Text = "Good morning, " + ((Customer)Session["customer"]).Username + '.';
+                else
+                    jumbotronHeader.Text = "Good afternoon, " + ((Customer)Session["customer"]).Username + '.';
+            }
         }
 
         protected void addToWishlist(object sender, EventArgs e)
@@ -46,7 +53,6 @@ namespace BAIT2113_Web_Application_Development.customer
         {
             ArtGalleryEntities context = new ArtGalleryEntities();
             List<OrderItem> cart = (List<OrderItem>)Session["cart"];
-            Customer customer = (Customer)Session["customer"];
             int Art_ID = Convert.ToInt32(((ImageButton)sender).CommandArgument);
             bool exists = false;
             Artwork artwork = context.Artworks.Find(Art_ID);
@@ -80,6 +86,9 @@ namespace BAIT2113_Web_Application_Development.customer
                     };
                     cart.Add(orderItem);
                     Session["cart"] = cart;
+
+                    Label cartCount = Master.FindControl("cartCount") as Label;
+                    cartCount.Text = cart.Count.ToString();
                 }
                 else
                 {

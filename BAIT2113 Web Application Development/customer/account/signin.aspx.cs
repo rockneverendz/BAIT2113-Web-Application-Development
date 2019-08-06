@@ -13,7 +13,38 @@ namespace BAIT2113_Web_Application_Development.customer.account
     {
         protected void Page_Load(object sender, EventArgs e)
         {
+            if (!IsPostBack)
+            {
+                Customer customer = (Customer)Session["customer"];
+                HttpCookie cookie = Request.Cookies.Get("artist");
+                // Check session if the user is logged in.
+                if (customer != null)
+                {
+                    // User found! Redirecting to main page
+                    Response.Redirect("../main.aspx");
+                }
+                // Session not found, checking cookie
+                else if (cookie != null)
+                {
+                    using (ArtGalleryEntities context = new ArtGalleryEntities())
+                    {
+                        customer = context.Customers.Find(Convert.ToInt32(cookie.Value));
 
+                        if (customer != null)
+                        {
+                            // Artist found! Binding user into session. Then redirect to main page
+                            Session["customer"] = customer;
+                            Response.Redirect("../main.aspx");
+                        }
+                        else
+                        {
+                            // Unknown credentials, destroying cookie.
+                            cookie.Expires = DateTime.Now.AddDays(-1d);
+                            Response.Cookies.Add(cookie);
+                        }
+                    }
+                }
+            }
         }
 
         protected void BtnSignIn_Click(object sender, EventArgs e)
@@ -35,12 +66,26 @@ namespace BAIT2113_Web_Application_Development.customer.account
                     sysResponseBox.Visible = true;
                     return;
                 }
-                
-                // Validated, bind customer into session.
+
+                /*-- Validated --*/
+                // Add cookie if requested.
+                // https://stackoverflow.com/questions/244882/what-is-the-best-way-to-implement-remember-me-for-a-website
+                // Follow above if security is a requirement. Below is a zero security makeshift "Remember Me"
+                if (inputRemember.Checked)
+                {
+                    HttpCookie cookie = new HttpCookie("artist")
+                    {
+                        Value = customer.Cust_ID.ToString(),
+                        Expires = DateTime.Now.AddDays(30d)
+                    };
+                    Response.Cookies.Add(cookie);
+                }
+
+                // Bind customer into session.
                 Session["customer"] = customer;
 
                 // Redirect customer to main page.
-                Response.RedirectPermanent("../main.aspx");
+                Response.Redirect("../main.aspx");
             }
         }
     }

@@ -152,6 +152,12 @@
             <label for="inputPassword">Password</label>
         </div>
 
+        <div class="checkbox mb-3">
+            <label>
+                <asp:CheckBox ID="inputRemember" type="checkbox" runat="server" Text="&nbspRemember me for 30 days" />
+            </label>
+        </div>
+
         <%--Submit Button--%>
         <asp:Button ID="BtnSignIn" class="btn btn-lg btn-primary btn-block" runat="server" Text="Sign In" OnClick="BtnSignIn_Click" />
         <hr />
