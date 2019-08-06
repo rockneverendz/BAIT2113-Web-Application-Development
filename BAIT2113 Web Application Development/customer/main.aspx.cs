@@ -45,7 +45,7 @@ namespace BAIT2113_Web_Application_Development.customer
             }
             else
             {
-                //TODO return error "Item laready wishlisted!"
+                //TODO return error "Item already wishlisted!"
             }
         }
 

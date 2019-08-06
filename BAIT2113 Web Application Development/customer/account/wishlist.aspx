@@ -29,6 +29,9 @@
                             <div class="mt-auto d-flex justify-content-between">
                                 <div class="display-4" style="font-size: 1.5rem;"><%# String.Format("RM {0:0.00}", Eval("Price")) %></div>
                                 <div>
+                                    <asp:ImageButton ID="btnRemoveWishlist" class="far btn btn-secondary" Style="width: 3rem; height: 2rem" ImageUrl="../../resource/bookmark-solid.svg"
+                                        data-toggle="tooltip" data-placement="bottom" title="Remove from Wishlist"
+                                        AlternateText="Remove from  Wishlist" CommandArgument='<%# Eval("Art_ID") %>' OnClick="removeFromWishlist" runat="server" />
                                     <asp:ImageButton ID="btnAddToCart" class="fas btn btn-primary" Style="width: 3rem; height: 2rem" ImageUrl="../../resource/cart-plus-solid.svg"
                                         data-toggle="tooltip" data-placement="bottom" title="Add to Cart"
                                         AlternateText="Add To Cart" CommandArgument='<%# Eval("Art_ID") %>' OnClick="addToCart" runat="server" />
@@ -39,6 +42,12 @@
                         <a href="#" class="col-8 d-none d-lg-block card-img">
                             <img class="w-100 h-100" style="object-fit: cover;" src='<%#"data:Image/png;base64," + Convert.ToBase64String((byte[])Eval("Image"))%>' />
                         </a>
+                        <!-- Card footer --->
+                        <div class="card-footer col-12 text-muted">
+                            <div class="px-4">
+                                Added to wishlist on <%# ((DateTime)Eval("W_Date")).ToShortDateString() %>
+                            </div>
+                        </div>
                     </div>
                 </ItemTemplate>
             </asp:Repeater>
@@ -46,4 +55,9 @@
     </form>
 </asp:Content>
 <asp:Content ID="Content3" ContentPlaceHolderID="contentScript" runat="server">
+    <script>
+        $(function () {
+            $('[data-toggle="tooltip"]').tooltip()
+        })
+    </script>
 </asp:Content>
