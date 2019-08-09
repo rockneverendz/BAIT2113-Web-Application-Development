@@ -11,7 +11,46 @@ namespace BAIT2113_Web_Application_Development.customer.cart
     {
         protected void Page_Load(object sender, EventArgs e)
         {
+            if (!IsPostBack)
+            {
+                List<OrderItem> cart = (List<OrderItem>)Session["cart"];
 
+                if (cart == null || cart.Count == 0)
+                {
+                    Response.Redirect("~/customer/main.aspx");
+                }
+
+                List<CartList> list = new List<CartList>();
+                ArtGalleryEntities context = new ArtGalleryEntities();
+                Artwork artwork;
+                decimal? subtotal;
+                decimal? total = 0;
+
+                for (int index = 0; index < cart.Count; index++)
+                {
+                    OrderItem orderItem = cart[index];
+                    artwork = context.Artworks.Find(orderItem.Art_ID);
+                    subtotal = orderItem.Quantity * orderItem.PriceEach;
+                    total += subtotal;
+
+                    list.Add(new CartList
+                    {
+                        Index = index + 1,
+                        Art_ID = artwork.Art_ID,
+                        Title = artwork.Title,
+                        Base64image = Convert.ToBase64String(artwork.Image),
+                        Quantity = orderItem.Quantity,
+                        PriceEach = orderItem.PriceEach,
+                        Subtotal = subtotal
+                    });
+                }
+
+                Repeater1.DataSource = list;
+                Repeater1.DataBind();
+
+                orderTotal.Text = String.Format("RM {0:0.00}", total);
+
+            }
         }
     }
 }

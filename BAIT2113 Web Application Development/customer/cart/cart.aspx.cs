@@ -22,6 +22,10 @@ namespace BAIT2113_Web_Application_Development.customer.cart
                     cartEmpty.Visible = true;
                 }
             }
+
+            //WebConfigurationManager.AppSettings["email"];
+            //WebConfigurationManager.AppSettings["password"];
+
         }
     }
 }

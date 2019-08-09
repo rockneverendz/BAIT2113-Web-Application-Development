@@ -12,25 +12,20 @@ namespace BAIT2113_Web_Application_Development.customer.cart
     {
         protected void Page_Load(object sender, EventArgs e)
         {
-            if (this.Visible)
+            if (!IsPostBack && Visible)
             {
                 List<OrderItem> cart = (List<OrderItem>)Session["cart"];
 
+                if (cart == null || cart.Count == 0)
+                {
+                    Response.Redirect("~/customer/main.aspx");
+                }
+
+                List<CartList> list = new List<CartList>();
                 ArtGalleryEntities context = new ArtGalleryEntities();
-                DataTable dt = new DataTable();
                 Artwork artwork;
                 decimal? subtotal;
                 decimal? total = 0;
-
-                dt.Columns.AddRange(new DataColumn[7] {
-                    new DataColumn("Index"),
-                    new DataColumn("Art_ID"),
-                    new DataColumn("Title"),
-                    new DataColumn("Image"),
-                    new DataColumn("Quantity"),
-                    new DataColumn("PriceEach"),
-                    new DataColumn("Subtotal")
-                });
 
                 for (int index = 0; index < cart.Count; index++)
                 {
@@ -39,19 +34,20 @@ namespace BAIT2113_Web_Application_Development.customer.cart
                     subtotal = orderItem.Quantity * orderItem.PriceEach;
                     total += subtotal;
 
-                    dt.Rows.Add(
-                        index + 1,
-                        artwork.Art_ID,
-                        artwork.Title,
-                        Convert.ToBase64String(artwork.Image),
-                        orderItem.Quantity,
-                        String.Format("{0:0.00}", orderItem.PriceEach),
-                        String.Format("{0:0.00}", subtotal)
-                        );
+                    list.Add(new CartList
+                    {
+                        Index = index + 1,
+                        Art_ID = artwork.Art_ID,
+                        Title = artwork.Title,
+                        Base64image = Convert.ToBase64String(artwork.Image),
+                        Quantity = orderItem.Quantity,
+                        PriceEach = orderItem.PriceEach,
+                        Subtotal = subtotal
+                    });
                 }
 
-                GridView1.DataSource = dt;
-                GridView1.DataBind();
+                Repeater1.DataSource = list;
+                Repeater1.DataBind();
 
                 orderTotal.Text = String.Format("RM {0:0.00}", total);
             }
@@ -60,28 +56,32 @@ namespace BAIT2113_Web_Application_Development.customer.cart
         protected void removeItem(object sender, EventArgs e)
         {
             List<OrderItem> cart = (List<OrderItem>)Session["cart"];
-            cart.RemoveAt(Convert.ToInt32(((Button)sender).CommandArgument) - 1);
+            cart.RemoveAt(Convert.ToInt32(((ImageButton)sender).CommandArgument) - 1);
             Response.Redirect(Request.RawUrl);
         }
 
         protected void orderQuantity_TextChanged(object sender, EventArgs e)
         {
+            // Get the sender, find the required labels.
             TextBox orderQuantity = (TextBox)sender;
-            GridViewRow row = (GridViewRow)orderQuantity.NamingContainer;
-            int orderIndex = Convert.ToInt32(row.Cells[0].Text) - 1;
+            Label lblIndex = (Label)orderQuantity.NamingContainer.FindControl("lblIndex");
+            Label lblSubtotal = (Label)orderQuantity.NamingContainer.FindControl("lblSubtotal");
+
+            // Find cart element by index.
+            int orderIndex = Convert.ToInt32(lblIndex.Text) - 1;
             List<OrderItem> cart = (List<OrderItem>)Session["cart"];
             OrderItem orderItem = cart.ElementAt(orderIndex);
+
+            // Update Quantity
             orderItem.Quantity = Convert.ToInt32(orderQuantity.Text);
 
-            //Update Subtotal
-            row.Cells[6].Text = String.Format("{0:0.00}", orderItem.Quantity * orderItem.PriceEach);
+            // Update Subtotal
+            lblSubtotal.Text = String.Format("{0:0.00}", orderItem.Quantity * orderItem.PriceEach);
 
-            //Update Total
+            // Update Total
             decimal? total = 0;
             foreach (OrderItem oi in cart)
-            {
                 total += oi.Quantity * oi.PriceEach;
-            }
             orderTotal.Text = String.Format("RM {0:0.00}", total);
         }
     }

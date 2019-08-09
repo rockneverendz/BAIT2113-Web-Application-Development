@@ -15,10 +15,15 @@
         </div>
         <!-- Content --->
         <div class="container">
-            <cart:List runat="server" id="cartList"/>
-            <cart:Empty runat="server" id="cartEmpty" Visible="false"/>
+            <cart:List runat="server" ID="cartList" />
+            <cart:Empty runat="server" ID="cartEmpty" Visible="false" />
         </div>
     </form>
 </asp:Content>
 <asp:Content ID="Content3" ContentPlaceHolderID="contentScript" runat="server">
+    <script>
+        $(function () {
+            $('[data-toggle="tooltip"]').tooltip()
+        })
+    </script>
 </asp:Content>

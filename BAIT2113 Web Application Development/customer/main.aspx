@@ -8,7 +8,7 @@
         <!-- Jumbotron --->
         <div class="jumbotron jumbotron-fluid" style="margin-top: 50px;">
             <div class="container">
-                <asp:Label ID="jumbotronHeader" CssClass="display-4 d-block" style="margin-bottom: .5rem;" runat="server" Text="Hello world!"></asp:Label>
+                <asp:Label ID="jumbotronHeader" CssClass="display-4 d-block" Style="margin-bottom: .5rem;" runat="server" Text="Hello world!"></asp:Label>
             </div>
         </div>
 
@@ -31,7 +31,7 @@
                             <div class="mt-auto d-flex justify-content-between">
                                 <div class="display-4" style="font-size: 1.5rem;"><%# String.Format("RM {0:0.00}", Eval("Price")) %></div>
                                 <div>
-                                    <asp:ImageButton ID="btnWishlist" class="far btn btn-info" Style="width: 3rem; height: 2rem" ImageUrl="../resource/bookmark-regular.svg"
+                                    <asp:ImageButton ID="btnWishlist" class="far btn btn-info" Style="width: 3rem; height: 2rem" ImageUrl="../resource/bookmark-solid.svg"
                                         data-toggle="tooltip" data-placement="bottom" title="Add to Wishlist"
                                         AlternateText="Add to Wishlist" CommandArgument='<%# Eval("Art_ID") %>' OnClick="addToWishlist" runat="server" />
                                     <asp:ImageButton ID="btnAddToCart" class="fas btn btn-primary" Style="width: 3rem; height: 2rem" ImageUrl="../resource/cart-plus-solid.svg"
@@ -41,9 +41,20 @@
                             </div>
                         </div>
                         <!-- Artwork image on the left, covers 66% of the card --->
-                        <a href="#" class="col-8 d-none d-lg-block card-img">
+                        <a role="button" href="#" class="col-8 d-none d-lg-block card-img pop" data-toggle="modal" data-target="#imageModal">
                             <img class="w-100 h-100" style="object-fit: cover;" src='<%#"data:Image/png;base64," + Convert.ToBase64String((byte[])Eval("Image"))%>' />
                         </a>
+
+                        <!-- Modal when user clicked on the artowrk -->
+                        <div class="modal fade" id="imageModal" tabindex="-1" role="dialog" aria-labelledby="imageModalLabel" aria-hidden="true">
+                            <div class="modal-dialog modal-dialog-centered modal-xl" role="document">
+                                <div class="modal-content">
+                                    <div class="modal-body p-0">
+                                        <img src="" class="imagepreview" style="width: 100%;">
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
                     </div>
                 </ItemTemplate>
             </asp:DataList>
@@ -56,5 +67,11 @@
         $(function () {
             $('[data-toggle="tooltip"]').tooltip()
         })
+
+        $(function () {
+            $('.pop').on('click', function () {
+                $('.imagepreview').attr('src', $(this).find('img').attr('src'));
+            });
+        });
     </script>
 </asp:Content>
