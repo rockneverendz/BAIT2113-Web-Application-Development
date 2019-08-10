@@ -48,7 +48,8 @@ namespace BAIT2113_Web_Application_Development.customer.cart
                 Repeater1.DataSource = list;
                 Repeater1.DataBind();
 
-                orderTotal.Text = String.Format("RM {0:0.00}", total);
+                orderTotal.Text = string.Format("RM {0:0.00}", total);
+                orderTotalPayPal.Text = string.Format("{0:0.00}", total);
 
             }
         }
