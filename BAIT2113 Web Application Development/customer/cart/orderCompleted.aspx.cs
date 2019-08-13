@@ -27,23 +27,64 @@ namespace BAIT2113_Web_Application_Development.customer.cart
             if (!IsPostBack)
             {
                 List<OrderItem> cart = (List<OrderItem>)Session["cart"];
+                Customer customer = (Customer)Session["customer"];
                 ArtGalleryEntities context = new ArtGalleryEntities();
                 Artwork artwork;
+                int quantity;
                 decimal? total = 0;
 
                 for (int index = 0; index < cart.Count; index++)
                 {
+                    // Get price.
                     OrderItem orderItem = cart[index];
                     total += orderItem.Quantity * orderItem.PriceEach;
 
+                    // Validate then update artwork stock
                     artwork = context.Artworks.Find(orderItem.Art_ID);
-                    artwork.Stock -= orderItem.Quantity.GetValueOrDefault();
+                    quantity = orderItem.Quantity.GetValueOrDefault();
 
+                    if (artwork.Stock < quantity)
+                    {
+                        //TODO Return error message
+                    }
+                    else if (artwork.Stock == quantity)
+                    {
+                        artwork.Stock -= quantity;
+                        artwork.Status = "Unavailable";
+                    }
+                    else
+                    {
+                        artwork.Stock -= quantity;
+                    }
                 }
 
+                // Create order and payment record
+                Order order = context.Orders.Add(new Order
+                {
+                    Order_Status = "Paid",
+                    Order_Date = DateTime.Now,
+                    Cust_ID = customer.Cust_ID,
+                    Pay_ID = context.Payments.Add(new Payment
+                    {
+                        Pay_Date = DateTime.Now,
+                        Pay_Amount = total
+                    }).Pay_ID
+                });
+
+                // For each item points to the order created
+                foreach (var item in cart)
+                {
+                    item.Order_ID = order.Order_ID;
+                    context.OrderItems.Add(item);
+                }
+
+                // Add to database
+                context.SaveChanges();
+
+                // Destroy cart
+                Session.Remove("cart");
+
             }
-
-
         }
     }
 }
