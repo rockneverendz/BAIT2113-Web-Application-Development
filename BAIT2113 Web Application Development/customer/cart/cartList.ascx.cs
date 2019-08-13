@@ -41,6 +41,7 @@ namespace BAIT2113_Web_Application_Development.customer.cart
                         Title = artwork.Title,
                         Base64image = Convert.ToBase64String(artwork.Image),
                         Quantity = orderItem.Quantity,
+                        Stock = artwork.Stock,
                         PriceEach = orderItem.PriceEach,
                         Subtotal = subtotal
                     });
@@ -62,7 +63,7 @@ namespace BAIT2113_Web_Application_Development.customer.cart
 
         protected void orderQuantity_TextChanged(object sender, EventArgs e)
         {
-            // Get the sender, find the required labels.
+            // Get the required labels.
             TextBox orderQuantity = (TextBox)sender;
             Label lblIndex = (Label)orderQuantity.NamingContainer.FindControl("lblIndex");
             Label lblSubtotal = (Label)orderQuantity.NamingContainer.FindControl("lblSubtotal");
@@ -72,11 +73,20 @@ namespace BAIT2113_Web_Application_Development.customer.cart
             List<OrderItem> cart = (List<OrderItem>)Session["cart"];
             OrderItem orderItem = cart.ElementAt(orderIndex);
 
+            // Verify Quantity, abort if under 1 and over stock
+            int quantity = Convert.ToInt32(orderQuantity.Text);
+            using (ArtGalleryEntities context = new ArtGalleryEntities())
+            {
+                if (quantity < 1 || quantity > context.Artworks.Find(orderItem.Art_ID).Stock)
+                    Response.Redirect(Request.RawUrl);
+            }
+
+
             // Update Quantity
-            orderItem.Quantity = Convert.ToInt32(orderQuantity.Text);
+            orderItem.Quantity = quantity;
 
             // Update Subtotal
-            lblSubtotal.Text = String.Format("{0:0.00}", orderItem.Quantity * orderItem.PriceEach);
+            lblSubtotal.Text = String.Format("RM {0:0.00}", orderItem.Quantity * orderItem.PriceEach);
 
             // Update Total
             decimal? total = 0;
