@@ -1,7 +1,9 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Net.Mail;
 using System.Web;
+using System.Web.Configuration;
 using System.Web.UI;
 using System.Web.UI.WebControls;
 
@@ -80,6 +82,32 @@ namespace BAIT2113_Web_Application_Development.customer.cart
 
                 // Add to database
                 context.SaveChanges();
+
+                // Send E-mail
+                try
+                {
+                    MailMessage mail = new MailMessage();
+                    SmtpClient SmtpServer = new SmtpClient("smtp.gmail.com");
+
+                    mail.From = new MailAddress(WebConfigurationManager.AppSettings["email"]);
+                    mail.To.Add(customer.Email);
+                    mail.Subject = "Thanks for your purchase at ArtGallery!";
+                    mail.Body = string.Format("The order #{0} has been successfully paid with a total of RM {1:0.00}.\nThank you for your purchase at ArtGallery.",order.Order_ID , total);
+
+                    SmtpServer.Port = 587;
+                    SmtpServer.Credentials = new System.Net.NetworkCredential(
+                        WebConfigurationManager.AppSettings["email"],
+                        WebConfigurationManager.AppSettings["password"]
+                        );
+                    SmtpServer.EnableSsl = true;
+
+                    SmtpServer.Send(mail);
+                }
+                catch (Exception ex)
+                {
+                    // TODO Return payment made but unable to email
+                }
+
 
                 // Destroy cart
                 Session.Remove("cart");
