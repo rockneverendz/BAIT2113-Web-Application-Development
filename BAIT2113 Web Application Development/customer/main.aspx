@@ -34,9 +34,15 @@
                                     <asp:ImageButton ID="btnWishlist" class="far btn btn-info" Style="width: 3rem; height: 2rem" ImageUrl="../resource/bookmark-solid.svg"
                                         data-toggle="tooltip" data-placement="bottom" title="Add to Wishlist"
                                         AlternateText="Add to Wishlist" CommandArgument='<%# Eval("Art_ID") %>' OnClick="addToWishlist" runat="server" />
+                                    
+                                    <!-- Allow the artwork to be added to cart if it's status is "Available" --->
                                     <asp:ImageButton ID="btnAddToCart" class="fas btn btn-primary" Style="width: 3rem; height: 2rem" ImageUrl="../resource/cart-plus-solid.svg"
                                         data-toggle="tooltip" data-placement="bottom" title="Add to Cart"
-                                        AlternateText="Add To Cart" CommandArgument='<%# Eval("Art_ID") %>' OnClick="addToCart" runat="server" />
+                                        AlternateText="Add To Cart" CommandArgument='<%# Eval("Art_ID") %>' OnClick="addToCart"
+                                        visible='<%# (Eval("Status").ToString() == "Available") %>' runat="server" />
+                                    <input type="image" class="fas btn btn-secondary" style="width: 3rem; height: 2rem" src="../resource/cart-plus-solid.svg" 
+                                        data-toggle="tooltip" data-placement="bottom" title="Unable to Add to Cart" alt="Unable to Add to Cart" disabled
+                                        visible='<%# (Eval("Status").ToString() != "Available") %>' runat="server" />
                                 </div>
                             </div>
                         </div>

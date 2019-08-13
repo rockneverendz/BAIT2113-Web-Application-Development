@@ -12,6 +12,7 @@ namespace BAIT2113_Web_Application_Development.customer.cart
         public string Title { get; set; }
         public string Base64image { get; set; }
         public int? Quantity { get; set; }
+        public int Stock { get; set; }
         public decimal? PriceEach { get; set; }
         public decimal? Subtotal { get; set; }
     }

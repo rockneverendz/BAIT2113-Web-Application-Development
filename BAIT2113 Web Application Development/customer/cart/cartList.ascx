@@ -25,7 +25,7 @@
                             <img style="max-height: 150px; max-width: 150px" src='<%#"data:Image/png;base64," + Eval("Base64image")%>' />
                         </td>
                         <td>
-                            <asp:TextBox ID="orderQuantity" type="number" class="form-control" placeholder="Quantity" value='<%# Eval("Quantity") %>' runat="server" OnTextChanged="orderQuantity_TextChanged" AutoPostBack="True"></asp:TextBox>
+                            <asp:TextBox ID="orderQuantity" type="number" class="form-control" placeholder="Quantity" value='<%# Eval("Quantity") %>' min="1" max='<%# Eval("Stock") %>' runat="server" OnTextChanged="orderQuantity_TextChanged" AutoPostBack="True"></asp:TextBox>
                         </td>
                         <td><%# String.Format("RM {0:0.00}", Eval("PriceEach")) %></td>
                         <td>
