@@ -60,10 +60,11 @@ namespace BAIT2113_Web_Application_Development.artist.account
                     return;
                 }
 
-                Artist artist = new Artist
-                {
-                    Username = inputUsername.Text,
-                    Email = inputEmail.Text,
+				Artist artist = new Artist
+				{
+					Username = inputUsername.Text,
+					Email = inputEmail.Text,
+					ContactNo = inputContactNo.Text,
                     Password = inputPassword.Text
                 };
 
