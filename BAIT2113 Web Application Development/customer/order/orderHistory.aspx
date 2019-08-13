@@ -3,12 +3,41 @@
 <asp:Content ID="Content1" ContentPlaceHolderID="contentHead" runat="server">
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="contentMain" runat="server">
-    <asp:Repeater ID="Repeater1" runat="server" DataSourceID="SqlDataSource1"></asp:Repeater>
-    <asp:SqlDataSource runat="server" ID="SqlDataSource1" ConnectionString='<%$ ConnectionStrings:ArtGalleryConnStr %>' SelectCommand="SELECT [Order].Order_ID, [Order].Order_Status, [Order].Order_Date, Payment.Pay_Amount FROM OrderItem INNER JOIN [Order] ON OrderItem.Order_ID = [Order].Order_ID INNER JOIN Payment ON [Order].Pay_ID = Payment.Pay_ID WHERE ([Order].Cust_ID = @Cust_ID)">
-        <SelectParameters>
-            <asp:SessionParameter SessionField="Cust_ID" DefaultValue="0" Name="Cust_ID"></asp:SessionParameter>
-        </SelectParameters>
-    </asp:SqlDataSource>
+    <form id="form1" runat="server">
+        <!-- Jumbotron --->
+        <div class="jumbotron jumbotron-fluid" style="margin-top: 50px;">
+            <div class="container">
+                <h1 class="display-4">Order History</h1>
+            </div>
+        </div>
+        <!-- Content --->
+        <div class="container">
+            <div class="card border-top-0">
+                <table class="table mb-0">
+                    <thead>
+                        <tr>
+                            <th scope="col" style="width: 25%">Order ID</th>
+                            <th scope="col" style="width: 25%">Status</th>
+                            <th scope="col" style="width: 25%">Date</th>
+                            <th scope="col" style="width: 25%">Amount</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <asp:Repeater ID="Repeater1" runat="server">
+                            <ItemTemplate>
+                                <tr onclick="window.location='orderDetails.aspx?id=<%# Eval("Order_ID") %>';" style="cursor: pointer">
+                                    <th><%# Eval("Order_ID") %></th>
+                                    <td><%# Eval("Order_Status") %></td>
+                                    <td><%# Eval("Payment.Pay_Date") %></td>
+                                    <td><%# Eval("Payment.Pay_Amount") %></td>
+                                </tr>
+                            </ItemTemplate>
+                        </asp:Repeater>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </form>
 </asp:Content>
 <asp:Content ID="Content3" ContentPlaceHolderID="contentScript" runat="server">
 </asp:Content>
