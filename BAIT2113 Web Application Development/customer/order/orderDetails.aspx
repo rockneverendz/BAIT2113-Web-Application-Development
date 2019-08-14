@@ -11,7 +11,50 @@
     </div>
     <!-- Content --->
     <div class="container">
-        <div class="card border-top-0">
+        <div class="container card card-body w-50 mb-3">
+            <div class="row">
+                <div class="col-6">
+                    Order ID
+                </div>
+                <div class="col-6">
+                    <asp:Label ID="lblOrderID" runat="server"></asp:Label>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-6">
+                    Order Date
+                </div>
+                <div class="col-6">
+                    <asp:Label ID="lblOrderDate" runat="server"></asp:Label>
+                </div>
+            </div>            
+            <div class="row">
+                <div class="col-6">
+                    Order Time
+                </div>
+                <div class="col-6">
+                    <asp:Label ID="lblOrderTime" runat="server"></asp:Label>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-6">
+                    Payment Method
+                </div>
+                <div class="col-6">
+                    <span>Paypal</span>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-6">
+                    Payment Amount
+                </div>
+                <div class="col-6">
+                    <asp:Label ID="lblPaymentAmount" runat="server"></asp:Label>
+                </div>
+            </div>
+        </div>
+
+        <div class="card border-top-0 mb-5">
             <table class="table mb-0">
                 <thead>
                     <tr>

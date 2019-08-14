@@ -1,6 +1,6 @@
 ﻿<%@ Control Language="C#" AutoEventWireup="true" CodeBehind="cartList.ascx.cs" Inherits="BAIT2113_Web_Application_Development.customer.cart.cartList" %>
 
-<div class="card border-top-0">
+<div class="card border-top-0 mb-5">
     <table class="table mb-0">
         <thead>
             <tr>

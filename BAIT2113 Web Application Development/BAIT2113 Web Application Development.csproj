@@ -138,7 +138,7 @@
     <Content Include="customer\cart\cartEmpty.ascx" />
     <Content Include="customer\cart\cartList.ascx" />
     <Content Include="customer\cart\checkout.aspx" />
-    <Content Include="customer\cart\orderCompleted.aspx" />
+    <Content Include="customer\cart\orderProcess.aspx" />
     <Content Include="customer\main.aspx" />
     <Content Include="customer\order\orderDetails.aspx" />
     <Content Include="customer\order\orderHistory.aspx" />
@@ -305,12 +305,12 @@
     <Compile Include="customer\cart\checkout.aspx.designer.cs">
       <DependentUpon>checkout.aspx</DependentUpon>
     </Compile>
-    <Compile Include="customer\cart\orderCompleted.aspx.cs">
-      <DependentUpon>orderCompleted.aspx</DependentUpon>
+    <Compile Include="customer\cart\orderProcess.aspx.cs">
+      <DependentUpon>orderProcess.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
     </Compile>
-    <Compile Include="customer\cart\orderCompleted.aspx.designer.cs">
-      <DependentUpon>orderCompleted.aspx</DependentUpon>
+    <Compile Include="customer\cart\orderProcess.aspx.designer.cs">
+      <DependentUpon>orderProcess.aspx</DependentUpon>
     </Compile>
     <Compile Include="customer\order\orderDetails.aspx.cs">
       <DependentUpon>orderDetails.aspx</DependentUpon>

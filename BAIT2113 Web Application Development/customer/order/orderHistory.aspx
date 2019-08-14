@@ -12,7 +12,7 @@
         </div>
         <!-- Content --->
         <div class="container">
-            <div class="card border-top-0">
+            <div class="card border-top-0 mb-5">
                 <table class="table mb-0">
                     <thead>
                         <tr>

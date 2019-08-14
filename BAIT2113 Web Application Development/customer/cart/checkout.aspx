@@ -12,7 +12,7 @@
     </div>
     <%-- Content --%>
     <div class="container">
-        <div class="card border-top-0">
+        <div class="card border-top-0 mb-5">
             <table class="table mb-0">
                 <thead>
                     <tr>
@@ -74,7 +74,7 @@
                         // Capture the funds from the transaction
                         return actions.order.capture().then(function (details) {
                             // Show a success message to your buyer
-                            location.href = 'orderCompleted.aspx'
+                            location.href = 'orderProcess.aspx'
                         });
                     }
                 }).render(button);
