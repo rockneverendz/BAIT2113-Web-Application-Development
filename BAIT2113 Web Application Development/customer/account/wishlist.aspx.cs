@@ -21,8 +21,7 @@ namespace BAIT2113_Web_Application_Development.customer.account
 
                 var resultSet = context.Artworks
                     .Join(context.WishLists
-                        .Where(c => c.Cust_ID == customer.Cust_ID)
-                        .OrderByDescending(wl => wl.W_Date),
+                        .Where(c => c.Cust_ID == customer.Cust_ID),
                             a => a.Art_ID,
                             wl => wl.Art_ID,
                             (a, wl) => new
@@ -37,6 +36,7 @@ namespace BAIT2113_Web_Application_Development.customer.account
                                 a.Image,
                                 wl.W_Date
                             })
+                    .OrderByDescending(wl => wl.W_Date)
                     .ToList();
 
                 Repeater1.DataSource = resultSet;
