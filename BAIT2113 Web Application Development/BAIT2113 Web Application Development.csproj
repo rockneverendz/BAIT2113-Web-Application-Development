@@ -82,8 +82,8 @@
     <Content Include="ArtGallery.aspx" />
     <Content Include="ArtGalleryEntities.Context.tt">
       <Generator>TextTemplatingFileGenerator</Generator>
-      <LastGenOutput>ArtGalleryEntities.Context.cs</LastGenOutput>
       <DependentUpon>ArtGalleryEntities.edmx</DependentUpon>
+      <LastGenOutput>ArtGalleryEntities.Context.cs</LastGenOutput>
     </Content>
     <Content Include="ArtGalleryEntities.tt">
       <Generator>TextTemplatingFileGenerator</Generator>
@@ -97,6 +97,7 @@
     <Content Include="artist\artwork\edit.aspx" />
     <Content Include="artist\artwork\view.aspx" />
     <Content Include="artist\main.aspx" />
+    <Content Include="artist\order\view.aspx" />
     <Content Include="bootstrap\css\bootstrap-datepicker3.css" />
     <Content Include="bootstrap\css\bootstrap-datepicker3.min.css" />
     <Content Include="bootstrap\css\bootstrap-grid.css" />
@@ -227,6 +228,13 @@
     <Compile Include="artist\main.aspx.designer.cs">
       <DependentUpon>main.aspx</DependentUpon>
     </Compile>
+    <Compile Include="artist\order\view.aspx.cs">
+      <DependentUpon>view.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="artist\order\view.aspx.designer.cs">
+      <DependentUpon>view.aspx</DependentUpon>
+    </Compile>
     <Compile Include="Artwork.cs">
       <DependentUpon>ArtGalleryEntities.tt</DependentUpon>
     </Compile>
@@ -317,13 +325,6 @@
     </Compile>
     <Compile Include="customer\order\orderHistory.aspx.designer.cs">
       <DependentUpon>orderHistory.aspx</DependentUpon>
-    </Compile>
-    <Compile Include="DisplayImage.aspx.cs">
-      <DependentUpon>DisplayImage.aspx</DependentUpon>
-      <SubType>ASPXCodeBehind</SubType>
-    </Compile>
-    <Compile Include="DisplayImage.aspx.designer.cs">
-      <DependentUpon>DisplayImage.aspx</DependentUpon>
     </Compile>
     <Compile Include="customer\customer.Master.cs">
       <DependentUpon>customer.Master</DependentUpon>

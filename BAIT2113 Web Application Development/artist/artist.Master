@@ -100,7 +100,7 @@
                         </a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="#">
+                        <a class="nav-link" href="<%= ResolveUrl("~/artist/order/view.aspx") %>">
                             <span data-feather="file"></span>
                             <span>Orders</span>
                         </a>
