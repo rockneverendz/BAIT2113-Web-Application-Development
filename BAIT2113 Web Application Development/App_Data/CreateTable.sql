@@ -78,6 +78,7 @@ CREATE TABLE [dbo].[OrderItem] (
     [Art_ID]    INT        NOT NULL,
     [Quantity]  INT        NULL,
     [PriceEach] SMALLMONEY NULL,
+	[Status]	VARCHAR (50) NULL,
     CONSTRAINT [OrderItem_ID] PRIMARY KEY CLUSTERED ([Order_ID] ASC, [Art_ID] ASC),
     CONSTRAINT [FK_OrderItem_Order] FOREIGN KEY ([Order_ID]) REFERENCES [dbo].[Order] ([Order_ID]),
     CONSTRAINT [FK_OrderItem_Artwork] FOREIGN KEY ([Art_ID]) REFERENCES [dbo].[Artwork] ([Art_ID])
