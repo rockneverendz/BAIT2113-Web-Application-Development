@@ -90,7 +90,6 @@
       <DependentUpon>ArtGalleryEntities.edmx</DependentUpon>
       <LastGenOutput>ArtGalleryEntities.cs</LastGenOutput>
     </Content>
-    <Content Include="artist\account\Homepage.aspx" />
     <Content Include="artist\account\loginArtist.aspx" />
     <Content Include="artist\account\logoutArtist.aspx" />
     <Content Include="artist\account\registerArtist.aspx" />
@@ -171,13 +170,6 @@
     </Compile>
     <Compile Include="Artist.cs">
       <DependentUpon>ArtGalleryEntities.tt</DependentUpon>
-    </Compile>
-    <Compile Include="artist\account\Homepage.aspx.cs">
-      <DependentUpon>Homepage.aspx</DependentUpon>
-      <SubType>ASPXCodeBehind</SubType>
-    </Compile>
-    <Compile Include="artist\account\Homepage.aspx.designer.cs">
-      <DependentUpon>Homepage.aspx</DependentUpon>
     </Compile>
     <Compile Include="artist\account\loginArtist.aspx.cs">
       <DependentUpon>loginArtist.aspx</DependentUpon>
