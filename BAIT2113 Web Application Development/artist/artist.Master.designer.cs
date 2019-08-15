@@ -31,15 +31,6 @@ namespace BAIT2113_Web_Application_Development.artist {
         protected global::System.Web.UI.WebControls.Label lblAccount;
         
         /// <summary>
-        /// txtGreetings control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.Label txtGreetings;
-        
-        /// <summary>
         /// contentMain control.
         /// </summary>
         /// <remarks>

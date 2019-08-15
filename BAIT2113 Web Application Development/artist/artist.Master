@@ -34,22 +34,6 @@
             box-shadow: inset -1px 0 0 rgba(0, 0, 0, .1);
         }
 
-        .sidebar-sticky {
-            position: relative;
-            top: 0;
-            height: calc(100vh - 48px);
-            padding-top: .5rem;
-            overflow-x: hidden;
-            overflow-y: auto; /* Scrollable contents if viewport is shorter than content. */
-        }
-
-        @supports ((position: -webkit-sticky) or (position: sticky)) {
-            .sidebar-sticky {
-                position: -webkit-sticky;
-                position: sticky;
-            }
-        }
-
         .sidebar .nav-link {
             font-weight: 500;
             color: #333;
@@ -101,41 +85,60 @@
     </asp:ContentPlaceHolder>
 </head>
 <body>
-    <%--Fixed-top Navs--%>
-    <nav class="navbar navbar-dark fixed-top bg-dark flex-md-nowrap p-0 shadow navbar-expand-lg">
-        <a class="navbar-brand pl-3" href="#">
-            <%--<img src="" alt="logo" width="110px" />--%>
-        </a>
-        <div class="ml-auto pr-3">
-            <asp:Label ID="lblAccount" runat="server" Text="Account" class="btn btn-dark"></asp:Label>
-        </div>
-        <div class="pr-3">
-            <a href="<%= ResolveUrl("~/artist/account/logoutArtist.aspx") %>" class="btn btn-dark">Log Out</a>
-        </div>
-    </nav>
-
     <div class="container-fluid mt-5">
         <div class="row">
             <%-- Fixed-Sidebar Navs --%>
-            <nav class="col-md-2 d-none d-md-block bg-light sidebar">
-                <div class="sidebar-sticky">
-                    <ul class="nav flex-column pt-2">
-                        <li class="nav-item">
-                            <a class="nav-link">
-                                <h5><i class="fas fa-home"></i>Dashboard</h5>
-                            </a>
-                        </li>
-                        <li class="nav-item">
-                            <asp:Label ID="txtGreetings" runat="server" Text="" CssClass="nav-link"></asp:Label>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link" href="<%= ResolveUrl("~/artist/artwork/create.aspx") %>">Create</a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link" href="<%= ResolveUrl("~/artist/artwork/view.aspx") %>">View</a>
-                        </li>
-                    </ul>
+            <nav class="col-md-2 d-none d-md-block bg-light sidebar p-0">
+                <div class="bg-dark p-0">
+                    <span class="navbar-brand col-sm-3 col-md-2 mr-0 text-white">ArtGallery</span>
                 </div>
+                <ul class="nav flex-column">
+                    <li class="nav-item">
+                        <a class="nav-link active" href="<%= ResolveUrl("~/artist/main.aspx") %>">
+                            <span data-feather="home"></span>
+                            <span>Dashboard</span>
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#">
+                            <span data-feather="file"></span>
+                            <span>Orders</span>
+                        </a>
+                    </li>
+                </ul>
+                <h6 class="sidebar-heading d-flex justify-content-between align-items-center px-3 mt-4 mb-1 text-muted">
+                    <span>Artworks</span>
+                </h6>
+                <ul class="nav flex-column mb-2">
+                    <li class="nav-item">
+                        <a class="nav-link" href="<%= ResolveUrl("~/artist/artwork/create.aspx") %>">
+                            <span data-feather="plus-square"></span>
+                            <span>Create</span>
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="<%= ResolveUrl("~/artist/artwork/view.aspx") %>">
+                            <span data-feather="list"></span>
+                            <span>View</span>
+                        </a>
+                    </li>
+                </ul>
+                <h6 class="sidebar-heading d-flex justify-content-between align-items-center px-3 mt-4 mb-1 text-muted">
+                    <span>Account</span>
+                </h6>
+                <ul class="nav flex-column mb-2">
+                    <li class="nav-item">
+                        <a class="nav-link" href="#"><span data-feather="user"></span>
+                            <asp:Label ID="lblAccount" runat="server"></asp:Label>
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="<%= ResolveUrl("~/artist/account/logoutArtist.aspx") %>">
+                            <span data-feather="log-out"></span>
+                            <span>Log Out</span>
+                        </a>
+                    </li>
+                </ul>
             </nav>
             <%--Main Content--%>
             <main class="col-md-9 ml-sm-auto col-lg-10 px-4">
@@ -148,6 +151,10 @@
     <script src='<%= ResolveUrl("~/bootstrap/js/jquery.min.js") %>'></script>
     <script src='<%= ResolveUrl("~/bootstrap/js/popper.min.js") %>'></script>
     <script src='<%= ResolveUrl("~/bootstrap/js/bootstrap.min.js") %>'></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/feather-icons/4.9.0/feather.min.js"></script>
+    <script>
+        feather.replace();
+    </script>
     <asp:ContentPlaceHolder ID="contentScript" runat="server"></asp:ContentPlaceHolder>
 </body>
 </html>
