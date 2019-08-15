@@ -55,7 +55,7 @@
 </asp:Content>
 
 <asp:Content ID="Content2" ContentPlaceHolderID="contentMain" runat="server">
-    <form runat="server">
+    <form class="container-fluid mt-4" runat="server">
         <asp:Label ID="lblServerResponse" CssClass="d-block alert" role="alert" Visible="false" runat="server"></asp:Label>
         <div class="row">
             <asp:Repeater ID="Repeater1" runat="server">
@@ -88,6 +88,8 @@
 </asp:Content>
 <asp:Content ID="Content3" ContentPlaceHolderID="contentScript" runat="server">
     <script>
+        document.getElementsByClassName('nav-link')[3].classList += ' active';
+
         $(function () {
             $('[data-toggle="tooltip"]').tooltip()
         })

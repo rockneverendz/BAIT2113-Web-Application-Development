@@ -34,24 +34,24 @@
             box-shadow: inset -1px 0 0 rgba(0, 0, 0, .1);
         }
 
-        .sidebar .nav-link {
-            font-weight: 500;
-            color: #333;
-        }
-
-            .sidebar .nav-link .feather {
-                margin-right: 4px;
-                color: #999;
+            .sidebar .nav-link {
+                font-weight: 500;
+                color: #333;
             }
 
-            .sidebar .nav-link.active {
-                color: #007bff;
-            }
-
-                .sidebar .nav-link:hover .feather,
-                .sidebar .nav-link.active .feather {
-                    color: inherit;
+                .sidebar .nav-link .feather {
+                    margin-right: 4px;
+                    color: #999;
                 }
+
+                .sidebar .nav-link.active {
+                    color: #007bff;
+                }
+
+                    .sidebar .nav-link:hover .feather,
+                    .sidebar .nav-link.active .feather {
+                        color: inherit;
+                    }
 
         .sidebar-heading {
             font-size: .75rem;
@@ -94,7 +94,7 @@
                 </div>
                 <ul class="nav flex-column">
                     <li class="nav-item">
-                        <a class="nav-link active" href="<%= ResolveUrl("~/artist/main.aspx") %>">
+                        <a class="nav-link" href="<%= ResolveUrl("~/artist/main.aspx") %>">
                             <span data-feather="home"></span>
                             <span>Dashboard</span>
                         </a>
@@ -128,7 +128,7 @@
                 </h6>
                 <ul class="nav flex-column mb-2">
                     <li class="nav-item">
-                        <a class="nav-link" href="#"><span data-feather="user"></span>
+                        <a class="nav-link" href="<%= ResolveUrl("~/artist/account/settings.aspx") %>"><span data-feather="user"></span>
                             <asp:Label ID="lblAccount" runat="server"></asp:Label>
                         </a>
                     </li>
@@ -142,9 +142,7 @@
             </nav>
             <%--Main Content--%>
             <main class="col-md-9 ml-sm-auto col-lg-10 px-4">
-                <div class="container mt-4">
-                    <asp:ContentPlaceHolder ID="contentMain" runat="server"></asp:ContentPlaceHolder>
-                </div>
+                <asp:ContentPlaceHolder ID="contentMain" runat="server"></asp:ContentPlaceHolder>
             </main>
         </div>
     </div>

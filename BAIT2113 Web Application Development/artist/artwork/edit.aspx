@@ -3,7 +3,7 @@
 <asp:Content ID="Content1" ContentPlaceHolderID="contentHead" runat="server">
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="contentMain" runat="server">
-    <form runat="server">
+    <form class="container mt-4" runat="server">
         <asp:Label ID="lblServerResponse" CssClass="d-block alert" role="alert" Visible="false" runat="server"></asp:Label>
         <div class="row">
             <div class="col-4">
@@ -86,6 +86,8 @@
 </asp:Content>
 <asp:Content ID="Content3" ContentPlaceHolderID="contentScript" runat="server">
     <script>
+        document.getElementsByClassName('nav-link')[3].classList += ' active';
+
         // Display image after uploading.
         function previewFile(e) {
             var preview = document.querySelector('.artwork-preview');

@@ -93,6 +93,7 @@
     <Content Include="artist\account\loginArtist.aspx" />
     <Content Include="artist\account\logoutArtist.aspx" />
     <Content Include="artist\account\registerArtist.aspx" />
+    <Content Include="artist\account\settings.aspx" />
     <Content Include="artist\artwork\create.aspx" />
     <Content Include="artist\artwork\edit.aspx" />
     <Content Include="artist\artwork\view.aspx" />
@@ -142,7 +143,6 @@
     <Content Include="customer\main.aspx" />
     <Content Include="customer\order\orderDetails.aspx" />
     <Content Include="customer\order\orderHistory.aspx" />
-    <Content Include="DisplayImage.aspx" />
     <Content Include="Testing.aspx" />
     <Content Include="Web.config" />
   </ItemGroup>
@@ -192,6 +192,13 @@
     </Compile>
     <Compile Include="artist\account\registerArtist.aspx.designer.cs">
       <DependentUpon>registerArtist.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="artist\account\settings.aspx.cs">
+      <DependentUpon>settings.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="artist\account\settings.aspx.designer.cs">
+      <DependentUpon>settings.aspx</DependentUpon>
     </Compile>
     <Compile Include="artist\artist.Master.cs">
       <DependentUpon>artist.Master</DependentUpon>
@@ -376,6 +383,7 @@
     <Content Include="bootstrap\js\bootstrap.js.map" />
     <Content Include="bootstrap\js\bootstrap.min.js.map" />
     <Content Include="bootstrap\js\popper.min.js.map" />
+    <Content Include="artist\artist.Master" />
     <EntityDeploy Include="ArtGalleryEntities.edmx">
       <Generator>EntityModelCodeGenerator</Generator>
       <LastGenOutput>ArtGalleryEntities.Designer.cs</LastGenOutput>
@@ -383,7 +391,6 @@
     <Content Include="ArtGalleryEntities.edmx.diagram">
       <DependentUpon>ArtGalleryEntities.edmx</DependentUpon>
     </Content>
-    <Content Include="artist\artist.Master" />
     <None Include="packages.config" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>

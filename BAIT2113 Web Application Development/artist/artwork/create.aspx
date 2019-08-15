@@ -1,7 +1,7 @@
 ﻿<%@ Page Title="" Language="C#" MasterPageFile="~/artist/artist.Master" AutoEventWireup="true" CodeBehind="create.aspx.cs" Inherits="BAIT2113_Web_Application_Development.artist.artwork.create" %>
 
-<asp:Content ID="Content1" ContentPlaceHolderID="contentMain" runat="server">
-    <form runat="server">
+<asp:Content ID="Content2" ContentPlaceHolderID="contentMain" runat="server">
+    <form class="container mt-4" runat="server">
         <asp:Label ID="lblServerResponse" CssClass="d-block alert" role="alert" Visible="false" runat="server"></asp:Label>
         <div class="row">
             <div class="col-4">
@@ -57,8 +57,10 @@
         </div>
     </form>
 </asp:Content>
-<asp:Content ID="Content2" ContentPlaceHolderID="contentScript" runat="server">
+<asp:Content ID="Content3" ContentPlaceHolderID="contentScript" runat="server">
     <script>
+        document.getElementsByClassName('nav-link')[2].classList += ' active';
+
         // Display image after uploading.
         function previewFile(e) {
             var preview = document.querySelector('#artworkPreview');
