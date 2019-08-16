@@ -13,5 +13,10 @@ namespace BAIT2113_Web_Application_Development.artist.account
         {
 
         }
+
+        protected void BtnSave_Click(object sender, EventArgs e)
+        {
+
+        }
     }
 }
