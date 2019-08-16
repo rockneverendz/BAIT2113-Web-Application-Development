@@ -14,35 +14,36 @@ namespace BAIT2113_Web_Application_Development.artist.artwork
         {
             if (!IsPostBack)
             {
-                ArtGalleryEntities context = new ArtGalleryEntities();
-                Artist artist = (Artist)Session["artist"];
-                Artwork artwork;
-
-                int artwork_id = Convert.ToInt32(Request.QueryString.Get("id"));
-                artwork = context.Artworks.Find(artwork_id);
-
-                // Check if the artwork exists.
-                if (artwork == null)
+                using (ArtGalleryEntities context = new ArtGalleryEntities())
                 {
-                    // Artwork not found, returning to view.aspx with error.
-                    Response.Redirect("~/artist/artwork/view.aspx?status=N");
-                    return;
-                }
+                    Artist artist = (Artist)Session["artist"];
+                    Artwork artwork;
 
-                // Check if the owner of the artwork is the artist.
-                if (artwork.Artist_ID != artist.Artist_ID)
-                {
-                    // Invaild credentials, an attack?
-                    Response.Redirect("~/artist/account/logoutArtist.aspx");
-                    return;
-                }
+                    string artwork_id_string = Request.QueryString.Get("id");
+                    int artwork_id = 0;
 
-                artworkTitle.Text = artwork.Title;
-                artworkDescription.Text = artwork.Description;
-                artworkPrice.Text = String.Format("{0:0.00}", artwork.Price);
-                artworkStock.Text = artwork.Stock.ToString();
-                artworkStatus.SelectedValue = artwork.Status;
-                artworkPreview.ImageUrl = "data:Image/png;base64," + Convert.ToBase64String(artwork.Image);
+                    if (artwork_id_string == null || !Int32.TryParse(artwork_id_string, out artwork_id))
+                        Response.Redirect("~/artist/artwork/view.aspx?status=E");
+
+                    artwork = context.Artworks.Find(artwork_id);
+
+                    // Check if the artwork exists.
+                    if (artwork == null)
+                        // Artwork not found, returning to view.aspx with error.
+                        Response.Redirect("~/artist/artwork/view.aspx?status=N");
+
+                    // Check if the owner of the artwork is the artist.
+                    if (artwork.Artist_ID != artist.Artist_ID)
+                        // Invaild credentials, an attack?
+                        Response.Redirect("~/artist/account/logoutArtist.aspx");
+
+                    artworkTitle.Text = artwork.Title;
+                    artworkDescription.Text = artwork.Description;
+                    artworkPrice.Text = String.Format("{0:0.00}", artwork.Price);
+                    artworkStock.Text = artwork.Stock.ToString();
+                    artworkStatus.SelectedValue = artwork.Status;
+                    artworkPreview.ImageUrl = "data:Image/png;base64," + Convert.ToBase64String(artwork.Image);
+                }
             }
         }
 
@@ -56,54 +57,58 @@ namespace BAIT2113_Web_Application_Development.artist.artwork
                 return;
             }
 
-            ArtGalleryEntities context = new ArtGalleryEntities();
-            Artwork artwork;
-
-            int artwork_id = Convert.ToInt32(Request.QueryString.Get("id"));
-            artwork = context.Artworks.Find(artwork_id);
-
-            artwork.Title = artworkTitle.Text;
-            artwork.Description = artworkDescription.Text;
-            artwork.Price = Convert.ToDecimal(artworkPrice.Text);
-            artwork.Stock = Convert.ToInt32(artworkStock.Text);
-            artwork.Status = artworkStatus.SelectedValue; //TODO validate this shit.
-
-            // Check if user wants to update image
-            if (artworkImage.HasFile)
+            using (ArtGalleryEntities context = new ArtGalleryEntities())
             {
-                // Check if the image is type ".png"
-                if (System.IO.Path.GetExtension(artworkImage.FileName) == ".png")
+                Artwork artwork;
+
+                int artwork_id = Convert.ToInt32(Request.QueryString.Get("id"));
+                artwork = context.Artworks.Find(artwork_id);
+
+                artwork.Title = artworkTitle.Text;
+                artwork.Description = artworkDescription.Text;
+                artwork.Price = Convert.ToDecimal(artworkPrice.Text);
+                artwork.Stock = Convert.ToInt32(artworkStock.Text);
+                artwork.Status = artworkStatus.SelectedValue; //TODO validate this shit.
+
+                // Check if user wants to update image
+                if (artworkImage.HasFile)
                 {
-                    using (Stream fs = artworkImage.PostedFile.InputStream)
-                    using (BinaryReader br = new BinaryReader(fs))
+                    // Check if the image is type ".png"
+                    if (System.IO.Path.GetExtension(artworkImage.FileName) == ".png")
                     {
-                        byte[] bytes = br.ReadBytes((Int32)fs.Length);
-                        artwork.Image = bytes;
+                        using (Stream fs = artworkImage.PostedFile.InputStream)
+                        using (BinaryReader br = new BinaryReader(fs))
+                        {
+                            byte[] bytes = br.ReadBytes((Int32)fs.Length);
+                            artwork.Image = bytes;
+                        }
+                    }
+                    else
+                    {
+                        lblArtworkImage.Visible = true;
+                        lblArtworkImage.Text = "File type not supported!";
+                        return;
                     }
                 }
-                else
-                {
-                    lblArtworkImage.Visible = true;
-                    lblArtworkImage.Text = "File type not supported!";
-                    return;
-                }
-            }
 
-            context.SaveChanges();
+                context.SaveChanges();
+            }
             Response.Redirect("~/artist/artwork/view.aspx?status=U");
         }
 
         protected void BtnRemove_Click(object sender, EventArgs e)
         {
-            ArtGalleryEntities context = new ArtGalleryEntities();
-            Artwork artwork;
+            using (ArtGalleryEntities context = new ArtGalleryEntities())
+            {
+                Artwork artwork;
 
-            int artwork_id = Convert.ToInt32(Request.QueryString.Get("id"));
-            artwork = context.Artworks.Find(artwork_id);
+                int artwork_id = Convert.ToInt32(Request.QueryString.Get("id"));
+                artwork = context.Artworks.Find(artwork_id);
 
-            artwork.Status = "Deleted";
+                artwork.Status = "Deleted";
 
-            context.SaveChanges();
+                context.SaveChanges();
+            }
             Response.Redirect("~/artist/artwork/view.aspx?status=R");
         }
 
@@ -122,11 +127,11 @@ namespace BAIT2113_Web_Application_Development.artist.artwork
                 validity = false;
             }
             // Check if title valid for database
-            else if (artworkTitle.Text.Length > 50)
+            else if (artworkTitle.Text.Length > 255)
             {
                 artworkTitle.CssClass = is_invalid;
                 lblArtworkTitle.Visible = true;
-                lblArtworkTitle.Text = "Title must have less than 50 characters.";
+                lblArtworkTitle.Text = "Title must have less than 255 characters.";
                 validity = false;
             }
             // Then title is valid.
@@ -137,7 +142,7 @@ namespace BAIT2113_Web_Application_Development.artist.artwork
             }
 
             // Check if description valid for database
-            if (artworkDescription.Text.Length > 100)
+            if (artworkDescription.Text.Length > 255)
             {
                 artworkDescription.CssClass = is_invalid;
                 lblArtworkDescription.Visible = true;

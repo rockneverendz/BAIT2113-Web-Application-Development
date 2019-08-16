@@ -13,17 +13,19 @@ namespace BAIT2113_Web_Application_Development.artist.artwork
         {
             if (!IsPostBack)
             {
-                ArtGalleryEntities context = new ArtGalleryEntities();
-                Artist artist = (Artist)Session["artist"];
+                using (ArtGalleryEntities context = new ArtGalleryEntities())
+                {
+                    Artist artist = (Artist)Session["artist"];
 
-                List<Artwork> artwork = context.Artworks
-                    .Where(a => a.Artist_ID == artist.Artist_ID)
-                    .Where(a => a.Status != "Deleted")
-                    .OrderByDescending(a => a.Art_ID)
-                    .ToList();
+                    List<Artwork> artwork = context.Artworks
+                        .Where(a => a.Artist_ID == artist.Artist_ID)
+                        .Where(a => a.Status != "Deleted")
+                        .OrderByDescending(a => a.Art_ID)
+                        .ToList();
 
-                Repeater1.DataSource = artwork;
-                Repeater1.DataBind();
+                    Repeater1.DataSource = artwork;
+                    Repeater1.DataBind();
+                }
 
                 String status = Request.QueryString.Get("status");
                 if (status != null)
@@ -42,6 +44,10 @@ namespace BAIT2113_Web_Application_Development.artist.artwork
                         case "R":
                             lblServerResponse.Text = "Successfully removed artwork.";
                             lblServerResponse.CssClass += " alert-success";
+                            break;
+                        case "E":
+                            lblServerResponse.Text = "Invalid link.";
+                            lblServerResponse.CssClass += " alert-danger";
                             break;
                         case "N":
                             lblServerResponse.Text = "Artwork not found.";
