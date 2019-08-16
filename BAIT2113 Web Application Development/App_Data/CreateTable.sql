@@ -21,7 +21,7 @@ CREATE TABLE [dbo].[Customer] (
     [Username]  VARCHAR (50) NOT NULL,
     [Email]     VARCHAR (50) NOT NULL,
     [ContactNo] VARCHAR (50) NULL,
-    [Address]   VARCHAR (50) NULL,
+    [Address]   VARCHAR (255) NULL,
     [Password]  VARCHAR (50) NOT NULL,
     PRIMARY KEY CLUSTERED ([Cust_ID] ASC)
 );
@@ -35,8 +35,8 @@ CREATE TABLE [dbo].[Payment] (
 
 CREATE TABLE [dbo].[Artwork] (
     [Art_ID]      INT           IDENTITY (1000, 1) NOT NULL,
-    [Title]       VARCHAR (50)  NOT NULL,
-    [Description] VARCHAR (100) NOT NULL,
+    [Title]       VARCHAR (255)  NOT NULL,
+    [Description] VARCHAR (255) NOT NULL,
     [Date]        DATETIME2 (7) DEFAULT (getdate()) NOT NULL,
     [Status]      VARCHAR (50)  NOT NULL,
     [Price]       SMALLMONEY    NOT NULL,
