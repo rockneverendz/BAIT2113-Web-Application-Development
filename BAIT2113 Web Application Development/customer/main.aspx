@@ -64,7 +64,7 @@
                     </div>
                 </ItemTemplate>
             </asp:DataList>
-            <asp:SqlDataSource runat="server" ID="SqlDataSource1" ConnectionString='<%$ ConnectionStrings:ArtGalleryConnStr %>' SelectCommand="SELECT Artwork.Art_ID, Artwork.Title, Artwork.Description, Artist.Username, Artwork.Date, Artwork.Status, Artwork.Price, Artwork.Image, Artwork.Stock, Artwork.Artist_ID FROM Artwork INNER JOIN Artist ON Artwork.Artist_ID = Artist.Artist_ID WHERE (Artwork.Status <> 'Hidden') AND (Artwork.Status <> 'Deleted') ORDER BY Artwork.Art_ID DESC" EnableCaching="True" CacheDuration="60"></asp:SqlDataSource>
+            <asp:SqlDataSource runat="server" ID="SqlDataSource1" ConnectionString='<%$ ConnectionStrings:ArtGalleryConnStr %>' SelectCommand="SELECT TOP (10) Artwork.Art_ID, Artwork.Title, Artwork.Description, Artist.Username, Artwork.Date, Artwork.Status, Artwork.Price, Artwork.Image, Artwork.Stock, Artwork.Artist_ID FROM Artwork INNER JOIN Artist ON Artwork.Artist_ID = Artist.Artist_ID WHERE (Artwork.Status <> 'Hidden') AND (Artwork.Status <> 'Deleted') ORDER BY Artwork.Art_ID DESC" EnableCaching="True" CacheDuration="60"></asp:SqlDataSource>
         </div>
     </form>
 </asp:Content>

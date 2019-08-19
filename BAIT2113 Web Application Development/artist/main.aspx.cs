@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Data.SqlClient;
 using System.Linq;
 using System.Web;
 using System.Web.UI;
@@ -11,7 +12,12 @@ namespace BAIT2113_Web_Application_Development.artist
     {
         protected void Page_Load(object sender, EventArgs e)
         {
+            if (!IsPostBack)
+            {
+                Artist artist = (Artist)Session["artist"];
 
+                lblArtist.Text = artist.Username;
+            }
         }
     }
 }
